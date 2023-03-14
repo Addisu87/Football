@@ -12,7 +12,7 @@ const HomeScreen = () => {
   }, []);
 
   return (
-    <SafeAreaView className="flex-1 items-center justify-center relative bg-white">
+    <SafeAreaView className="flex-1 relative bg-white">
       <View>
         <Text className="text-red-400">Hello World!</Text>
       </View>
