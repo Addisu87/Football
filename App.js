@@ -24,7 +24,7 @@ export default function App() {
         <Tab.Navigator
           screenOptions={{
             tabBarStyle: { position: "absolute" },
-            tabBarActiveTintColor: "#1808f1",
+            tabBarActiveTintColor: "#32a83a",
             tabBarBackground: () => (
               <BlurView
                 tint="light"
@@ -39,7 +39,7 @@ export default function App() {
             component={HomeScreen}
             options={{
               tabBarLabel: () => (
-                <Text className="focus:text-white focus:outline-none text-gray-500">
+                <Text className="focus:text-white focus:outline-none text-gray-700">
                   Home
                 </Text>
               ),
@@ -53,7 +53,7 @@ export default function App() {
             component={DiscoverScreen}
             options={{
               tabBarLabel: () => (
-                <Text className="focus:text-white focus:outline-none text-gray-500">
+                <Text className="focus:text-white focus:outline-none text-gray-700">
                   Discover
                 </Text>
               ),
@@ -67,7 +67,7 @@ export default function App() {
             component={StandingsScreen}
             options={{
               tabBarLabel: () => (
-                <Text className="focus:text-white focus:outline-none text-gray-500">
+                <Text className="focus:text-white focus:outline-none text-gray-700">
                   Standings
                 </Text>
               ),
@@ -81,7 +81,7 @@ export default function App() {
             component={MoreScreen}
             options={{
               tabBarLabel: () => (
-                <Text className="focus:text-white focus:outline-none text-gray-500">
+                <Text className="focus:text-white focus:outline-none text-gray-700">
                   More
                 </Text>
               ),
