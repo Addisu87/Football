@@ -1,16 +1,12 @@
-/*[x] Bottom tabs navigation (4 screens)
-[x] Discover Screen
-    [x] Header Section
-    [x] Banner Section
-    [x] Teams Section
-    [x] Matches Section
-    [x] News Section
-*/
-
 import { View, Text, SafeAreaView, Image } from "react-native";
 import React, { useLayoutEffect } from "react";
 import { useNavigation } from "@react-navigation/native";
-import { BellIcon, MagnifyingGlassIcon } from "react-native-heroicons/outline";
+import {
+  BellIcon,
+  MagnifyingGlassIcon,
+  LifebuoyIcon,
+} from "react-native-heroicons/outline";
+import { LinearGradient } from "expo-linear-gradient";
 
 const DiscoverScreen = () => {
   const navigation = useNavigation();
@@ -40,31 +36,41 @@ const DiscoverScreen = () => {
       </View>
 
       {/* Banner Section */}
-      <View className="bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500">
-        <View className="justify-between">
-          <Image
-            source={require("../assets/images/soccer.jpeg")}
-            className="h-7 w-7"
-          />
-          <Text>Football</Text>
-        </View>
-        <View>
-          <Text>
-            Saudi Arabi preparing huge offer to secure Lionel Messi transfer
-            from Paris Saint...
-          </Text>
-        </View>
-        <View>
-          <Text>Tomorrow, 06:30 PM</Text>
-        </View>
+      <LinearGradient
+        colors={["#5ED2A0", "#339CB1"]}
+        className="pl-4 pr-4 rounded-md h-44"
+      >
+        <View className="flex-row justify-between top-2">
+          <View className="bg-transparent">
+            <View className="flex-row items-center justify-around bg-white rounded-lg w-1/2">
+              <View>
+                <LifebuoyIcon />
+              </View>
+              <Text className="">Football</Text>
+            </View>
+            <View className="w-[210px]">
+              <Text className="truncate text-clip overflow-hidden md:text-clip">
+                Saudi Arabia preparing huge offer to secure Lionel Messi
+                transfer from Paris Saint...
+              </Text>
+            </View>
+            <View>
+              <Text>Tomorrow, 06:30 PM</Text>
+            </View>
+          </View>
 
-        <View>
-          <Image
-            source={require("../assets/images/Messi.jpeg")}
-            className="h-40 w-40"
-          />
+          <View className="">
+            <Image
+              source={require("../assets/images/Messi.jpeg")}
+              className="h-40 w-40"
+            />
+          </View>
         </View>
-      </View>
+      </LinearGradient>
+
+      {/* Teams Section */}
+      {/* Matches Section */}
+      {/* News Section */}
     </SafeAreaView>
   );
 };
