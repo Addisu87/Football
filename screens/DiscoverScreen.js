@@ -7,6 +7,8 @@ import {
   LifebuoyIcon,
 } from "react-native-heroicons/outline";
 import { LinearGradient } from "expo-linear-gradient";
+import Teams from "../components/Teams";
+import { Messi } from "../assets/images/index";
 
 const DiscoverScreen = () => {
   const navigation = useNavigation();
@@ -41,7 +43,7 @@ const DiscoverScreen = () => {
         className="pl-4 pr-4 rounded-md h-44"
       >
         <View className="flex-row justify-between top-2">
-          <View className="bg-transparent">
+          <View className="bg-transparent space-y-2">
             <View className="flex-row items-center justify-around bg-white rounded-lg w-1/2">
               <View>
                 <LifebuoyIcon />
@@ -61,14 +63,16 @@ const DiscoverScreen = () => {
 
           <View className="">
             <Image
-              source={require("../assets/images/Messi.jpeg")}
+              // source={require("../assets/images/Messi.jpeg")}
               className="h-40 w-40"
+              source={Messi}
             />
           </View>
         </View>
       </LinearGradient>
 
       {/* Teams Section */}
+      <Teams />
       {/* Matches Section */}
       {/* News Section */}
     </SafeAreaView>
