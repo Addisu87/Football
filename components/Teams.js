@@ -2,6 +2,7 @@ import { View, Text, Image, SafeAreaView } from "react-native";
 import React from "react";
 import { ScrollView } from "react-native";
 import { FlatList } from "react-native";
+import TeamsCard from "./TeamsCard";
 
 const dummyData = [
   {
@@ -41,14 +42,30 @@ const Teams = () => {
   return (
     <SafeAreaView>
       <Text>Popular Teams</Text>
-      <ScrollView>
-        <FlatList
-          keyExtractor={(item) => item.id}
-          horizontal
-          showsHorizontalScrollIndicator={false}
-          data={dummyData}
-          renderItem={({ item }) => <_renderTeamsItem logo={item.logo} />}
-          // renderItem={_renderTeamsItem}
+      <ScrollView
+        contentContainerStyle={{ paddingHorizontal: 15, paddingTop: 10 }}
+        horizontal
+        showsHorizontalScrollIndicator={false}
+      >
+        <TeamsCard
+          imgUrl="https://upload.wikimedia.org/wikipedia/hif/8/82/Arsenal_FC.png"
+          name="Arsenal-1"
+        />
+        <TeamsCard
+          imgUrl="https://upload.wikimedia.org/wikipedia/hif/8/82/Arsenal_FC.png"
+          name="Arsenal-2"
+        />
+        <TeamsCard
+          imgUrl="https://upload.wikimedia.org/wikipedia/hif/8/82/Arsenal_FC.png"
+          name="Arsenal-3"
+        />
+        <TeamsCard
+          imgUrl="https://upload.wikimedia.org/wikipedia/hif/8/82/Arsenal_FC.png"
+          name="Arsenal-3"
+        />
+        <TeamsCard
+          imgUrl="https://upload.wikimedia.org/wikipedia/hif/8/82/Arsenal_FC.png"
+          name="Arsenal-3"
         />
       </ScrollView>
     </SafeAreaView>
