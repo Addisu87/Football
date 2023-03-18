@@ -11,7 +11,7 @@ const MatchesCard = ({ item }) => {
       >
         <View className="space-y-2">
           <View>
-            <Text className="text-lg font-semibold text-gray-800">
+            <Text className="font-medium text-base uppercase truncate ">
               {item.name}
             </Text>
           </View>
@@ -22,11 +22,11 @@ const MatchesCard = ({ item }) => {
           </View>
 
           <View className="p-2">
-            <Text className="uppercase tracking-wide text-sm text-indigo-500 font-semibold">
+            <Text className="uppercase -tracking-normal text-sm text-indigo-500 font-semibold truncate">
               {item.team1.name}
             </Text>
             <Text className="text-center justify-center">VS</Text>
-            <Text className="uppercase tracking-wide text-sm text-indigo-500 font-semibold">
+            <Text className="uppercase tracking-wide text-sm text-indigo-500 font-semibold truncate">
               {item.team2.name}
             </Text>
           </View>

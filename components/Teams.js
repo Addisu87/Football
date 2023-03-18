@@ -35,10 +35,8 @@ const Teams = () => {
   return (
     <SafeAreaView>
       <View className="h-4 m-2 flex-row justify-between items-center">
-        <Text className="font-medium text-base text-[#A0A3BD] uppercase">
-          Popular Teams
-        </Text>
-        <Text className="uppercase text-base text-[#A0A3BD]">View All</Text>
+        <Text className="font-medium text-base uppercase">Popular Teams</Text>
+        <Text className="uppercase">View All</Text>
       </View>
       <ScrollView
         contentContainerStyle={{ paddingHorizontal: 15, paddingTop: 10 }}

@@ -5,6 +5,7 @@ import { BellIcon, MagnifyingGlassIcon } from "react-native-heroicons/outline";
 import Teams from "../components/Teams";
 import Matches from "../components/Matches";
 import Banner from "../components/Banner";
+import News from "../components/News";
 
 const DiscoverScreen = () => {
   const navigation = useNavigation();
@@ -43,6 +44,7 @@ const DiscoverScreen = () => {
       <Matches />
 
       {/* News Section */}
+      <News />
     </SafeAreaView>
   );
 };

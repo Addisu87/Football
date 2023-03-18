@@ -41,7 +41,9 @@ const Matches = () => {
   return (
     <SafeAreaView>
       <View className="items-center justify-between flex-row m-2">
-        <Text className="uppercase text-lg">Upcoming Matches</Text>
+        <Text className="font-medium text-base uppercase">
+          Upcoming Matches
+        </Text>
         <Text className="uppercase">View All</Text>
       </View>
       <ScrollView>
