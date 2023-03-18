@@ -25,7 +25,7 @@ export const dummyMatches = [
   },
   {
     id: "004",
-    name: "more 1 ...",
+    name: "Emirates Field",
     team1: dummyTeams[1],
     team2: dummyTeams[2],
   },

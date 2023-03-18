@@ -1,16 +1,35 @@
 import { View, Text, TouchableOpacity, Image } from "react-native";
 import React from "react";
+import { LinearGradient } from "expo-linear-gradient";
 
 const MatchesCard = ({ item }) => {
   return (
-    <TouchableOpacity>
-      <View>
-        <Text className="text-bold text-slate-800">{item.name}</Text>
+    <TouchableOpacity className="">
+      <LinearGradient
+        colors={["#5ED2A0", "#339CB1"]}
+        className="pl-4 pr-4 max-w-md mx-auto rounded-xl overflow-hidden drop-shadow-lg md:max-w-2xl"
+      >
         <View>
-          <Image source={item.team1.logo} className="w-7 h-7" />
-          <Image source={item.team2.logo} className="w-7 h-7" />
+          <Text className="text-lg font-semibold text-gray-800">
+            {item.name}
+          </Text>
         </View>
-      </View>
+
+        <View className="flex-row items-center justify-between md:shrink-0">
+          <Image source={item.team1.logo} className="object-cover w-7 h-7" />
+          <Image source={item.team2.logo} className="object-cover w-7 h-7" />
+        </View>
+
+        <View className="p-8">
+          <Text className="uppercase tracking-wide text-sm text-indigo-500 font-semibold">
+            {item.team1.name}
+          </Text>
+          <Text className="text-center justify-center">VS</Text>
+          <Text className="uppercase tracking-wide text-sm text-indigo-500 font-semibold">
+            {item.team2.name}
+          </Text>
+        </View>
+      </LinearGradient>
     </TouchableOpacity>
   );
 };
