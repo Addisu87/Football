@@ -19,8 +19,8 @@ const Tab = createBottomTabNavigator();
 
 export default function App() {
   return (
-    <TailwindProvider>
-      <NavigationContainer>
+    <NavigationContainer>
+      <TailwindProvider>
         <Tab.Navigator
           screenOptions={{
             tabBarStyle: { position: "absolute" },
@@ -91,7 +91,7 @@ export default function App() {
             }}
           />
         </Tab.Navigator>
-      </NavigationContainer>
-    </TailwindProvider>
+      </TailwindProvider>
+    </NavigationContainer>
   );
 }
