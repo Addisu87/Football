@@ -4,12 +4,10 @@ import { View } from "react-native";
 
 const TeamsCard = ({ imgUrl, name }) => {
   return (
-    <TouchableOpacity className="relative p-3 mr-4 drop-shadow-lg max-w-md mx-auto rounded-xl overflow-hidden bg-gray-200">
-      <View className="space-y-2">
-        <Image source={imgUrl} className="rounded h-20 w-20 object-cover" />
-        <Text className="absolute -bottom-3 left-1 text-black font-bold items-center justify-center">
-          {name}
-        </Text>
+    <TouchableOpacity className="relative p-2 space-y-2 mr-4 drop-shadow-lg max-w-md mx-auto rounded-xl overflow-hidden bg-gray-200">
+      <View className="w-[80px] items-center justify-center">
+        <Image source={imgUrl} className="rounded w-10 h-10 object-cover" />
+        <Text className="left-1 text-black font-bold truncate">{name}</Text>
       </View>
     </TouchableOpacity>
   );

@@ -24,7 +24,7 @@ export const dummyNews = [
     views: "125,908",
     likes: "1403",
     comments: "976",
-    date: "2020-05-15",
+    date: "2023-03-18",
     detail: `Martin Odegaard and Arsenal stars to return against Crystal Palace with £21m signing on standby.`,
   },
   {
