@@ -9,6 +9,7 @@ import {
 import { LinearGradient } from "expo-linear-gradient";
 import Teams from "../components/Teams";
 import { Messi } from "../assets/images/index";
+import Matches from "../components/Matches";
 
 const DiscoverScreen = () => {
   const navigation = useNavigation();
@@ -62,11 +63,7 @@ const DiscoverScreen = () => {
           </View>
 
           <View className="">
-            <Image
-              // source={require("../assets/images/Messi.jpeg")}
-              className="h-40 w-40"
-              source={Messi}
-            />
+            <Image className="h-40 w-40" source={Messi} />
           </View>
         </View>
       </LinearGradient>
@@ -74,6 +71,8 @@ const DiscoverScreen = () => {
       {/* Teams Section */}
       <Teams />
       {/* Matches Section */}
+      <Matches />
+
       {/* News Section */}
     </SafeAreaView>
   );

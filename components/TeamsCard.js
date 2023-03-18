@@ -4,7 +4,7 @@ import React from "react";
 const TeamsCard = ({ imgUrl, name }) => {
   return (
     <TouchableOpacity className="relative mr-2">
-      <Image source={{ uri: imgUrl }} className="h-20 w-20 rounded" />
+      <Image source={imgUrl} className="rounded h-20 w-20" />
       <Text className="absolute bottom-1 left-1 text-black font-bold">
         {name}
       </Text>

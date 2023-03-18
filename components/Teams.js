@@ -3,6 +3,34 @@ import React from "react";
 import { ScrollView } from "react-native";
 import TeamsCard from "./TeamsCard";
 
+export const dummyTeams = [
+  {
+    id: "001",
+    name: "Real Madrid",
+    logo: require("../assets/images/Real_Madrid.png"),
+  },
+  {
+    id: "002",
+    name: "Arsenal",
+    logo: require("../assets/images/Arsenal_FC.png"),
+  },
+  {
+    id: "003",
+    name: "FC Barcelona",
+    logo: require("../assets/images/FC_Barcelona.png"),
+  },
+  {
+    id: "004",
+    name: "Juventus",
+    logo: require("../assets/images/juventus-fc.png"),
+  },
+  {
+    id: "005",
+    name: "Manchester United",
+    logo: require("../assets/images/manchester-united.webp"),
+  },
+];
+
 const Teams = () => {
   return (
     <SafeAreaView>
@@ -17,26 +45,9 @@ const Teams = () => {
         horizontal
         showsHorizontalScrollIndicator={false}
       >
-        <TeamsCard
-          imgUrl="https://upload.wikimedia.org/wikipedia/hif/8/82/Arsenal_FC.png"
-          name="Arsenal-1"
-        />
-        <TeamsCard
-          imgUrl="https://upload.wikimedia.org/wikipedia/hif/8/82/Arsenal_FC.png"
-          name="Arsenal-2"
-        />
-        <TeamsCard
-          imgUrl="https://upload.wikimedia.org/wikipedia/hif/8/82/Arsenal_FC.png"
-          name="Arsenal-3"
-        />
-        <TeamsCard
-          imgUrl="https://upload.wikimedia.org/wikipedia/hif/8/82/Arsenal_FC.png"
-          name="Arsenal-3"
-        />
-        <TeamsCard
-          imgUrl="https://upload.wikimedia.org/wikipedia/hif/8/82/Arsenal_FC.png"
-          name="Arsenal-3"
-        />
+        {dummyTeams.map(({ name, logo, id }) => (
+          <TeamsCard key={id} imgUrl={logo} name={name} />
+        ))}
       </ScrollView>
     </SafeAreaView>
   );
