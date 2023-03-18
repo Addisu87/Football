@@ -1,47 +1,17 @@
 import { View, Text, Image, SafeAreaView } from "react-native";
 import React from "react";
 import { ScrollView } from "react-native";
-import { FlatList } from "react-native";
 import TeamsCard from "./TeamsCard";
-
-const dummyData = [
-  {
-    id: "001",
-    name: "Real Madrid",
-    logo: require("../assets/images/index"),
-  },
-  {
-    id: "002",
-    name: "Arsenal",
-    logo: require("../assets/images/index"),
-  },
-  {
-    id: "003",
-    name: "FC Barcelona",
-    logo: require("../assets/images/index"),
-  },
-  {
-    id: "004",
-    name: "Juventus",
-    logo: require("../assets/images/index"),
-  },
-  {
-    id: "005",
-    name: "Manchester United",
-    logo: require("../assets/images/index"),
-  },
-];
-
-const _renderTeamsItem = ({ logo }) => {
-  <View>
-    <Image source={logo} />
-  </View>;
-};
 
 const Teams = () => {
   return (
     <SafeAreaView>
-      <Text>Popular Teams</Text>
+      <View className="h-4 m-2 flex-row justify-between items-center">
+        <Text className="font-medium text-base text-[#A0A3BD] uppercase">
+          Popular Teams
+        </Text>
+        <Text className="uppercase text-base text-[#A0A3BD]">View All</Text>
+      </View>
       <ScrollView
         contentContainerStyle={{ paddingHorizontal: 15, paddingTop: 10 }}
         horizontal
