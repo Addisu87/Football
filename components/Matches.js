@@ -7,33 +7,33 @@ import MatchesCard from "./MatchesCard";
 export const dummyMatches = [
   {
     id: "001",
-    name: "Strawberry Field",
+    name: "Santiago Bernabéu",
     team1: dummyTeams[0],
     team2: dummyTeams[2],
   },
   {
     id: "002",
-    name: "Autumn Field",
+    name: "Allianz",
     team1: dummyTeams[3],
     team2: dummyTeams[1],
   },
   {
     id: "003",
-    name: "Spring Field",
+    name: "Old Trafford",
     team1: dummyTeams[4],
     team2: dummyTeams[0],
   },
   {
     id: "004",
-    name: "Emirates Field",
+    name: "Emirates",
     team1: dummyTeams[1],
     team2: dummyTeams[2],
   },
   {
     id: "005",
-    name: "more 2 ...",
-    team1: dummyTeams[3],
-    team2: dummyTeams[0],
+    name: "Camp Nou",
+    team1: dummyTeams[2],
+    team2: dummyTeams[3],
   },
 ];
 

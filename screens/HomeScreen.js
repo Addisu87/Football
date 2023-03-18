@@ -1,12 +1,3 @@
-/*[x] Bottom tabs navigation (4 screens)
-[x] Home Screen
-    [x] Header Section
-    [x] Banner Section
-    [x] Teams Section
-    [x] Matches Section
-    [x] News Section
-*/
-
 import { useNavigation } from "@react-navigation/native";
 import React, { useLayoutEffect } from "react";
 import { SafeAreaView, Text, View } from "react-native";
