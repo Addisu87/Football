@@ -40,7 +40,7 @@ export const dummyMatches = [
 const Matches = () => {
   return (
     <SafeAreaView>
-      <View className="items-center justify-between flex-row m-2">
+      <View className="h-6 m-2 flex-row justify-between items-center">
         <Text className="font-medium text-base uppercase">
           Upcoming Matches
         </Text>

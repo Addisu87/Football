@@ -7,7 +7,7 @@ const MatchesCard = ({ item }) => {
     <TouchableOpacity className="">
       <LinearGradient
         colors={["#5ED2A0", "#339CB1"]}
-        className="pl-2 pr-2 m-2 max-w-md mx-auto rounded-xl overflow-hidden drop-shadow-lg md:max-w-2xl"
+        className="p-2 max-w-md mx-auto rounded-xl overflow-hidden drop-shadow-lg md:max-w-2xl"
       >
         <View className="space-y-2">
           <View>
