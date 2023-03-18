@@ -1,15 +1,10 @@
 import { View, Text, SafeAreaView, Image } from "react-native";
 import React, { useLayoutEffect } from "react";
 import { useNavigation } from "@react-navigation/native";
-import {
-  BellIcon,
-  MagnifyingGlassIcon,
-  LifebuoyIcon,
-} from "react-native-heroicons/outline";
-import { LinearGradient } from "expo-linear-gradient";
+import { BellIcon, MagnifyingGlassIcon } from "react-native-heroicons/outline";
 import Teams from "../components/Teams";
-import { Messi } from "../assets/images/index";
 import Matches from "../components/Matches";
+import Banner from "../components/Banner";
 
 const DiscoverScreen = () => {
   const navigation = useNavigation();
@@ -39,37 +34,11 @@ const DiscoverScreen = () => {
       </View>
 
       {/* Banner Section */}
-      <LinearGradient
-        colors={["#5ED2A0", "#339CB1"]}
-        className="pl-4 pr-4 rounded-md h-44"
-      >
-        <View className="flex-row justify-between top-2">
-          <View className="bg-transparent space-y-2">
-            <View className="flex-row items-center justify-around bg-white rounded-lg w-1/2">
-              <View>
-                <LifebuoyIcon />
-              </View>
-              <Text className="">Football</Text>
-            </View>
-            <View className="w-[210px]">
-              <Text className="truncate text-clip overflow-hidden md:text-clip">
-                Saudi Arabia preparing huge offer to secure Lionel Messi
-                transfer from Paris Saint...
-              </Text>
-            </View>
-            <View>
-              <Text>Tomorrow, 06:30 PM</Text>
-            </View>
-          </View>
-
-          <View className="">
-            <Image className="h-40 w-40" source={Messi} />
-          </View>
-        </View>
-      </LinearGradient>
+      <Banner />
 
       {/* Teams Section */}
       <Teams />
+
       {/* Matches Section */}
       <Matches />
 
