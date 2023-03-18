@@ -9,7 +9,7 @@ const Banner = () => {
     <View>
       <LinearGradient
         colors={["#5ED2A0", "#339CB1"]}
-        className="pl-4 pr-4 rounded-md h-44"
+        className="pl-4 pr-4 rounded-md h-40"
       >
         <View className="flex-row justify-between top-2">
           <View className="bg-transparent space-y-2">
@@ -31,7 +31,7 @@ const Banner = () => {
           </View>
 
           <View className="">
-            <Image className="h-40 w-40" source={Messi} />
+            <Image className="w-36 h-36" source={Messi} />
           </View>
         </View>
       </LinearGradient>

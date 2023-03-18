@@ -34,7 +34,7 @@ export const dummyTeams = [
 const Teams = () => {
   return (
     <SafeAreaView>
-      <View className="h-6 m-2 flex-row justify-between items-center">
+      <View className="p-2 flex-row justify-between items-center">
         <Text className="font-medium text-base uppercase">Popular Teams</Text>
         <Text className="uppercase">View All</Text>
       </View>
