@@ -13,7 +13,7 @@ const Banner = () => {
       >
         <View className="flex-row justify-between top-2">
           <View className="bg-transparent space-y-2">
-            <View className="flex-row items-center justify-around bg-white rounded-lg w-1/2">
+            <View className="flex-row space-x-2 items-center bg-white rounded-lg w-1/2">
               <View>
                 <LifebuoyIcon />
               </View>
