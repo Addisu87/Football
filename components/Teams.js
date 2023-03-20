@@ -1,4 +1,4 @@
-import { View, Text, Image, SafeAreaView } from "react-native";
+import { View, Text, SafeAreaView } from "react-native";
 import React from "react";
 import { ScrollView } from "react-native";
 import TeamsCard from "./TeamsCard";
@@ -27,7 +27,7 @@ export const dummyTeams = [
   {
     id: "005",
     name: "Manchester United",
-    logo: require("../assets/images/manchester-united.webp"),
+    logo: require("../assets/images/manchester-city-fc-logo.png"),
   },
 ];
 

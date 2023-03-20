@@ -19,7 +19,7 @@ export const dummyMatches = [
   },
   {
     id: "003",
-    name: "Old Trafford",
+    name: "Etihad Stadium",
     team1: dummyTeams[4],
     team2: dummyTeams[0],
   },
