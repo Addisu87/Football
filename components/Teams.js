@@ -26,7 +26,7 @@ export const dummyTeams = [
   },
   {
     id: "005",
-    name: "Manchester United",
+    name: "Manchester City",
     logo: require("../assets/images/manchester-city-fc-logo.png"),
   },
 ];
