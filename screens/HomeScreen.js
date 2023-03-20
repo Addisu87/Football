@@ -2,6 +2,10 @@ import { useNavigation } from "@react-navigation/native";
 import React, { useLayoutEffect } from "react";
 import { SafeAreaView, Text, View } from "react-native";
 import { BellIcon, MagnifyingGlassIcon } from "react-native-heroicons/outline";
+import Teams from "../components/Teams";
+import Matches from "../components/Matches";
+import Banner from "../components/Banner";
+import News from "../components/News";
 
 const HomeScreen = () => {
   const navigation = useNavigation();
@@ -28,6 +32,18 @@ const HomeScreen = () => {
           </View>
         </View>
       </View>
+
+      {/* Banner Section */}
+      <Banner />
+
+      {/* Teams Section */}
+      <Teams />
+
+      {/* Matches Section */}
+      <Matches />
+
+      {/* News Section */}
+      <News />
     </SafeAreaView>
   );
 };

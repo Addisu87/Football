@@ -2,10 +2,6 @@ import { View, Text, SafeAreaView, Image } from "react-native";
 import React, { useLayoutEffect } from "react";
 import { useNavigation } from "@react-navigation/native";
 import { BellIcon, MagnifyingGlassIcon } from "react-native-heroicons/outline";
-import Teams from "../components/Teams";
-import Matches from "../components/Matches";
-import Banner from "../components/Banner";
-import News from "../components/News";
 
 const DiscoverScreen = () => {
   const navigation = useNavigation();
@@ -33,18 +29,6 @@ const DiscoverScreen = () => {
           </View>
         </View>
       </View>
-
-      {/* Banner Section */}
-      <Banner />
-
-      {/* Teams Section */}
-      <Teams />
-
-      {/* Matches Section */}
-      <Matches />
-
-      {/* News Section */}
-      <News />
     </SafeAreaView>
   );
 };
