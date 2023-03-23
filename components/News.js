@@ -1,5 +1,6 @@
-import { View, Text } from "react-native";
+import { View, Text, SafeAreaView, ScrollView } from "react-native";
 import React from "react";
+import NewsItem from "./NewsItem";
 
 export const Authors = [
   {
@@ -47,10 +48,23 @@ export const dummyNews = [
 
 const News = () => {
   return (
-    <View className="h-6 m-2 flex-row justify-between items-center">
-      <Text className="font-medium text-base uppercase">Latest News</Text>
-      <Text className="uppercase">View All</Text>
-    </View>
+    <SafeAreaView>
+      <View className="h-6 m-2 flex-row justify-between items-center">
+        <Text className="font-medium text-base uppercase">Latest News</Text>
+        <Text className="uppercase">View All</Text>
+      </View>
+
+      <ScrollView
+        showsHorizontalScrollIndicator={false}
+        contentContainerStyle={{ paddingHorizontal: 15, paddingTop: 10 }}
+        horizontal
+        keyExtractor={(item) => item.id}
+      >
+        {dummyNews.map((item) => (
+          <NewsItem item={item} />
+        ))}
+      </ScrollView>
+    </SafeAreaView>
   );
 };
 
