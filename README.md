@@ -101,6 +101,17 @@ Example command:
 ```
  -->
 
+### Built
+
+- moment
+- tailwindcss-react-native
+- react-native-screens
+- react-native-heroicons
+- expo-status-bar
+- expo-blur
+- @react-navigation/bottom-tabs
+-
+
 ### Setup
 
 Clone this repository to your desired folder:
