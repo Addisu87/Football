@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity, Image } from "react-native";
+import { View, Text, TouchableOpacity, Image, ScrollView } from "react-native";
 import React from "react";
 import moment from "moment";
 
@@ -6,12 +6,15 @@ const NewsItem = ({ item }) => {
   return (
     <TouchableOpacity>
       <View className="flex-row justify-between">
-        <Image source={item.thumbnail} className="w-20 h-20 rounded-md m-2" />
-        <View className="justify-between w-56 flex-row">
-          <Text>{item.title}</Text>
-          <Text>
+        <View>
+          <Image source={item.thumbnail} className="w-36 h-24 rounded-md m-2" />
+        </View>
+        <View className="w-56">
+          <Text className="font-semibold">{item.title}</Text>
+          <Text className="font-light">
             {item.views} Views - {moment(item.date).fromNow()}
           </Text>
+          <Text className="font-normal">{item.author.name}</Text>
         </View>
       </View>
     </TouchableOpacity>
