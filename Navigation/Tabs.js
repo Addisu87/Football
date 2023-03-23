@@ -1,12 +1,12 @@
 import { View, Text } from "react-native";
 import React from "react";
 
-const ArticleDetail = () => {
+const Tabs = () => {
   return (
     <View>
-      <Text>ArticleDetail</Text>
+      <Text>Tabs</Text>
     </View>
   );
 };
 
-export default ArticleDetail;
+export default Tabs;

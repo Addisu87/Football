@@ -1,6 +1,13 @@
-import { View, Text, SafeAreaView, ScrollView } from "react-native";
 import React from "react";
+import {
+  View,
+  Text,
+  SafeAreaView,
+  ScrollView,
+  TouchableOpacity,
+} from "react-native";
 import NewsItem from "./NewsItem";
+import { useNavigation } from "@react-navigation/native";
 
 export const Authors = [
   {
@@ -47,23 +54,29 @@ export const dummyNews = [
 ];
 
 const News = () => {
+  const navigation = useNavigation();
+
   return (
     <SafeAreaView>
-      <View className="h-6 m-2 flex-row justify-between items-center">
-        <Text className="font-medium text-base uppercase">Latest News</Text>
-        <Text className="uppercase">View All</Text>
-      </View>
-
-      <ScrollView
-        showsHorizontalScrollIndicator={false}
-        contentContainerStyle={{ paddingHorizontal: 15, paddingTop: 10 }}
-        horizontal
-        keyExtractor={(item) => item.id}
+      <TouchableOpacity
+        onPress={() => navigation.navigate("ArticleDetail", { article: item })}
       >
-        {dummyNews.map((item) => (
-          <NewsItem item={item} />
-        ))}
-      </ScrollView>
+        <View className="h-6 m-2 flex-row justify-between items-center">
+          <Text className="font-medium text-base uppercase">Latest News</Text>
+          <Text className="uppercase">View All</Text>
+        </View>
+
+        <ScrollView
+          showsHorizontalScrollIndicator={false}
+          contentContainerStyle={{ paddingHorizontal: 15, paddingTop: 10 }}
+          horizontal
+          keyExtractor={(item) => item.id}
+        >
+          {dummyNews.map((item) => (
+            <NewsItem item={item} />
+          ))}
+        </ScrollView>
+      </TouchableOpacity>
     </SafeAreaView>
   );
 };
