@@ -53,7 +53,7 @@ export const dummyNews = [
   },
 ];
 
-const News = () => {
+const News = ({ item }) => {
   const navigation = useNavigation();
 
   return (
