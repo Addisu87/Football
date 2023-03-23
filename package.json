@@ -26,6 +26,7 @@
     "react-native-screens": "~3.20.0",
     "react-native-vector-icons": "^9.2.0",
     "react-native-web": "~0.18.10",
+    "tailwind-scrollbar": "^3.0.0",
     "tailwindcss-react-native": "^1.7.10"
   },
   "devDependencies": {

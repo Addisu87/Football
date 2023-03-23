@@ -110,7 +110,7 @@ Example command:
 - expo-status-bar
 - expo-blur
 - @react-navigation/bottom-tabs
--
+- tailwind-scrollbar
 
 ### Setup
 

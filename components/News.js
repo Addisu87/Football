@@ -53,13 +53,37 @@ export const dummyNews = [
   },
 ];
 
-const News = ({ item }) => {
+const News = ({
+  id,
+  thumbnail,
+  title,
+  type,
+  author,
+  views,
+  likes,
+  comments,
+  date,
+  detail,
+}) => {
   const navigation = useNavigation();
 
   return (
     <SafeAreaView>
       <TouchableOpacity
-        onPress={() => navigation.navigate("ArticleDetail", { article: item })}
+        onPress={() =>
+          navigation.navigate("ArticleDetail", {
+            id,
+            thumbnail,
+            title,
+            type,
+            author,
+            views,
+            likes,
+            comments,
+            date,
+            detail,
+          })
+        }
       >
         <View className="h-6 m-2 flex-row justify-between items-center">
           <Text className="font-medium text-base uppercase">Latest News</Text>
