@@ -26,15 +26,26 @@ export const dummyNews = [
   {
     id: "001",
     thumbnail: require("../assets/images/News1.jpeg"),
-    title: "Arsenal face Crystal Palace on Sunday afternoon",
+    title:
+      "Martin Odegaard opens up on key Mikel Arteta trait that sets Arsenal boss apart",
     type: "LIVE Transfer Talk",
     author: Authors[0],
     views: "125,908",
     likes: "1403",
     comments: "976",
     date: "2023-03-18",
-    detail: `Martin Odegaard and Arsenal stars to return against Crystal Palace 
-    with £21m signing on standby.`,
+    detail: `Martin Odegaard has lauded Mikel Arteta's remarkable 
+    attention to detail and believes that the Spaniard's meticulous 
+    methods have been the driving force behind his own sensational form. 
+    Odegaard, 24, has played a key role in an Arsenal side that have 
+    emerged as unlikely title contenders under the guidance of Arteta this year. 
+    After a late implosion cost the Gunners a top-four finish last term, 
+    the Londoners have been the surprise package in the Premier League this 
+    season and are currently eight points clear of Manchester City at the 
+    summit of the domestic standings.
+    Arsenal last won the Premier League crown back in 2004 under Arsene Wenger 
+    but are now tantalisingly close to ending their 19-year title drought - and 
+    Odegaard has stressed that Arteta's influence cannot be understated.`,
   },
   {
     id: "002",
@@ -72,16 +83,27 @@ const News = ({
       <TouchableOpacity
         onPress={() =>
           navigation.navigate("ArticleDetail", {
-            id,
-            thumbnail,
-            title,
-            type,
-            author,
-            views,
-            likes,
-            comments,
-            date,
-            detail,
+            id: "001",
+            thumbnail: require("../assets/images/News1.jpeg"),
+            title: "Arsenal face Crystal Palace on Sunday afternoon",
+            type: "LIVE Transfer Talk",
+            author: Authors[0],
+            views: "125,908",
+            likes: "1403",
+            comments: "976",
+            date: "2023-03-18",
+            detail: `Martin Odegaard has lauded Mikel Arteta's remarkable 
+            attention to detail and believes that the Spaniard's meticulous 
+            methods have been the driving force behind his own sensational form. 
+            Odegaard, 24, has played a key role in an Arsenal side that have 
+            emerged as unlikely title contenders under the guidance of Arteta this year. 
+            After a late implosion cost the Gunners a top-four finish last term, 
+            the Londoners have been the surprise package in the Premier League this 
+            season and are currently eight points clear of Manchester City at the 
+            summit of the domestic standings.
+            Arsenal last won the Premier League crown back in 2004 under Arsene Wenger 
+            but are now tantalisingly close to ending their 19-year title drought - and 
+            Odegaard has stressed that Arteta's influence cannot be understated.`,
           })
         }
       >

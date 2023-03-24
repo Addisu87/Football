@@ -11,7 +11,7 @@ const NewsItem = ({ item }) => {
       <View className="w-56">
         <Text className="font-semibold">{item.title}</Text>
         <Text className="font-light">
-          {item.views} Views - {moment(item.date, "MM/DD/YYYY").fromNow()}
+          {item.views} Views - {moment(item.date, "MMMM DD, YYYY").fromNow()}
         </Text>
         <Text className="font-normal">{item.author.name}</Text>
       </View>
