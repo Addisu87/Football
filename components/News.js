@@ -53,18 +53,7 @@ export const dummyNews = [
   },
 ];
 
-const News = ({
-  id,
-  thumbnail,
-  title,
-  type,
-  author,
-  views,
-  likes,
-  comments,
-  date,
-  detail,
-}) => {
+const News = ({ item }) => {
   const navigation = useNavigation();
 
   return (
@@ -72,16 +61,7 @@ const News = ({
       <TouchableOpacity
         onPress={() =>
           navigation.navigate("ArticleDetail", {
-            id,
-            thumbnail,
-            title,
-            type,
-            author,
-            views,
-            likes,
-            comments,
-            date,
-            detail,
+            item,
           })
         }
       >
@@ -97,7 +77,7 @@ const News = ({
           keyExtractor={(item) => item.id}
         >
           {dummyNews.map((item) => (
-            <NewsItem item={item} />
+            <NewsItem key={item.id} item={item} />
           ))}
         </ScrollView>
       </TouchableOpacity>

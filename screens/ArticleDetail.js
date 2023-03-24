@@ -45,8 +45,8 @@ const ArticleDetail = ({ navigation }) => {
 
         {/* Title section */}
         <View className="bg-white">
-          <Text>{title}</Text>
-          <Text>{likes} </Text>
+          <Text className="text-gray-600">{title}</Text>
+
           {/* Author section */}
           {/* Article content */}
           {/* Button section */}
