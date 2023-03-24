@@ -5,7 +5,7 @@ import Tabs from "./Tabs";
 
 const Stack = createNativeStackNavigator();
 
-const Stacks = () => {
+const NavStacks = () => {
   return (
     <Stack.Navigator>
       <Stack.Screen
@@ -27,4 +27,4 @@ const Stacks = () => {
   );
 };
 
-export default Stacks;
+export default NavStacks;
