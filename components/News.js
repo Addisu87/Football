@@ -53,7 +53,18 @@ export const dummyNews = [
   },
 ];
 
-const News = ({ item }) => {
+const News = ({
+  id,
+  thumbnail,
+  title,
+  type,
+  author,
+  views,
+  likes,
+  comments,
+  date,
+  detail,
+}) => {
   const navigation = useNavigation();
 
   return (
@@ -61,7 +72,16 @@ const News = ({ item }) => {
       <TouchableOpacity
         onPress={() =>
           navigation.navigate("ArticleDetail", {
-            item,
+            id,
+            thumbnail,
+            title,
+            type,
+            author,
+            views,
+            likes,
+            comments,
+            date,
+            detail,
           })
         }
       >

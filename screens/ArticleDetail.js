@@ -4,13 +4,6 @@ import { useRoute } from "@react-navigation/native";
 import { ArrowLeftIcon, ShareIcon } from "react-native-heroicons/outline";
 
 const ArticleDetail = ({ navigation }) => {
-  // const [article, setArticle] = useState(null);
-
-  // useEffect(() => {
-  //   let { article } = route.params;
-  //   setArticle(article);
-  // }, []);
-
   const {
     params: {
       id,
@@ -46,6 +39,7 @@ const ArticleDetail = ({ navigation }) => {
         {/* Title section */}
         <View className="bg-white">
           <Text className="text-gray-600">{title}</Text>
+          <Text className="text-gray-600">title</Text>
 
           {/* Author section */}
           {/* Article content */}
