@@ -44,7 +44,7 @@ const ArticleDetail = ({ navigation }) => {
         </TouchableOpacity>
 
         {/* Title section */}
-        <View className="bg-white m-2">
+        <View className="bg-white m-2 space-y-4">
           <View>
             <Text className="text-gray-900 text-base font-semibold">
               {type} {type ? ":" : ""} {title}

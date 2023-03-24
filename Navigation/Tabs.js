@@ -20,7 +20,7 @@ const Tabs = () => {
     <Tab.Navigator
       screenOptions={{
         tabBarStyle: { position: "absolute" },
-        tabBarActiveTintColor: "#32a83a",
+        tabBarActiveTintColor: "#00CCBB",
         tabBarBackground: () => (
           <BlurView
             tint="light"
