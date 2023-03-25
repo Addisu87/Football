@@ -21,6 +21,7 @@ const Banner = () => {
             </View>
             <View className="w-[210px]">
               <Text className="truncate text-clip overflow-hidden md:text-clip">
+                {/* {title?.length > 14 ? `${title.slice(0, 14)}...` : title} */}
                 Saudi Arabia preparing huge offer to secure Lionel Messi
                 transfer from Paris Saint...
               </Text>

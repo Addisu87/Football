@@ -11,9 +11,7 @@ const MatchesCard = ({ item }) => {
       >
         <View className="w-32 h-36">
           <View className="items-center justify-center">
-            <Text className="text-base p-2 text-clip overflow-hidden">
-              {item.name}
-            </Text>
+            <Text className="text-base p-2 overflow-hidden">{item.name}</Text>
           </View>
 
           <View className="flex-row items-center justify-evenly md:shrink-0">

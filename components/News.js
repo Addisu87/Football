@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   View,
   Text,
@@ -8,6 +8,7 @@ import {
 } from "react-native";
 import NewsItem from "./NewsItem";
 import { useNavigation } from "@react-navigation/native";
+import NotFound from "./NotFound";
 
 export const Authors = [
   {
@@ -77,6 +78,8 @@ const News = ({
   detail,
 }) => {
   const navigation = useNavigation();
+  const [loading, setLoading] = useState(false);
+  const [mainData, setMainData] = useState();
 
   return (
     <SafeAreaView>
@@ -107,7 +110,7 @@ const News = ({
           })
         }
       >
-        <View className="h-6 m-2 flex-row justify-between items-center">
+        <View className="h-6 m-2 flex-row justify-between items-center flex-wrap">
           <Text className="font-medium text-base uppercase">Latest News</Text>
           <Text className="uppercase">View All</Text>
         </View>
