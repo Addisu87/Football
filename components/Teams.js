@@ -1,7 +1,9 @@
-import { View, Text, SafeAreaView } from "react-native";
-import React from "react";
+import { View, Text, SafeAreaView, ActivityIndicator } from "react-native";
+import React, { useEffect, useState } from "react";
 import { ScrollView } from "react-native";
 import TeamsCard from "./TeamsCard";
+import { getTeamData } from "../api/API";
+import NotFound from "./NotFound";
 
 export const dummyTeams = [
   {
@@ -32,21 +34,56 @@ export const dummyTeams = [
 ];
 
 const Teams = () => {
+  const [isLoading, setIsLoading] = useState(false);
+  const [mainTeam, setMainTeam] = useState([]);
+
+  useEffect(() => {
+    setIsLoading(true);
+    getTeamData().then((data) => {
+      setMainTeam(data);
+      setInterval(() => {
+        setIsLoading(false);
+      }, 2000);
+    });
+  }, []);
+
   return (
     <SafeAreaView>
       <View className="p-2 flex-row justify-between items-center">
         <Text className="font-medium text-base uppercase">Popular Teams</Text>
         <Text className="uppercase">View All</Text>
       </View>
-      <ScrollView
-        contentContainerStyle={{ paddingHorizontal: 15, paddingTop: 10 }}
-        horizontal
-        showsHorizontalScrollIndicator={false}
-      >
-        {dummyTeams.map(({ name, logo, id }) => (
-          <TeamsCard key={id} imgUrl={logo} name={name} />
-        ))}
-      </ScrollView>
+
+      {isLoading ? (
+        <>
+          <View className=" flex-1 items-center justify-center">
+            <ActivityIndicator size="large" color="#0B646B" />
+          </View>
+        </>
+      ) : (
+        <ScrollView
+          contentContainerStyle={{ paddingHorizontal: 15, paddingTop: 10 }}
+          horizontal
+          showsHorizontalScrollIndicator={false}
+        >
+          {mainTeam?.length > 0 ? (
+            <>
+              {mainTeam?.map(({ id, name, logo, founded }) => (
+                <TeamsCard
+                  key={id}
+                  imgUrl={logo}
+                  name={name}
+                  foundedYear={founded}
+                />
+              ))}
+            </>
+          ) : (
+            <>
+              <NotFound />
+            </>
+          )}
+        </ScrollView>
+      )}
     </SafeAreaView>
   );
 };

@@ -1,21 +1,33 @@
-import axios from "axios";
+import { instance } from "./Instance";
 
-export const getFootballData = async () => {
+// export const getFootballData = async () => {
+//   try {
+//     const response = await instance.get(`/leagues`, {
+//       params: {
+//         id: "39",
+//         name: "Premier League",
+//         country: "England",
+//         code: "GB",
+//         season: "2022",
+//         type: "League",
+//         team: "20",
+//       },
+//     });
+//     return response;
+//   } catch (error) {
+//     return null;
+//   }
+// };
+
+export const getTeamData = async () => {
   try {
     const {
       data: { data },
-    } = await axios.get(`https://api-football-v1.p.rapidapi.com/v3/leagues`, {
+    } = await instance.get(`/teams`, {
       params: {
-        id: "39",
-        name: "Premier League",
-        country: "England",
-        code: "GB",
+        league: "39",
         season: "2022",
-        type: "League",
-      },
-      headers: {
-        "X-RapidAPI-Key": "72e3600cb2msh3b1842e563bf2f0p1e79e8jsnb4a459f62a95",
-        "X-RapidAPI-Host": "api-football-v1.p.rapidapi.com",
+        country: "England",
       },
     });
     return data;

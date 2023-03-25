@@ -1,12 +1,14 @@
 import { View, Text, Image } from "react-native";
 import React from "react";
-import { Messi } from "../assets/images";
+import { Arsenal } from "../assets/images";
 
 const NotFound = () => {
   return (
-    <View className="w-full h-[600px] items-center justify-center space-y-8">
-      {/* <Image source={Messi} className="w-32 h-32 object-contain" /> */}
-      <Text>Opps ...No Data Found</Text>
+    <View className="w-full h-[110px] items-center justify-center space-y-2">
+      <Image source={Arsenal} className="w-20 h-20 object-cover" />
+      <Text className="text-xl font-semibold text-[#00CCBB]">
+        Opps ...No Data Found
+      </Text>
     </View>
   );
 };
