@@ -8,7 +8,6 @@ import {
 } from "react-native";
 import NewsItem from "./NewsItem";
 import { useNavigation } from "@react-navigation/native";
-import NotFound from "./NotFound";
 
 export const Authors = [
   {
