@@ -9,7 +9,7 @@ const TeamsCard = ({ imgUrl, name, foundedYear }) => {
         <Image source={imgUrl} className="rounded w-10 h-10 object-cover" />
         <Text className="left-1 text-black font-bold truncate">{name}</Text>
         <Text className="left-1 text-black font-bold truncate">
-          {foundedYear}
+          {`Founded in ${foundedYear}`}
         </Text>
       </View>
     </TouchableOpacity>

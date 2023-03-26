@@ -39,8 +39,8 @@ const Teams = () => {
 
   useEffect(() => {
     setIsLoading(true);
-    getTeamData().then((data) => {
-      setMainTeam(data);
+    getTeamData().then((team) => {
+      setMainTeam(team);
       setInterval(() => {
         setIsLoading(false);
       }, 2000);
@@ -67,7 +67,7 @@ const Teams = () => {
           showsHorizontalScrollIndicator={false}
         >
           {mainTeam?.length > 0 ? (
-            <>
+            <View>
               {mainTeam?.map(({ id, name, logo, founded }) => (
                 <TeamsCard
                   key={id}
@@ -76,11 +76,11 @@ const Teams = () => {
                   foundedYear={founded}
                 />
               ))}
-            </>
+            </View>
           ) : (
-            <>
+            <View>
               <NotFound />
-            </>
+            </View>
           )}
         </ScrollView>
       )}
