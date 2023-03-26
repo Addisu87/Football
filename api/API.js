@@ -1,37 +1,50 @@
-import { instance } from "./Instance";
+// import axios from "axios";
 
-// export const getFootballData = async () => {
+// const instance = axios.create({
+//   baseURL: "https://api-football-v1.p.rapidapi.com/v3",
+//   headers: {
+//     "X-RapidAPI-Key": "72e3600cb2msh3b1842e563bf2f0p1e79e8jsnb4a459f62a95",
+//     "X-RapidAPI-Host": "api-football-v1.p.rapidapi.com",
+//   },
+// });
+
+// export const getTeamData = async () => {
 //   try {
-//     const response = await instance.get(`/leagues`, {
+//     const {
+//       data: { data },
+//     } = await instance.get(`/teams`, {
 //       params: {
-//         id: "39",
-//         name: "Premier League",
-//         country: "England",
-//         code: "GB",
-//         season: "2022",
-//         type: "League",
-//         team: "20",
+//         league: "39",
+//         season: "2023",
 //       },
 //     });
-//     return response;
+//     return data;
 //   } catch (error) {
-//     return null;
+//     console.error("error", error);
 //   }
 // };
 
+import axios from "axios";
+
+export const instance = axios.create({
+  baseURL: "https://v3.football.api-sports.io",
+  headers: {
+    "x-rapidapi-key": "95f8210a47b0bc73dcba2614e4c2cb9f",
+    "x-rapidapi-host": "v3.football.api-sports.io",
+  },
+});
+
 export const getTeamData = async () => {
   try {
-    const {
-      data: { data },
-    } = await instance.get(`/teams`, {
+    const { data } = await instance.get(`/teams`, {
       params: {
         league: "39",
         season: "2022",
-        country: "England",
       },
     });
+    // console.log(JSON.stringify(response));
     return data;
   } catch (error) {
-    return null;
+    console.error("error", error);
   }
 };

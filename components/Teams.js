@@ -1,5 +1,5 @@
-import { View, Text, SafeAreaView, ActivityIndicator } from "react-native";
 import React, { useEffect, useState } from "react";
+import { View, Text, SafeAreaView, ActivityIndicator } from "react-native";
 import { ScrollView } from "react-native";
 import TeamsCard from "./TeamsCard";
 import { getTeamData } from "../api/API";
@@ -71,7 +71,7 @@ const Teams = () => {
               {mainTeam?.map(({ id, name, logo, founded }) => (
                 <TeamsCard
                   key={id}
-                  imgUrl={logo}
+                  imgUrl={{ uri: logo }}
                   name={name}
                   foundedYear={founded}
                 />
