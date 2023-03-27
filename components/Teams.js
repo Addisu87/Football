@@ -67,20 +67,20 @@ const Teams = () => {
           showsHorizontalScrollIndicator={false}
         >
           {mainTeam?.length > 0 ? (
-            <View>
-              {mainTeam?.map(({ id, name, logo, founded }) => (
+            <>
+              {mainTeam?.map((data, i) => (
                 <TeamsCard
-                  key={id}
-                  imgUrl={{ uri: logo }}
-                  name={name}
-                  foundedYear={founded}
+                  key={i}
+                  imgUrl={data.team.logo}
+                  name={data.team.name}
+                  foundedYear={data.team.founded}
                 />
               ))}
-            </View>
+            </>
           ) : (
-            <View>
+            <>
               <NotFound />
-            </View>
+            </>
           )}
         </ScrollView>
       )}

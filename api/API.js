@@ -16,8 +16,7 @@ export const getTeamData = async () => {
         season: "2022",
       },
     });
-    // console.log(JSON.stringify(response));
-    return data;
+    return data.response;
   } catch (error) {
     console.error("error", error);
   }
