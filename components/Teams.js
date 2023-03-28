@@ -40,9 +40,9 @@ const Teams = () => {
         >
           {mainTeam?.length > 0 ? (
             <>
-              {mainTeam?.map((data, i) => (
+              {mainTeam?.map((data, id) => (
                 <TeamsCard
-                  key={i}
+                  key={id}
                   imgUrl={{ uri: data?.team?.logo }}
                   name={data?.team?.name}
                   foundedYear={data?.team?.founded}

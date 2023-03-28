@@ -1,17 +1,18 @@
 import React, { useEffect, useState } from "react";
-import { View, Text, SafeAreaView } from "react-native";
+import { View, Text, SafeAreaView, ActivityIndicator } from "react-native";
 import { ScrollView } from "react-native";
 import MatchesCard from "./MatchesCard";
-import { getVenueData } from "../api/API";
+import { getFixturesData } from "../api/API";
+import NotFound from "./NotFound";
 
-const Matches = ({ venue }) => {
-  const [venueData, setVenueData] = useState([]);
+const Matches = () => {
+  const [fixtureData, setFixtureData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     setIsLoading(true);
-    getVenueData().then((pitch) => {
-      setVenueData(pitch);
+    getFixturesData().then((pitch) => {
+      setFixtureData(pitch);
       setInterval(() => {
         setIsLoading(false);
       }, 2000);
@@ -39,9 +40,22 @@ const Matches = ({ venue }) => {
             showsHorizontalScrollIndicator={false}
             contentContainerStyle={{ paddingHorizontal: 15, paddingTop: 10 }}
           >
-            {venueData.map((stadium) => {
-              <MatchesCard key={stadium._id} stadium={stadium} />;
-            })}
+            {fixtureData?.length > 0 ? (
+              <>
+                {fixtureData.map((club, id) => {
+                  <MatchesCard
+                    key={id}
+                    imgUrl={{ uri: club?.team?.logo }}
+                    clubName={club?.team?.code}
+                    stadiumName={club?.venue?.name}
+                  />;
+                })}
+              </>
+            ) : (
+              <>
+                <NotFound />
+              </>
+            )}
           </ScrollView>
         </>
       )}

@@ -63,17 +63,3 @@ export const getStandingsData = async () => {
     console.error("error", error);
   }
 };
-
-export const getVenueData = async () => {
-  try {
-    const { data } = await instance.get(`/venue`, {
-      params: {
-        league: "39",
-        season: "2022",
-      },
-    });
-    return data.response;
-  } catch (error) {
-    console.error("error", error);
-  }
-};
