@@ -21,3 +21,59 @@ export const getTeamData = async () => {
     console.error("error", error);
   }
 };
+
+export const getFixturesData = async () => {
+  try {
+    const { data } = await instance.get(`/fixtures`, {
+      params: {
+        league: "39",
+        season: "2022",
+      },
+    });
+    return data.response;
+  } catch (error) {
+    console.error("error", error);
+  }
+};
+
+export const getPlayersData = async () => {
+  try {
+    const { data } = await instance.get(`/players`, {
+      params: {
+        league: "39",
+        season: "2022",
+      },
+    });
+    return data.response;
+  } catch (error) {
+    console.error("error", error);
+  }
+};
+
+export const getStandingsData = async () => {
+  try {
+    const { data } = await instance.get(`/standings`, {
+      params: {
+        league: "39",
+        season: "2022",
+      },
+    });
+    return data.response;
+  } catch (error) {
+    console.error("error", error);
+  }
+};
+
+export const getVenueData = async () => {
+  try {
+    const { data } = await instance.get(`/venue`, {
+      params: {
+        league: "39",
+        season: "2022",
+      },
+    });
+    return data.response;
+  } catch (error) {
+    console.error("error", error);
+  }
+};
