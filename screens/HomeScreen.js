@@ -40,7 +40,7 @@ const HomeScreen = () => {
       <Teams />
 
       {/* Matches Section */}
-      <Matches />
+      {/* <Matches /> */}
 
       {/* News Section */}
       <News />

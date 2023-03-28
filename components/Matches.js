@@ -1,5 +1,5 @@
-import { View, Text, SafeAreaView, FlatList } from "react-native";
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { View, Text, SafeAreaView } from "react-native";
 import { ScrollView } from "react-native";
 import MatchesCard from "./MatchesCard";
 import { getVenueData } from "../api/API";
