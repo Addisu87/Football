@@ -5,7 +5,7 @@ import { Row, Table } from "react-native-table-component";
 
 const tableData = {
   tableHead: ["Rank", "Team", "MP", "W", "D", "L", "P"],
-  widthArr: [50, 90, 45, 45, 45, 45, 45],
+  widthArr: [50, 90, 50, 50, 50, 50, 50],
   tableData: [
     ["1", "Arsenal", "21", "15", "4", "1", "65"],
     ["2", "Man United", "21", "14", "1", "6", "59"],
@@ -27,27 +27,27 @@ const StandingsScreen = () => {
     <SafeAreaView>
       <View className="flex-1 p-4 pt-8 bg-white">
         <ScrollView horizontal={true}>
-          <View>
+          <View className="items-center justify-center">
             <View>
               <Text className="font-bold text-lg">England: Premier League</Text>
             </View>
 
-            <Table>
+            <Table borderStyle={{ borderWidth: 0.5, borderColor: "teal" }}>
               <Row
                 data={data.tableHead}
                 widthArr={data.widthArr}
-                className="h-11 bg-slate-700 font-semibold text-base  items-center justify-center text-cyan-900"
+                className="h-11 bg-slate-400 font-semibold text-base  "
               />
             </Table>
 
             <ScrollView>
-              <Table>
+              <Table borderStyle={{ borderWidth: 0.5, borderColor: "teal" }}>
                 {data.tableData.map((rowData, index) => (
                   <Row
                     key={index}
                     data={rowData}
                     widthArr={data.widthArr}
-                    className="h-14 bg=[#E7E6E1] text-base font-semibold m-2 text-center"
+                    className="h-11 bg=[#E7E6E1] text-base font-semibold"
                   />
                 ))}
               </Table>
