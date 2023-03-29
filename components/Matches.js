@@ -11,8 +11,8 @@ const Matches = () => {
 
   useEffect(() => {
     setIsLoading(true);
-    getFixturesData().then((pitch) => {
-      setFixtureData(pitch);
+    getFixturesData().then((game) => {
+      setFixtureData(game);
       setInterval(() => {
         setIsLoading(false);
       }, 2000);
@@ -42,12 +42,12 @@ const Matches = () => {
           >
             {fixtureData?.length > 0 ? (
               <>
-                {fixtureData.map((club, id) => {
+                {fixtureData?.map((game, id) => {
                   <MatchesCard
                     key={id}
-                    imgUrl={{ uri: club?.team?.logo }}
-                    clubName={club?.team?.code}
-                    stadiumName={club?.venue?.name}
+                    imgUrl={{ uri: game?.team?.logo }}
+                    clubName={game?.team?.code}
+                    stadiumName={game?.venue?.name}
                   />;
                 })}
               </>

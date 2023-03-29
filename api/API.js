@@ -28,6 +28,8 @@ export const getFixturesData = async () => {
       params: {
         league: "39",
         season: "2022",
+        live: "all",
+        timezone: "FT",
       },
     });
     return data.response;
@@ -56,6 +58,7 @@ export const getStandingsData = async () => {
       params: {
         league: "39",
         season: "2022",
+        name: "Premier League",
       },
     });
     return data.response;

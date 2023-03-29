@@ -111,6 +111,7 @@ Example command:
 - expo-blur
 - @react-navigation/bottom-tabs
 - tailwind-scrollbar
+- react-native-table-component
 
 ### Setup
 

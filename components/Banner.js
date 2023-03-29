@@ -17,7 +17,7 @@ const Banner = () => {
               <View>
                 <LifebuoyIcon />
               </View>
-              <Text className="">Football</Text>
+              <Text className="">Premier League</Text>
             </View>
             <View className="w-[210px]">
               <Text className="truncate text-clip overflow-hidden md:text-clip">
@@ -27,7 +27,7 @@ const Banner = () => {
               </Text>
             </View>
             <View>
-              <Text>Tomorrow, 06:30 PM</Text>
+              <Text>London, 2022</Text>
             </View>
           </View>
 
