@@ -1,25 +1,23 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+const initialState = {
+  items: [],
+};
+
 export const standingSlice = createSlice({
   name: "standing",
-  initialState: {
-    value: 0,
-  },
+  initialState,
   reducers: {
-    increment: (state) => {
-      state.value += 1;
+    addStanding: (state, action) => {
+      state.items = [...state.items, action.payload];
     },
-    decrement: (state) => {
-      state.value -= 1;
-    },
-    incrementByAmount: (state, action) => {
+    removeStanding: (state, action) => {
       state.value += action.payload;
     },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { increment, decrement, incrementByAmount } =
-  standingSlice.actions;
+export const { addStanding, removeStanding } = standingSlice.actions;
 
 export default standingSlice.reducer;

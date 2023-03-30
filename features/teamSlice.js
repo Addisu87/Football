@@ -11,7 +11,7 @@ export const teamSlice = createSlice({
     addTeam: (state, action) => {
       state.items = [...state.items, action.payload];
     },
-    removeTeam: (state) => {
+    removeTeam: (state, action) => {
       state.value -= 1;
     },
   },
