@@ -2,13 +2,16 @@ import * as React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import NavStacks from "./Navigation/NavStacks";
 import { TailwindProvider } from "tailwindcss-react-native";
+import store from "./feature/store";
 
 export default function App() {
   return (
-    <NavigationContainer>
-      <TailwindProvider>
-        <NavStacks />
-      </TailwindProvider>
-    </NavigationContainer>
+    <Provider store={store}>
+      <NavigationContainer>
+        <TailwindProvider>
+          <NavStacks />
+        </TailwindProvider>
+      </NavigationContainer>
+    </Provider>
   );
 }
