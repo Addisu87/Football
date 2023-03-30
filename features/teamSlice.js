@@ -20,4 +20,6 @@ export const teamSlice = createSlice({
 // Action creators are generated for each case reducer function
 export const { addTeam, removeTeam } = teamSlice.actions;
 
+export const selectTeamItems = (state) => state.team.items;
+
 export default teamSlice.reducer;

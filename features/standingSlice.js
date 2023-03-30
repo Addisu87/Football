@@ -20,4 +20,6 @@ export const standingSlice = createSlice({
 // Action creators are generated for each case reducer function
 export const { addStanding, removeStanding } = standingSlice.actions;
 
+export const selectStandingItems = (state) => state.standing.items;
+
 export default standingSlice.reducer;

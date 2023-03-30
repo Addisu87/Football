@@ -20,4 +20,6 @@ export const matchSlice = createSlice({
 // Action creators are generated for each case reducer function
 export const { addMatch, removeMatch } = matchSlice.actions;
 
+export const selectMatchItems = (state) => state.match.items;
+
 export default matchSlice.reducer;
