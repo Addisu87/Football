@@ -7,23 +7,13 @@ import {
   ActivityIndicator,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import { Row, Table } from "react-native-table-component";
+
 import { getStandingsData } from "../api/API";
 import NotFound from "../components/NotFound";
-
-const tableData = {
-  tableHead: ["Rank", "Team", "MP", "W", "D", "L", "P", "Form"],
-  widthArr: [50, 90, 50, 50, 50, 50, 50],
-  tableData: [
-    [{ rank }, { logo }, { played }, { win }, { draw }, { lose }, { form }],
-  ],
-};
 
 const StandingsScreen = () => {
   const [standingData, setStandingData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-
-  const [data, setData] = useState(tableData);
   const navigation = useNavigation();
 
   useLayoutEffect(() => {
@@ -60,38 +50,19 @@ const StandingsScreen = () => {
             >
               {standingData.length > 0 ? (
                 <>
-                  <View className="items-center justify-center">
-                    <View>
-                      <Text className="font-bold text-lg">
-                        England: Premier League
-                      </Text>
-                    </View>
-
-                    <Table
-                      borderStyle={{ borderWidth: 0.5, borderColor: "teal" }}
-                    >
-                      <Row
-                        data={data.tableHead}
-                        widthArr={data.widthArr}
-                        className="h-11 bg-slate-400 font-semibold text-base  "
-                      />
-                    </Table>
-
-                    <ScrollView>
-                      <Table
-                        borderStyle={{ borderWidth: 0.5, borderColor: "teal" }}
-                      >
-                        {data.tableData.map((rowData, index) => (
-                          <Row
-                            key={index}
-                            data={rowData}
-                            widthArr={data.widthArr}
-                            className="h-11 bg=[#E7E6E1] text-base font-semibold"
-                          />
-                        ))}
-                      </Table>
-                    </ScrollView>
-                  </View>
+                  {standingData?.map((stand, id) => {
+                    <standingDetail
+                      key={id}
+                      Rank={stand.rank}
+                      Team={stand.team.name}
+                      Played={stand.all.played}
+                      Win={stand.all.win}
+                      Draw={stand.all.draw}
+                      Lose={stand.all.lose}
+                      Points={stand.points}
+                      Form={stand.team.form}
+                    />;
+                  })}
                 </>
               ) : (
                 <>
