@@ -112,6 +112,7 @@ Example command:
 - @react-navigation/bottom-tabs
 - tailwind-scrollbar
 - react-native-table-component
+- @reduxjs/toolkit react-redux
 
 ### Setup
 
