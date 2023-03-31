@@ -1,13 +1,11 @@
 import React, { useEffect, useLayoutEffect, useState } from "react";
 import {
   View,
-  Text,
   SafeAreaView,
   ScrollView,
   ActivityIndicator,
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-
 import { getStandingsData } from "../api/API";
 import NotFound from "../components/NotFound";
 
@@ -48,19 +46,19 @@ const StandingsScreen = () => {
               showsHorizontalScrollIndicator={false}
               contentContainerStyle={{ paddingHorizontal: 15, paddingTop: 10 }}
             >
-              {standingData.length > 0 ? (
+              {standingData?.length > 0 ? (
                 <>
                   {standingData?.map((stand, id) => {
                     <standingDetail
                       key={id}
                       Rank={stand.rank}
-                      Team={stand.team.name}
-                      Played={stand.all.played}
-                      Win={stand.all.win}
-                      Draw={stand.all.draw}
-                      Lose={stand.all.lose}
+                      Team={stand.name}
+                      Played={stand.played}
+                      Win={stand.win}
+                      Draw={stand.draw}
+                      Lose={stand.lose}
                       Points={stand.points}
-                      Form={stand.team.form}
+                      Form={stand.form}
                     />;
                   })}
                 </>

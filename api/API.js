@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const instance = axios.create({
+const instance = axios.create({
   baseURL: "https://v3.football.api-sports.io",
   headers: {
     "x-rapidapi-key": "95f8210a47b0bc73dcba2614e4c2cb9f",
@@ -8,61 +8,23 @@ export const instance = axios.create({
   },
 });
 
-export const getTeamData = async () => {
+const getData = async (endpoint, params) => {
   try {
-    const { data } = await instance.get(`/teams`, {
-      params: {
-        league: "39",
-        season: "2022",
-      },
-    });
+    const { data } = await instance.get(endpoint, { params });
     return data.response;
   } catch (error) {
     console.error("error", error);
   }
 };
 
-export const getFixturesData = async () => {
-  try {
-    const { data } = await instance.get(`/fixtures`, {
-      params: {
-        league: "39",
-        season: "2022",
-        live: "all",
-        timezone: "FT",
-      },
-    });
-    return data.response;
-  } catch (error) {
-    console.error("error", error);
-  }
-};
+export const getTeamData = async () =>
+  getData("/teams", { league: "39", season: "2022" });
 
-export const getPlayersData = async () => {
-  try {
-    const { data } = await instance.get(`/players`, {
-      params: {
-        league: "39",
-        season: "2022",
-      },
-    });
-    return data.response;
-  } catch (error) {
-    console.error("error", error);
-  }
-};
+export const getFixturesData = async () =>
+  getData("/fixtures", { league: "39", season: "2022", live: "all" });
 
-export const getStandingsData = async () => {
-  try {
-    const { data } = await instance.get(`/standings`, {
-      params: {
-        league: "39",
-        season: "2022",
-        name: "Premier League",
-      },
-    });
-    return data.response;
-  } catch (error) {
-    console.error("error", error);
-  }
-};
+export const getPlayersData = async () =>
+  getData("/players", { league: "39", season: "2022" });
+
+export const getStandingsData = async () =>
+  getData("/standings", { league: "39", season: "2022" });
