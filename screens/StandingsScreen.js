@@ -51,14 +51,14 @@ const StandingsScreen = () => {
                   {standingData?.map((stand, id) => {
                     <standingDetail
                       key={id}
-                      Rank={stand.rank}
-                      Team={stand.name}
-                      Played={stand.played}
-                      Win={stand.win}
-                      Draw={stand.draw}
-                      Lose={stand.lose}
-                      Points={stand.points}
-                      Form={stand.form}
+                      Rank={stand?.rank}
+                      Team={stand?.name}
+                      Played={stand?.played}
+                      Win={stand?.win}
+                      Draw={stand?.draw}
+                      Lose={stand?.lose}
+                      Points={stand?.points}
+                      Form={stand?.form}
                     />;
                   })}
                 </>
