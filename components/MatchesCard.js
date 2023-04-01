@@ -2,7 +2,13 @@ import { View, Text, TouchableOpacity, Image } from "react-native";
 import React from "react";
 import { LinearGradient } from "expo-linear-gradient";
 
-const MatchesCard = ({ clubName, stadiumName, imgUrl }) => {
+const MatchesCard = ({
+  teamHome,
+  teamAway,
+  stadiumName,
+  teamHomeImgUrl,
+  teamAwayImgUrl,
+}) => {
   return (
     <TouchableOpacity className="">
       <LinearGradient
@@ -15,17 +21,17 @@ const MatchesCard = ({ clubName, stadiumName, imgUrl }) => {
           </View>
 
           <View className="flex-row items-center justify-evenly md:shrink-0">
-            <Image source={imgUrl} className="object-cover w-7 h-7" />
-            <Image source={imgUrl} className="object-cover w-7 h-7" />
+            <Image source={teamHomeImgUrl} className="object-cover w-7 h-7" />
+            <Image source={teamAwayImgUrl} className="object-cover w-7 h-7" />
           </View>
 
           <View className="items-center justify-center">
             <Text className="tracking-normal text-sm font-semibold truncate">
-              {clubName}
+              {teamHome}
             </Text>
             <Text className="font-thin">Vs</Text>
             <Text className="tracking-normal text-sm font-semibold truncate">
-              {clubName}
+              {teamAway}
             </Text>
           </View>
         </View>

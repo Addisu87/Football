@@ -45,9 +45,11 @@ const Matches = () => {
                 {fixtureData?.map((game, id) => {
                   <MatchesCard
                     key={id}
-                    imgUrl={{ uri: game?.team?.logo }}
-                    clubName={game?.team?.code}
-                    stadiumName={game?.venue?.name}
+                    teamHomeImgUrl={{ uri: game?.teams?.home?.logo }}
+                    teamAwayImgUrl={{ uri: game?.teams?.away?.logo }}
+                    teamHome={game?.teams?.home?.name}
+                    teamAway={game?.teams?.away?.name}
+                    stadiumName={game?.fixture?.venue?.name}
                   />;
                 })}
               </>

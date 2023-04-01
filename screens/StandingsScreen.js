@@ -52,11 +52,11 @@ const StandingsScreen = () => {
                     <standingDetail
                       key={id}
                       Rank={stand?.rank}
-                      Team={stand?.name}
-                      Played={stand?.played}
-                      Win={stand?.win}
-                      Draw={stand?.draw}
-                      Lose={stand?.lose}
+                      Team={stand?.team?.name}
+                      Played={stand?.all?.played}
+                      Win={stand?.all?.win}
+                      Draw={stand?.all?.draw}
+                      Lose={stand?.all?.lose}
                       Points={stand?.points}
                       Form={stand?.form}
                     />;

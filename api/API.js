@@ -21,7 +21,7 @@ export const getTeamData = async () =>
   getData("/teams", { league: "39", season: "2022" });
 
 export const getFixturesData = async () =>
-  getData("/fixtures", { league: "39", season: "2022", live: "all" });
+  getData("/fixtures", { league: "39", season: "2022" });
 
 export const getPlayersData = async () =>
   getData("/players", { league: "39", season: "2022" });
