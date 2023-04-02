@@ -22,4 +22,7 @@ export const { addMatch, removeMatch } = matchSlice.actions;
 
 export const selectMatchItems = (state) => state.match.items;
 
+export const selectMatchById = (state, matchId) =>
+  state.match.items.find((game) => game.id === matchId);
+
 export default matchSlice.reducer;

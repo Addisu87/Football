@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
-import matchReducer from "./matchSlice";
-import standingReducer from "./standingSlice";
-import teamReducer from "./teamSlice";
+import matchReducer from "./Slices/matchSlice";
+import standingReducer from "./Slices/standingSlice";
+import teamReducer from "./Slices/teamSlice";
 
 export default configureStore({
   reducer: {
