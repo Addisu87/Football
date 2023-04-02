@@ -8,6 +8,7 @@ import {
 import { useNavigation } from "@react-navigation/native";
 import { getStandingsData } from "../api/API";
 import NotFound from "../components/NotFound";
+import standingDetail from "../components/standingDetail";
 
 const StandingsScreen = () => {
   const [standingData, setStandingData] = useState([]);
@@ -22,8 +23,8 @@ const StandingsScreen = () => {
 
   useEffect(() => {
     setIsLoading(true);
-    getStandingsData().then((rank) => {
-      setStandingData(rank);
+    getStandingsData().then((res) => {
+      setStandingData(res?.data?.response[0]?.league?.standings[0]);
       setInterval(() => {
         setIsLoading(false);
       }, 2000);
@@ -51,6 +52,7 @@ const StandingsScreen = () => {
                   {standingData?.map((stand, id) => {
                     <standingDetail
                       key={id}
+                      LeagueName={stand?.league?.name}
                       Rank={stand?.rank}
                       Team={stand?.team?.name}
                       Played={stand?.all?.played}

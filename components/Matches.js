@@ -40,7 +40,7 @@ const Matches = () => {
             showsHorizontalScrollIndicator={false}
             contentContainerStyle={{ paddingHorizontal: 15, paddingTop: 10 }}
           >
-            {fixtureData?.length > 0 ? (
+            {Object.keys(fixtureData)?.length > 0 ? (
               <>
                 {fixtureData?.map((game, id) => {
                   <MatchesCard

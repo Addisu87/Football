@@ -10,11 +10,12 @@ const standingDetail = ({
   Lose,
   Points,
   Form,
+  LeagueName,
 }) => {
   return (
     <View className="flex-1 items-center justify-center">
       <View>
-        <Text className="font-bold text-lg">England: Premier League</Text>
+        <Text className="font-bold text-lg">{LeagueName}</Text>
       </View>
 
       <ScrollView>

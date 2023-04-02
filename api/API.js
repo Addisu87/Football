@@ -21,10 +21,15 @@ export const getTeamData = async () =>
   getData("/teams", { league: "39", season: "2022" });
 
 export const getFixturesData = async () =>
-  getData("/fixtures", { league: "39", season: "2022" });
+  getData("/fixtures", {
+    league: "39",
+    season: "2022",
+    from: "2023-02-04",
+    to: "2023-02-05",
+  });
 
 export const getPlayersData = async () =>
   getData("/players", { league: "39", season: "2022" });
 
 export const getStandingsData = async () =>
-  getData("/standings", { league: "39", season: "2022" });
+  getData("/standings&sort=asc", { league: "39", season: "2022" });
