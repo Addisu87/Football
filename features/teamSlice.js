@@ -22,4 +22,7 @@ export const { addTeam, removeTeam } = teamSlice.actions;
 
 export const selectTeamItems = (state) => state.team.items;
 
+export const selectTeamById = (state, id) =>
+  state.team.items.filter((item) => item.id === id);
+
 export default teamSlice.reducer;
