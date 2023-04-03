@@ -1,24 +1,45 @@
-import { View, Text, Image } from "react-native";
-import React, { useState } from "react";
+import { View, TouchableOpacity } from "react-native";
+import React, { useEffect, useState } from "react";
 import PlayerCard from "./PlayerCard";
-import { TouchableOpacity } from "react-native-web";
+import { getPlayersData } from "../api/API";
+import NotFound from "./NotFound";
 
 const Players = () => {
   const [isLoading, setIsLoading] = useState(false);
-  const [playerStatistics, setPlayerStatistics] = useState([]);
+  const [playerData, setPlayerData] = useState([]);
+
+  useEffect(() => {
+    setIsLoading(true);
+    getPlayersData().then((play) => {
+      setPlayerData(play);
+      setInterval(() => {
+        setIsLoading(false);
+      }, 2000);
+    });
+  }, []);
 
   return (
-    <TouchableOpacity onPress={() => {}}>
-      <View>
-        {playerStatistics.map((footballer, index) => (
-          <PlayerCard
-            key={index}
-            Photo={{ uri: footballer?.birth?.photo }}
-            Name={footballer?.player?.name}
-          />
-        ))}
-      </View>
-    </TouchableOpacity>
+    <>
+      <TouchableOpacity onPress={() => {}}>
+        {isLoading ? (
+          <>
+            <View>
+              {playerData?.map((player) => (
+                <PlayerCard
+                  key={player?.id}
+                  Photo={{ uri: player?.birth?.photo }}
+                  Name={player?.name}
+                />
+              ))}
+            </View>
+          </>
+        ) : (
+          <>
+            <NotFound />
+          </>
+        )}
+      </TouchableOpacity>
+    </>
   );
 };
 
