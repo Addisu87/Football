@@ -6,6 +6,7 @@ const instance = axios.create({
     "x-rapidapi-key": "95f8210a47b0bc73dcba2614e4c2cb9f",
     "x-rapidapi-host": "v3.football.api-sports.io",
   },
+  timeout: 1000,
 });
 
 const getData = async (endpoint, params) => {
@@ -18,17 +19,17 @@ const getData = async (endpoint, params) => {
 };
 
 export const getTeamData = async () =>
-  getData("/teams", { league: "39", season: "2022" });
+  getData(`/teams`, { league: "39", season: "2022" });
 
 export const getFixturesData = async () =>
-  getData("/fixtures", {
+  getData(`/fixtures`, {
     league: "39",
     season: "2022",
     date: "2023-02-04",
   });
 
 export const getPlayersData = async () =>
-  getData("/players", { league: "39", season: "2022" });
+  getData(`/players`, { league: "39", season: "2022" });
 
 export const getStandingsData = async () =>
-  getData("/standings&sort=asc", { league: "39", season: "2022" });
+  getData(`/standings`, { league: "39", season: "2022" });

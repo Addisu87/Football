@@ -51,9 +51,9 @@ const StandingsScreen = () => {
             >
               {standingData?.length > 0 ? (
                 <>
-                  {standingData?.map((stand, id) => {
+                  {standingData?.map((stand, index) => (
                     <standingCard
-                      key={id}
+                      key={index}
                       LeagueName={stand?.league?.name}
                       Rank={stand?.rank}
                       Team={stand?.team?.name}
@@ -63,8 +63,8 @@ const StandingsScreen = () => {
                       Lose={stand?.all?.lose}
                       Points={stand?.points}
                       Form={stand?.form}
-                    />;
-                  })}
+                    />
+                  ))}
                 </>
               ) : (
                 <>

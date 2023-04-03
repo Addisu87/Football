@@ -40,9 +40,9 @@ const Matches = () => {
             showsHorizontalScrollIndicator={false}
             contentContainerStyle={{ paddingHorizontal: 15, paddingTop: 10 }}
           >
-            {Object.keys(fixtureData)?.length > 0 ? (
+            {fixtureData?.length > 0 ? (
               <>
-                {fixtureData?.map((game, index) => {
+                {fixtureData?.map((game, index) => (
                   <MatchesCard
                     key={index}
                     teamHomeImgUrl={{ uri: game?.teams?.home?.logo }}
@@ -50,8 +50,8 @@ const Matches = () => {
                     teamHome={game?.teams?.home?.name}
                     teamAway={game?.teams?.away?.name}
                     stadiumName={game?.fixture?.venue?.name}
-                  />;
-                })}
+                  />
+                ))}
               </>
             ) : (
               <>
