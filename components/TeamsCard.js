@@ -3,12 +3,12 @@ import React from "react";
 import { View } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
-const TeamsCard = ({ imgUrl, name, foundedYear, Photo }) => {
+const TeamsCard = ({ imgUrl, name, foundedYear, Photo, Name }) => {
   const navigation = useNavigation();
 
   return (
     <TouchableOpacity
-      onPress={() => navigation.navigate("Players", { Photo })}
+      onPress={() => navigation.navigate("Players", { Photo, Name })}
       className="relative p-2 m-2 drop-shadow-lg max-w-md mx-auto rounded-xl overflow-hidden bg-gray-200"
     >
       <View className="w-[90px]">

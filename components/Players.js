@@ -11,7 +11,11 @@ const Players = () => {
     <TouchableOpacity onPress={() => {}}>
       <View>
         {playerStatistics.map((footballer, index) => (
-          <PlayerCard Photo={{ uri: footballer.birth.photo }} />
+          <PlayerCard
+            key={index}
+            Photo={{ uri: footballer?.birth?.photo }}
+            Name={footballer?.player?.name}
+          />
         ))}
       </View>
     </TouchableOpacity>
