@@ -6,7 +6,7 @@ const instance = axios.create({
     "x-rapidapi-key": "95f8210a47b0bc73dcba2614e4c2cb9f",
     "x-rapidapi-host": "v3.football.api-sports.io",
   },
-  timeout: 1000,
+  timeout: 5000,
 });
 
 const getData = async (endpoint, params) => {
@@ -25,7 +25,8 @@ export const getFixturesData = async () =>
   getData(`/fixtures`, {
     league: "39",
     season: "2022",
-    date: "2023-02-04",
+    from: "2023-04-04",
+    to: "2023-05-04",
   });
 
 export const getPlayersData = async () =>

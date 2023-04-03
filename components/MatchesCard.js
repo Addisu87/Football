@@ -15,9 +15,13 @@ const MatchesCard = ({
         colors={["#5ED2A0", "#339CB1"]}
         className="m-2 max-w-md mx-auto rounded-xl overflow-hidden drop-shadow-lg md:max-w-2xl"
       >
-        <View className="w-32 h-36">
+        <View className="w-32 h-40">
           <View className="items-center justify-center">
-            <Text className="text-base p-2 overflow-hidden">{stadiumName}</Text>
+            <Text className="text-sm font-light p-2">
+              {stadiumName?.length > 14
+                ? `${stadiumName.slice(0, 14)}...`
+                : stadiumName}
+            </Text>
           </View>
 
           <View className="flex-row items-center justify-evenly md:shrink-0">
@@ -26,11 +30,11 @@ const MatchesCard = ({
           </View>
 
           <View className="items-center justify-center">
-            <Text className="tracking-normal text-sm font-semibold truncate">
+            <Text className="tracking-normal text-sm font-light truncate">
               {teamHome}
             </Text>
             <Text className="font-thin">Vs</Text>
-            <Text className="tracking-normal text-sm font-semibold truncate">
+            <Text className="tracking-normal text-sm font-light truncate">
               {teamAway}
             </Text>
           </View>
