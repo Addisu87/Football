@@ -37,7 +37,7 @@ export const { addMatch, removeMatch } = matchSlice.actions;
 
 export const selectMatchItems = (state) => state.match.items;
 
-export const selectMatchById = (state, matchId) =>
-  state.match.items.filter((game) => game.id === matchId);
+export const selectMatchById = (state, id) =>
+  state.match.items.filter((game) => game.id === id);
 
 export default matchSlice.reducer;

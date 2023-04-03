@@ -11,8 +11,23 @@ export const teamSlice = createSlice({
     addTeam: (state, action) => {
       state.items = [...state.items, action.payload];
     },
+
     removeTeam: (state, action) => {
-      state.value -= 1;
+      const index = state.items.findIndex(
+        (item) => item.id === action.payload.id
+      );
+
+      let newTeam = [...state.items];
+
+      if (index >= 0) {
+        newTeam.splice(index, 1);
+      } else {
+        console.log(
+          `Can not remove Team (id: ${action.payload.id}) as it is not in fixture!`
+        );
+      }
+
+      state.items = newTeam;
     },
   },
 });

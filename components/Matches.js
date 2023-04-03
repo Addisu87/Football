@@ -42,9 +42,9 @@ const Matches = () => {
           >
             {Object.keys(fixtureData)?.length > 0 ? (
               <>
-                {fixtureData?.map((game, id) => {
+                {fixtureData?.map((game, index) => {
                   <MatchesCard
-                    key={id}
+                    key={index}
                     teamHomeImgUrl={{ uri: game?.teams?.home?.logo }}
                     teamAwayImgUrl={{ uri: game?.teams?.away?.logo }}
                     teamHome={game?.teams?.home?.name}

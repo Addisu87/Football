@@ -1,3 +1,5 @@
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+
 import React, { useEffect, useLayoutEffect, useState } from "react";
 import {
   View,
@@ -8,7 +10,7 @@ import {
 import { useNavigation } from "@react-navigation/native";
 import { getStandingsData } from "../api/API";
 import NotFound from "../components/NotFound";
-import standingDetail from "../components/standingDetail";
+import standingCard from "../components/standingCard";
 
 const StandingsScreen = () => {
   const [standingData, setStandingData] = useState([]);
@@ -50,7 +52,7 @@ const StandingsScreen = () => {
               {standingData?.length > 0 ? (
                 <>
                   {standingData?.map((stand, id) => {
-                    <standingDetail
+                    <standingCard
                       key={id}
                       LeagueName={stand?.league?.name}
                       Rank={stand?.rank}

@@ -24,8 +24,7 @@ export const getFixturesData = async () =>
   getData("/fixtures", {
     league: "39",
     season: "2022",
-    from: "2023-02-04",
-    to: "2023-02-05",
+    date: "2023-02-04",
   });
 
 export const getPlayersData = async () =>

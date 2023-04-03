@@ -1,7 +1,10 @@
+/* tslint:disable:no-unused-variable */
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+
 import React from "react";
 import { View, Text, ScrollView } from "react-native";
 
-const standingDetail = ({
+const standingCard = ({
   Rank,
   Team,
   Played,
@@ -85,4 +88,4 @@ const standingDetail = ({
   );
 };
 
-export default standingDetail;
+export default standingCard;
