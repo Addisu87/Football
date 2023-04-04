@@ -10,7 +10,7 @@ import {
 import { useNavigation } from "@react-navigation/native";
 import { getStandingsData } from "../api/API";
 import NotFound from "../components/NotFound";
-import standingCard from "../components/standingCard";
+import StandingCard from "../components/StandingCard";
 
 const StandingsScreen = () => {
   const [standingData, setStandingData] = useState([]);
@@ -52,7 +52,7 @@ const StandingsScreen = () => {
               {standingData?.length > 0 ? (
                 <>
                   {standingData?.map((stand, index) => (
-                    <standingCard
+                    <StandingCard
                       key={index}
                       LeagueName={stand?.league?.name}
                       Rank={stand?.rank}
