@@ -1,5 +1,5 @@
-import { View, Text, ActivityIndicator, ScrollView } from "react-native";
 import React, { useEffect, useState } from "react";
+import { View, Text, ActivityIndicator, ScrollView } from "react-native";
 import { getPlayersData } from "../api/API";
 import { ArrowLeftIcon, ShareIcon } from "react-native-heroicons/outline";
 import { TouchableOpacity } from "react-native";

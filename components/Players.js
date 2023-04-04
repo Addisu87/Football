@@ -1,3 +1,4 @@
+import React, { useEffect, useState } from "react";
 import {
   View,
   TouchableOpacity,
@@ -5,7 +6,6 @@ import {
   ScrollView,
   SafeAreaView,
 } from "react-native";
-import React, { useEffect, useState } from "react";
 import PlayerCard from "./PlayerCard";
 import { getPlayersData } from "../api/API";
 import NotFound from "./NotFound";
