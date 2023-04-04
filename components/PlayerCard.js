@@ -1,41 +1,22 @@
-import { View, Text, TouchableOpacity, SafeAreaView } from "react-native";
 import React from "react";
-import { useRoute } from "@react-navigation/native";
-import { ArrowLeftIcon, ArrowRightIcon } from "react-native-heroicons/outline";
+import { View, Text, Image } from "react-native";
 
-const PlayerCard = ({ navigation }) => {
-  const {
-    params: { Photo, Name },
-  } = useRoute();
-
+const PlayerCard = ({ Photo, Name, Position }) => {
   return (
-    <SafeAreaView>
-      <TouchableOpacity
-        className="absolute top-14 left-5 p-2 bg-gray-100 rounded-full"
-        onPress={navigation.goBack}
-      >
-        <ArrowLeftIcon size={20} color="#00CCBB" />
-      </TouchableOpacity>
-
-      <View>
-        <View className="text-center">
-          <Image
-            source={Photo}
-            className="w-16 h-16 mx-auto rounded-full drop-shadow-lg"
-          />
+    <View className="flex-row space-x-2">
+      <View className="text-center">
+        <Image
+          source={Photo}
+          className="w-16 h-16 mx-auto rounded-full drop-shadow-lg"
+        />
+        <View className="space-y-1">
           <Text className="text-neutral-500 dark:text-neutral-400">{Name}</Text>
+          <Text className="text-neutral-500 dark:text-neutral-400">
+            {Position}
+          </Text>
         </View>
-
-        <TouchableOpacity
-          className="absolute top-14 left-5 p-2 bg-gray-100 rounded-full"
-          onPress={() =>
-            navigation.navigate("playerStatistics", { Photo, Name })
-          }
-        >
-          <ArrowRightIcon size={20} color="#00CCBB" />
-        </TouchableOpacity>
       </View>
-    </SafeAreaView>
+    </View>
   );
 };
 

@@ -1,12 +1,20 @@
-import { View, TouchableOpacity, ActivityIndicator } from "react-native";
+import {
+  View,
+  TouchableOpacity,
+  ActivityIndicator,
+  ScrollView,
+  SafeAreaView,
+} from "react-native";
 import React, { useEffect, useState } from "react";
 import PlayerCard from "./PlayerCard";
 import { getPlayersData } from "../api/API";
 import NotFound from "./NotFound";
+import { useNavigation, useRoute } from "@react-navigation/native";
 
 const Players = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [playerData, setPlayerData] = useState([]);
+  const navigation = useNavigation();
 
   useEffect(() => {
     setIsLoading(true);
@@ -18,9 +26,37 @@ const Players = () => {
     });
   }, []);
 
+  const {
+    params: {
+      Photo,
+      Name,
+      Nationality,
+      TeamLogo,
+      Position,
+      Appearance,
+      Passes,
+      Goals,
+      Cards,
+    },
+  } = useRoute();
+
   return (
-    <>
-      <TouchableOpacity onPress={() => {}}>
+    <SafeAreaView>
+      <TouchableOpacity
+        onPress={() =>
+          navigation.navigate("playerStatistics", {
+            Photo,
+            Name,
+            Nationality,
+            TeamLogo,
+            Position,
+            Appearance,
+            Passes,
+            Goals,
+            Cards,
+          })
+        }
+      >
         {isLoading ? (
           <>
             <View className=" flex-1 items-center justify-center">
@@ -30,15 +66,29 @@ const Players = () => {
         ) : (
           <>
             {playerData.length > 0 ? (
-              <View>
-                {playerData?.map((player) => (
+              <ScrollView
+                showsHorizontalScrollIndicator={false}
+                contentContainerStyle={{
+                  paddingHorizontal: 15,
+                  paddingTop: 10,
+                }}
+                horizontal
+              >
+                {playerData?.map((player, index) => (
                   <PlayerCard
-                    key={player?.id}
+                    key={index}
                     Photo={{ uri: player?.photo }}
                     Name={player?.name}
+                    Nationality={player?.nationality}
+                    TeamLogo={player?.statistics[0]?.team?.logo}
+                    Position={player?.statistics[0]?.games?.position}
+                    Appearance={player?.statistics[0]?.games?.appearances}
+                    Goals={player?.statistics[0]?.goals?.total}
+                    Passes={player?.statistics[0]?.passes?.total}
+                    Cards={player?.statistics[0]?.cards?.yellowred}
                   />
                 ))}
-              </View>
+              </ScrollView>
             ) : (
               <>
                 <NotFound />
@@ -47,7 +97,7 @@ const Players = () => {
           </>
         )}
       </TouchableOpacity>
-    </>
+    </SafeAreaView>
   );
 };
 

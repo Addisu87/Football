@@ -1,8 +1,11 @@
-import { View, Text, ActivityIndicator } from "react-native";
+import { View, Text, ActivityIndicator, ScrollView } from "react-native";
 import React, { useEffect, useState } from "react";
 import { getPlayersData } from "../api/API";
+import { ArrowLeftIcon, ShareIcon } from "react-native-heroicons/outline";
+import { TouchableOpacity } from "react-native";
+import { useRoute } from "@react-navigation/native";
 
-const PlayerStatistics = () => {
+const PlayerStatistics = ({ navigation }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [playerInfo, setPlayerInfo] = useState();
 
@@ -16,8 +19,22 @@ const PlayerStatistics = () => {
     });
   }, []);
 
+  const {
+    params: {
+      Photo,
+      Name,
+      Nationality,
+      TeamLogo,
+      Position,
+      Appearance,
+      Passes,
+      Goals,
+      Cards,
+    },
+  } = useRoute();
+
   return (
-    <View>
+    <ScrollView>
       {isLoading ? (
         <>
           <View className=" flex-1 items-center justify-center">
@@ -25,24 +42,40 @@ const PlayerStatistics = () => {
           </View>
         </>
       ) : (
-        <>
-          {playerInfo?.map((play) => {
-            <View key={play.id}>
-              <Image source={{ uri: play?.player.photo }} />
-              <Text>{play?.player.name}</Text>
-              <Text>{play?.player.nationality}</Text>
-              <Text>{play?.statistics[0]?.team?.name}</Text>
-              <Image source={{ uri: play?.statistics[0]?.team?.logo }} />
-              <Text>{play?.statistics[0]?.games?.position}</Text>
-              <Text>{play?.statistics[0]?.games?.appearences}</Text>
-              <Text>{play?.statistics[0]?.goals?.total}</Text>
-              <Text>{play?.statistics[0]?.passes?.total}</Text>
-              <Text>{play?.statistics[0]?.cards?.yellowred}</Text>
-            </View>;
-          })}
-        </>
+        <View className="relative">
+          <Image source={Photo} className="w-full h-56 bg-gray-200 p-4" />
+
+          <TouchableOpacity
+            className="absolute top-14 left-5 p-2 bg-gray-100 rounded-full"
+            onPress={() => navigation.goBack()}
+          >
+            <ArrowLeftIcon size={20} color="#00CCBB" />
+          </TouchableOpacity>
+
+          <TouchableOpacity className="absolute top-14 left-5 p-2 bg-gray-100 rounded-full">
+            <ShareIcon size={20} color="#00CCBB" />
+          </TouchableOpacity>
+          <View className="flex-row justify-between">
+            <View className="flex-row space-x-2">
+              <Image source={TeamLogo} className="w-10 h-10 rounded-full" />
+
+              <View className="text-base space-y-1">
+                <Text>{Name}</Text>
+                <Text>{Position}</Text>
+                <Text>{Nationality}</Text>
+              </View>
+            </View>
+
+            <View>
+              <Text>{Appearance}</Text>
+              <Text>{Goals}</Text>
+              <Text>{Passes}</Text>
+              <Text>{Cards}</Text>
+            </View>
+          </View>
+        </View>
       )}
-    </View>
+    </ScrollView>
   );
 };
 
