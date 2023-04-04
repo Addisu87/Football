@@ -9,9 +9,19 @@ import React, { useEffect, useState } from "react";
 import PlayerCard from "./PlayerCard";
 import { getPlayersData } from "../api/API";
 import NotFound from "./NotFound";
-import { useNavigation, useRoute } from "@react-navigation/native";
+import { useNavigation } from "@react-navigation/native";
 
-const Players = () => {
+const Players = ({
+  Photo,
+  Name,
+  Nationality,
+  TeamLogo,
+  Position,
+  Appearance,
+  Passes,
+  Goals,
+  Cards,
+}) => {
   const [isLoading, setIsLoading] = useState(false);
   const [playerData, setPlayerData] = useState([]);
   const navigation = useNavigation();
@@ -25,20 +35,6 @@ const Players = () => {
       }, 2000);
     });
   }, []);
-
-  const {
-    params: {
-      Photo,
-      Name,
-      Nationality,
-      TeamLogo,
-      Position,
-      Appearance,
-      Passes,
-      Goals,
-      Cards,
-    },
-  } = useRoute();
 
   return (
     <SafeAreaView>
