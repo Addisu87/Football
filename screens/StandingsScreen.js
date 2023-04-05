@@ -43,7 +43,6 @@ const StandingsScreen = () => {
                   {standingData?.map((stand, index) => (
                     <StandingCard
                       key={index}
-                      LeagueName={stand?.league?.name}
                       Rank={stand?.rank}
                       TeamName={stand?.team?.name}
                       TeamLogo={{ uri: stand?.team?.logo }}
