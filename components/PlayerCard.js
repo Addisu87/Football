@@ -1,9 +1,9 @@
 import React from "react";
 import { View, Text, Image } from "react-native";
 
-const PlayerCard = ({ Photo, Name, Position }) => {
+const PlayerCard = ({ Photo, Name, Age, Position }) => {
   return (
-    <View className="flex-row space-x-2">
+    <View className="space-x-2">
       <View className="text-center">
         <Image
           source={Photo}
@@ -11,6 +11,7 @@ const PlayerCard = ({ Photo, Name, Position }) => {
         />
         <View className="space-y-1">
           <Text className="text-neutral-500 dark:text-neutral-400">{Name}</Text>
+          <Text className="text-neutral-500 dark:text-neutral-400">{Age}</Text>
           <Text className="text-neutral-500 dark:text-neutral-400">
             {Position}
           </Text>

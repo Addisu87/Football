@@ -70,18 +70,19 @@ const Players = ({
                 }}
                 horizontal
               >
-                {playerData?.map((player, index) => (
+                {playerData?.map((play, index) => (
                   <PlayerCard
                     key={index}
-                    Photo={{ uri: player?.photo }}
-                    Name={player?.name}
-                    Nationality={player?.nationality}
-                    TeamLogo={player?.statistics[0]?.team?.logo}
-                    Position={player?.statistics[0]?.games?.position}
-                    Appearance={player?.statistics[0]?.games?.appearances}
-                    Goals={player?.statistics[0]?.goals?.total}
-                    Passes={player?.statistics[0]?.passes?.total}
-                    Cards={player?.statistics[0]?.cards?.yellowred}
+                    Photo={{ uri: play?.player?.photo }}
+                    Name={play?.player?.name}
+                    Age={play?.player?.age}
+                    Nationality={play?.nationality}
+                    TeamLogo={play?.statistics[0]?.team?.logo}
+                    Position={play?.statistics[0]?.games?.position}
+                    Appearance={play?.statistics[0]?.games?.appearances}
+                    Goals={play?.statistics[0]?.goals?.total}
+                    Passes={play?.statistics[0]?.passes?.total}
+                    Cards={play?.statistics[0]?.cards?.yellowred}
                   />
                 ))}
               </ScrollView>

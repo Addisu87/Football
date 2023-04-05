@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { View, Text, ActivityIndicator, ScrollView } from "react-native";
+import { View, Text, ActivityIndicator, ScrollView, Image } from "react-native";
 import { getPlayersData } from "../api/API";
 import { ArrowLeftIcon, ShareIcon } from "react-native-heroicons/outline";
 import { TouchableOpacity } from "react-native";
@@ -23,6 +23,7 @@ const PlayerStatistics = ({ navigation }) => {
     params: {
       Photo,
       Name,
+      Age,
       Nationality,
       TeamLogo,
       Position,
@@ -61,6 +62,7 @@ const PlayerStatistics = ({ navigation }) => {
 
               <View className="text-base space-y-1">
                 <Text>{Name}</Text>
+                <Text>{Age}</Text>
                 <Text>{Position}</Text>
                 <Text>{Nationality}</Text>
               </View>
