@@ -3,7 +3,8 @@ import { View, Text, ScrollView } from "react-native";
 
 const StandingCard = ({
   Rank,
-  Team,
+  TeamLogo,
+  TeamName,
   Played,
   Win,
   Draw,
@@ -58,7 +59,8 @@ const StandingCard = ({
               <Text className="font-normal text-base">{Rank}</Text>
             </View>
             <View className="w-[25%]">
-              <Text className="font-normal text-base">{Team}</Text>
+              <Text className="font-normal text-base">{TeamLogo}</Text>
+              <Text className="font-normal text-base">{TeamName}</Text>
             </View>
             <View className="w-[10%]">
               <Text className="font-normal text-base">{Played}</Text>

@@ -24,7 +24,7 @@ const StandingsScreen = () => {
   useEffect(() => {
     setIsLoading(true);
     getStandingsData().then((res) => {
-      setStandingData(res?.data?.response[0]?.league?.standings[0]);
+      setStandingData(res[0]?.league?.standings[0]);
       setInterval(() => {
         setIsLoading(false);
       }, 2000);
@@ -42,11 +42,7 @@ const StandingsScreen = () => {
           </>
         ) : (
           <>
-            <ScrollView
-              horizontal={true}
-              showsHorizontalScrollIndicator={false}
-              contentContainerStyle={{ paddingHorizontal: 15, paddingTop: 10 }}
-            >
+            <View>
               {standingData?.length > 0 ? (
                 <>
                   {standingData?.map((stand, index) => (
@@ -54,7 +50,8 @@ const StandingsScreen = () => {
                       key={index}
                       LeagueName={stand?.league?.name}
                       Rank={stand?.rank}
-                      Team={stand?.team?.name}
+                      TeamName={stand?.team?.name}
+                      TeamLogo={stand?.league?.logo}
                       Played={stand?.all?.played}
                       Win={stand?.all?.win}
                       Draw={stand?.all?.draw}
@@ -69,7 +66,7 @@ const StandingsScreen = () => {
                   <NotFound />
                 </>
               )}
-            </ScrollView>
+            </View>
           </>
         )}
       </View>
