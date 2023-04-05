@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { View, Text, ActivityIndicator } from "react-native";
-import { getGamesData } from "../api/API";
+import { getGameData } from "../api/API";
 
 const Game = () => {
   const [game, setGame] = useState([]);
@@ -8,7 +8,7 @@ const Game = () => {
 
   useEffect(() => {
     setIsLoading(true);
-    getGamesData().then((play) => {
+    getGameData().then((play) => {
       setGame(play);
       setInterval(() => {
         setIsLoading(false);
