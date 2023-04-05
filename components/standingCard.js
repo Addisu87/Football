@@ -1,12 +1,6 @@
 import React from "react";
 import { View, ScrollView } from "react-native";
-import {
-  Cell,
-  Row,
-  Rows,
-  Table,
-  TableWrapper,
-} from "react-native-table-component";
+import { Row, Rows, Table, TableWrapper } from "react-native-table-component";
 
 const StandingCard = ({
   Rank,
@@ -58,7 +52,7 @@ const StandingCard = ({
           />
           <TableWrapper className="flex-row">
             {tableData?.map((rowData, index) => {
-              <Cell
+              <Rows
                 key={index}
                 data={rowData}
                 flexArr={flexArr}
