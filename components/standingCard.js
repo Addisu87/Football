@@ -1,5 +1,12 @@
 import React from "react";
-import { View, Text, ScrollView } from "react-native";
+import { View, ScrollView } from "react-native";
+import {
+  Cell,
+  Row,
+  Rows,
+  Table,
+  TableWrapper,
+} from "react-native-table-component";
 
 const StandingCard = ({
   Rank,
@@ -11,77 +18,55 @@ const StandingCard = ({
   Lose,
   Points,
   Form,
-  LeagueName,
 }) => {
+  const tableHead = [
+    "Rank",
+    "TeamLogo",
+    "TeamName",
+    "MP",
+    "W",
+    "D",
+    "L",
+    "P",
+    "Form",
+  ];
+  const flexArr = [1, 1, 2, 1, 1, 1, 1, 1, 2];
+  const tableData = [
+    Rank,
+    TeamLogo,
+    TeamName,
+    Played,
+    Win,
+    Draw,
+    Lose,
+    Points,
+    Form,
+  ];
+
   return (
-    <View className="flex-1 items-center justify-center">
-      <View>
-        <Text className="font-bold text-lg">{LeagueName}</Text>
-      </View>
-
-      <ScrollView>
-        {/* Table Container */}
-        <View>
-          {/* Table Head */}
-          <View className="flex-row bg-[#00CCBB]">
-            {/* One Single Row */}
-            <View className="w-[10%]">
-              <Text className="font-bold text-lg">Rank</Text>
-            </View>
-            <View className="w-[25%]">
-              <Text className="font-bold text-lg">Team</Text>
-            </View>
-            <View className="w-[10%]">
-              <Text className="font-bold text-lg">MP</Text>
-            </View>
-            <View className="w-[10%]">
-              <Text className="font-bold text-lg">W</Text>
-            </View>
-            <View className="w-[10%]">
-              <Text className="font-bold text-lg">D</Text>
-            </View>
-            <View className="w-[10%]">
-              <Text className="font-bold text-lg">L</Text>
-            </View>
-            <View className="w-[10%]">
-              <Text className="font-bold text-lg">P</Text>
-            </View>
-            <View className="w-[15%]">
-              <Text className="font-bold text-lg">Form</Text>
-            </View>
-          </View>
-
-          {/* Table row */}
-
-          <View className="flex-row">
-            {/* One Single Row */}
-            <View className="w-[10%]">
-              <Text className="font-normal text-base">{Rank}</Text>
-            </View>
-            <View className="w-[25%] flex-row space-x-2">
-              <Image source={TeamLogo} className="w-10 h-10 rounded-full" />
-              <Text className="font-normal text-base">{TeamName}</Text>
-            </View>
-            <View className="w-[10%]">
-              <Text className="font-normal text-base">{Played}</Text>
-            </View>
-            <View className="w-[10%]">
-              <Text className="font-normal text-base">{Win}</Text>
-            </View>
-            <View className="w-[10%]">
-              <Text className="font-normal text-base">{Draw}</Text>
-            </View>
-            <View className="w-[10%]">
-              <Text className="font-normal text-base">{Lose}</Text>
-            </View>
-            <View className="w-[10%]">
-              <Text className="font-normal text-base">{Points}</Text>
-            </View>
-            <View className="w-[15%]">
-              <Text className="font-normal text-base">{Form}</Text>
-            </View>
-          </View>
-        </View>
+    <View className="flex-1 p-4 top-8 bg-[#00CCBB]">
+      <ScrollView
+        horizontal={true}
+        showsHorizontalScrollIndicator={false}
+        contentContainerStyle={{ paddingHorizontal: 15, paddingTop: 10 }}
+      >
+        <Table className="w-1 border border-cyan-400">
+          <Row
+            data={tableHead}
+            flexArr={flexArr}
+            className="h-9 bg-cyan-500 text-lg font-semibold"
+          />
+          <TableWrapper className="flex-row">
+            {tableData?.map((rowData, index) => {
+              <Cell
+                key={index}
+                data={rowData}
+                flexArr={flexArr}
+                className="text-center"
+              />;
+            })}
+          </TableWrapper>
+        </Table>
       </ScrollView>
     </View>
   );
