@@ -58,8 +58,8 @@ const StandingCard = ({
             <View className="w-[10%]">
               <Text className="font-normal text-base">{Rank}</Text>
             </View>
-            <View className="w-[25%]">
-              <Text className="font-normal text-base">{TeamLogo}</Text>
+            <View className="w-[25%] flex-row space-x-2">
+              <Image source={TeamLogo} className="w-10 h-10 rounded-full" />
               <Text className="font-normal text-base">{TeamName}</Text>
             </View>
             <View className="w-[10%]">

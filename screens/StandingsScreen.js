@@ -51,7 +51,7 @@ const StandingsScreen = () => {
                       LeagueName={stand?.league?.name}
                       Rank={stand?.rank}
                       TeamName={stand?.team?.name}
-                      TeamLogo={stand?.league?.logo}
+                      TeamLogo={{ uri: stand?.team?.logo }}
                       Played={stand?.all?.played}
                       Win={stand?.all?.win}
                       Draw={stand?.all?.draw}
