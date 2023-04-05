@@ -38,13 +38,13 @@ const StandingCard = ({
   ];
 
   return (
-    <View className="flex-1 p-4 top-8 bg-[#00CCBB]">
+    <View className="flex-1 min-h-screen p-4 top-8 bg-[#00CCBB]">
       <ScrollView
         horizontal={true}
         showsHorizontalScrollIndicator={false}
         contentContainerStyle={{ paddingHorizontal: 15, paddingTop: 10 }}
       >
-        <Table className="w-1 border border-cyan-400">
+        <Table className="max-w-5xl px-4 mx-auto border border-cyan-400">
           <Row
             data={tableHead}
             flexArr={flexArr}
@@ -56,7 +56,7 @@ const StandingCard = ({
                 key={index}
                 data={rowData}
                 flexArr={flexArr}
-                className="text-center"
+                className="flex-shrink-0 h-10 w-10 text-center"
               />;
             })}
           </TableWrapper>

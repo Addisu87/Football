@@ -1,10 +1,5 @@
 import React, { useEffect, useLayoutEffect, useState } from "react";
-import {
-  View,
-  SafeAreaView,
-  ScrollView,
-  ActivityIndicator,
-} from "react-native";
+import { View, SafeAreaView, ActivityIndicator } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { getStandingsData } from "../api/API";
 import NotFound from "../components/NotFound";

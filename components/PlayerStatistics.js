@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { View, Text, ActivityIndicator, ScrollView, Image } from "react-native";
-import { getPlayersData } from "../api/API";
 import { ArrowLeftIcon, ShareIcon } from "react-native-heroicons/outline";
 import { TouchableOpacity } from "react-native";
 import { useRoute } from "@react-navigation/native";
@@ -11,12 +10,6 @@ const PlayerStatistics = ({ navigation }) => {
 
   useEffect(() => {
     setIsLoading(true);
-    getPlayersData().then((play) => {
-      setPlayerInfo(play);
-      setInterval(() => {
-        setIsLoading(false);
-      }, 2000);
-    });
   }, []);
 
   const {
