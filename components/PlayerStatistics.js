@@ -26,6 +26,7 @@ const PlayerStatistics = ({ navigation }) => {
       Age,
       Nationality,
       TeamLogo,
+      TeamName,
       Position,
       Appearance,
       Passes,
@@ -58,7 +59,10 @@ const PlayerStatistics = ({ navigation }) => {
           </TouchableOpacity>
           <View className="flex-row justify-between">
             <View className="flex-row space-x-2">
-              <Image source={TeamLogo} className="w-10 h-10 rounded-full" />
+              <View className="space-y-1">
+                <Image source={TeamLogo} className="w-10 h-10 rounded-full" />
+                <Text>{TeamName}</Text>
+              </View>
 
               <View className="text-base space-y-1">
                 <Text>{Name}</Text>

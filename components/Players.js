@@ -14,8 +14,10 @@ import { useNavigation } from "@react-navigation/native";
 const Players = ({
   Photo,
   Name,
+  Age,
   Nationality,
   TeamLogo,
+  TeamName,
   Position,
   Appearance,
   Passes,
@@ -45,6 +47,7 @@ const Players = ({
             Name,
             Nationality,
             TeamLogo,
+            TeamName,
             Position,
             Appearance,
             Passes,
@@ -62,22 +65,16 @@ const Players = ({
         ) : (
           <>
             {playerData.length > 0 ? (
-              <ScrollView
-                showsHorizontalScrollIndicator={false}
-                contentContainerStyle={{
-                  paddingHorizontal: 15,
-                  paddingTop: 10,
-                }}
-                horizontal
-              >
+              <View>
                 {playerData?.map((play, index) => (
                   <PlayerCard
                     key={index}
                     Photo={{ uri: play?.player?.photo }}
                     Name={play?.player?.name}
                     Age={play?.player?.age}
-                    Nationality={play?.nationality}
+                    Nationality={play?.player?.nationality}
                     TeamLogo={play?.statistics[0]?.team?.logo}
+                    TeamName={play?.statistics[0]?.team?.name}
                     Position={play?.statistics[0]?.games?.position}
                     Appearance={play?.statistics[0]?.games?.appearances}
                     Goals={play?.statistics[0]?.goals?.total}
@@ -85,7 +82,7 @@ const Players = ({
                     Cards={play?.statistics[0]?.cards?.yellowred}
                   />
                 ))}
-              </ScrollView>
+              </View>
             ) : (
               <>
                 <NotFound />
