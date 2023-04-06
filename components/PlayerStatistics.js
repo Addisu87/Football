@@ -1,12 +1,17 @@
 import React, { useEffect, useState } from "react";
-import { View, Text, ActivityIndicator, ScrollView, Image } from "react-native";
+import {
+  View,
+  Text,
+  ActivityIndicator,
+  ScrollView,
+  Image,
+  TouchableOpacity,
+} from "react-native";
 import { ArrowLeftIcon, ShareIcon } from "react-native-heroicons/outline";
-import { TouchableOpacity } from "react-native";
 import { useRoute } from "@react-navigation/native";
 
 const PlayerStatistics = ({ navigation }) => {
   const [isLoading, setIsLoading] = useState(false);
-  const [playerInfo, setPlayerInfo] = useState();
 
   useEffect(() => {
     setIsLoading(true);

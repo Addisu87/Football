@@ -44,6 +44,7 @@ const StandingCard = ({
           />
           <TableWrapper className="flex-row">
             <Rows
+              Key={`${Rank}`}
               data={tableData}
               flexArr={flexArr}
               className="flex-shrink-0 h-10 w-10 text-center"
