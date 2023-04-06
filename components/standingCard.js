@@ -40,14 +40,14 @@ const StandingCard = ({
             className="h-9 bg-cyan-500 text-lg font-semibold"
           />
           <TableWrapper className="flex-row">
-            {tableData?.map((rowData, index) => {
+            {tableData?.map((rowData, index) => (
               <Rows
                 key={index}
                 data={rowData}
                 flexArr={flexArr}
                 className="flex-shrink-0 h-10 w-10 text-center"
-              />;
-            })}
+              />
+            ))}
           </TableWrapper>
         </Table>
       </ScrollView>
