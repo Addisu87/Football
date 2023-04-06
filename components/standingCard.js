@@ -4,7 +4,6 @@ import { Row, Rows, Table, TableWrapper } from "react-native-table-component";
 
 const StandingCard = ({
   Rank,
-  TeamLogo,
   TeamName,
   Played,
   Win,
@@ -25,17 +24,7 @@ const StandingCard = ({
     "Form",
   ];
   const flexArr = [1, 1, 2, 1, 1, 1, 1, 1, 2];
-  const tableData = [
-    Rank,
-    TeamLogo,
-    TeamName,
-    Played,
-    Win,
-    Draw,
-    Lose,
-    Points,
-    Form,
-  ];
+  const tableData = [Rank, TeamName, Played, Win, Draw, Lose, Points, Form];
 
   return (
     <View className="flex-1 min-h-screen p-4 top-8 bg-[#00CCBB]">

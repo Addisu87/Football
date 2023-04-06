@@ -1,8 +1,9 @@
-import { View, Text, SafeAreaView, Image } from "react-native";
 import React, { useLayoutEffect } from "react";
+import { View, Text, SafeAreaView, Image } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { BellIcon, MagnifyingGlassIcon } from "react-native-heroicons/outline";
 import Game from "../components/Game";
+import StandingsWidget from "../components/StandingsWidget";
 
 const DiscoverScreen = () => {
   const navigation = useNavigation();
@@ -31,7 +32,10 @@ const DiscoverScreen = () => {
         </View>
       </View>
 
-      <Game />
+      {/* <Game /> */}
+      <View>
+        <StandingsWidget />
+      </View>
     </SafeAreaView>
   );
 };
