@@ -10,9 +10,9 @@ const PlayerCard = ({ Photo, Name, Age, Position }) => {
           className="w-20 h-20 rounded-full drop-shadow-lg"
         />
         <View className="space-y-1">
-          <Text className="text-neutral-500 dark:text-neutral-400">{Name}</Text>
-          <Text className="text-neutral-500 dark:text-neutral-400">{Age}</Text>
-          <Text className="text-neutral-500 dark:text-neutral-400">
+          <Text className="text-neutral-700 dark:text-neutral-800">{Name}</Text>
+          <Text className="text-neutral-700 dark:text-neutral-800">{Age}</Text>
+          <Text className="text-neutral-700 dark:text-neutral-800">
             {Position}
           </Text>
         </View>
