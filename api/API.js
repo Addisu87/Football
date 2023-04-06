@@ -33,7 +33,7 @@ export const getPlayersData = async () =>
   getData(`/players`, { league: "39", season: "2022" });
 
 export const getStandingsData = async () =>
-  getData(`/widgets/standings`, { league: "39", season: "2022" });
+  getData(`/standings`, { league: "39", season: "2022" });
 
 export const getGameData = async () =>
   getData(`/widgets/game`, { league: "39", season: "2022" });
