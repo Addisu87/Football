@@ -8,10 +8,11 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { ArrowLeftIcon, ShareIcon } from "react-native-heroicons/outline";
-import { useRoute } from "@react-navigation/native";
+import { useNavigation, useRoute } from "@react-navigation/native";
 
-const PlayerStatistics = ({ navigation }) => {
+const PlayerStatistics = () => {
   const [isLoading, setIsLoading] = useState(false);
+  const navigation = useNavigation();
 
   useEffect(() => {
     setIsLoading(true);

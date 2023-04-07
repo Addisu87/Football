@@ -3,7 +3,6 @@ import {
   View,
   TouchableOpacity,
   ActivityIndicator,
-  ScrollView,
   SafeAreaView,
 } from "react-native";
 import PlayerCard from "./PlayerCard";
@@ -32,10 +31,9 @@ const Players = ({
     setIsLoading(true);
     getPlayersData().then((play) => {
       setPlayerData(play);
-      setInterval(() => {
+      setTimeout(() => {
         setIsLoading(false);
       }, 2000);
-      Players;
     });
   }, []);
 
