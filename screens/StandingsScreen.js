@@ -3,7 +3,7 @@ import { View, SafeAreaView, ActivityIndicator } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { getStandingsData } from "../api/API";
 import NotFound from "../components/NotFound";
-import StandingCard from "../components/StandingCard";
+import StandingCard from "../components/standingCard";
 
 const StandingsScreen = () => {
   const [standingData, setStandingData] = useState([]);
@@ -30,11 +30,9 @@ const StandingsScreen = () => {
     <SafeAreaView>
       <View className="flex-1 p-4 pt-8 bg-white">
         {isLoading ? (
-          <>
-            <View className=" flex-1 items-center justify-center">
-              <ActivityIndicator size="large" color="#0B646B" />
-            </View>
-          </>
+          <View className=" flex-1 items-center justify-center">
+            <ActivityIndicator size="large" color="#0B646B" />
+          </View>
         ) : (
           <>
             <View>
