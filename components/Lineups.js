@@ -8,8 +8,9 @@ import {
 } from "react-native";
 import React, { useEffect, useState } from "react";
 import { getLineUps } from "../api/API";
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation, useRoute } from "@react-navigation/native";
 import { soccerField } from "../assets/images/index";
+import { ArrowLeftIcon } from "react-native-heroicons/outline";
 
 const Lineups = () => {
   const [lineupsData, setLineupsData] = useState([]);
@@ -27,17 +28,33 @@ const Lineups = () => {
     });
   }, []);
 
+  const {
+    params: { teamHome, teamAway, stadiumName, teamHomeImgUrl, teamAwayImgUrl },
+  } = useRoute();
+
   const renderItem = ({ item }) => (
     <View key={item.id}>
+      <TouchableOpacity
+        className="absolute top-14 left-5 p-2 bg-gray-100 rounded-full"
+        onPress={() => navigation.goBack()}
+      >
+        <ArrowLeftIcon size={20} color="#00CCBB" />
+      </TouchableOpacity>
       <View>
         <Text>{item.team.name}</Text>
         <Text>{item.coach.name}</Text>
-        <Text>{item.coach.photo}</Text>
+        <Image
+          source={{ uri: item.coach.photo }}
+          className="w-12 h-12 rounded-full"
+        />
         <Text>{item.formation}</Text>
       </View>
 
       <View>
-        <ImageBackground source={soccerField}>
+        <ImageBackground
+          source={soccerField}
+          className="flex-1 resize-cover justify-center items-center"
+        >
           <Text>{item.startXI.player.name}</Text>
           <Text>{item.startXI.player.number}</Text>
           <Text>{item.startXI.player.pos}</Text>
@@ -53,17 +70,11 @@ const Lineups = () => {
           <ActivityIndicator size="large" color="#0B646B" />
         </View>
       ) : (
-        <TouchableOpacity
-          onPress={() => {
-            navigation.navigate("Lineups", {});
-          }}
-        >
-          <FlatList
-            data={lineupsData}
-            renderItem={renderItem}
-            keyExtractor={(item) => item.id.toString()}
-          />
-        </TouchableOpacity>
+        <FlatList
+          data={lineupsData}
+          renderItem={renderItem}
+          keyExtractor={(item) => item.id.toString()}
+        />
       )}
     </View>
   );

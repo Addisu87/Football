@@ -1,6 +1,7 @@
 import { View, Text, TouchableOpacity, Image } from "react-native";
 import React from "react";
 import { LinearGradient } from "expo-linear-gradient";
+import { useNavigation } from "@react-navigation/native";
 
 const MatchesCard = ({
   teamHome,
@@ -9,8 +10,20 @@ const MatchesCard = ({
   teamHomeImgUrl,
   teamAwayImgUrl,
 }) => {
+  const navigation = useNavigation();
   return (
-    <TouchableOpacity className="">
+    <TouchableOpacity
+      onPress={() =>
+        navigation.navigate("Lineups", {
+          teamHome,
+          teamAway,
+          stadiumName,
+          teamHomeImgUrl,
+          teamAwayImgUrl,
+        })
+      }
+      className="bg-white mr-3 shadow"
+    >
       <LinearGradient
         colors={["#5ED2A0", "#339CB1"]}
         className="m-2 max-w-md mx-auto rounded-xl overflow-hidden drop-shadow-lg md:max-w-2xl"
