@@ -35,6 +35,7 @@ const Players = ({
       setInterval(() => {
         setIsLoading(false);
       }, 2000);
+      Players;
     });
   }, []);
 
@@ -45,6 +46,7 @@ const Players = ({
           navigation.navigate("playerStatistics", {
             Photo,
             Name,
+            Age,
             Nationality,
             TeamLogo,
             TeamName,
@@ -57,11 +59,9 @@ const Players = ({
         }
       >
         {isLoading ? (
-          <>
-            <View className=" flex-1 items-center justify-center">
-              <ActivityIndicator size="large" color="#0B646B" />
-            </View>
-          </>
+          <View className=" flex-1 items-center justify-center">
+            <ActivityIndicator size="large" color="#0B646B" />
+          </View>
         ) : (
           <>
             {playerData.length > 0 ? (

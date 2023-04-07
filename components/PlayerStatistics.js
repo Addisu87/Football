@@ -36,11 +36,9 @@ const PlayerStatistics = ({ navigation }) => {
   return (
     <ScrollView>
       {isLoading ? (
-        <>
-          <View className=" flex-1 items-center justify-center">
-            <ActivityIndicator size="large" color="#0B646B" />
-          </View>
-        </>
+        <View className=" flex-1 items-center justify-center">
+          <ActivityIndicator size="large" color="#0B646B" />
+        </View>
       ) : (
         <View className="relative">
           <Image source={Photo} className="w-full h-56 bg-gray-200 p-4" />
