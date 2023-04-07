@@ -40,7 +40,7 @@ const NavStacks = () => {
       />
 
       <Stack.Screen
-        name="lineups"
+        name="Lineups"
         component={Lineups}
         options={{ headerShown: false }}
       />

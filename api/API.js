@@ -33,6 +33,7 @@ export const getLineUps = async () => {
   getData(`/fixtures/lineups`, {
     league: "39",
     season: "2022",
+    fixture: "215662",
   });
 };
 

@@ -5,3 +5,4 @@ export { default as Barcelona } from "./FC_Barcelona.png";
 export { default as MancheserCity } from "./manchester-city-fc-logo.png";
 export { default as Juventus } from "./juventus-fc.png";
 export { default as BayernMunchen } from "./bayern-munchen.png";
+export { default as soccerField } from "./soccer_field.png";

@@ -1,10 +1,21 @@
-import { View, Text, FlatList, ActivityIndicator } from "react-native";
+import {
+  View,
+  Text,
+  FlatList,
+  ActivityIndicator,
+  TouchableOpacity,
+  ImageBackground,
+} from "react-native";
 import React, { useEffect, useState } from "react";
 import { getLineUps } from "../api/API";
+import { useNavigation } from "@react-navigation/native";
+import { soccerField } from "../assets/images/index";
 
 const Lineups = () => {
   const [lineupsData, setLineupsData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+
+  const navigation = useNavigation();
 
   useEffect(() => {
     setIsLoading(true);
@@ -18,8 +29,21 @@ const Lineups = () => {
 
   const renderItem = ({ item }) => (
     <View key={item.id}>
-      <Text>{item.name}</Text>
-      <Text>{item.position}</Text>
+      <View>
+        <Text>{item.team.name}</Text>
+        <Text>{item.coach.name}</Text>
+        <Text>{item.coach.photo}</Text>
+        <Text>{item.formation}</Text>
+      </View>
+
+      <View>
+        <ImageBackground source={soccerField}>
+          <Text>{item.startXI.player.name}</Text>
+          <Text>{item.startXI.player.number}</Text>
+          <Text>{item.startXI.player.pos}</Text>
+          <Text>{item.startXI.player.grid}</Text>
+        </ImageBackground>
+      </View>
     </View>
   );
   return (
@@ -29,13 +53,17 @@ const Lineups = () => {
           <ActivityIndicator size="large" color="#0B646B" />
         </View>
       ) : (
-        <>
+        <TouchableOpacity
+          onPress={() => {
+            navigation.navigate("Lineups", {});
+          }}
+        >
           <FlatList
             data={lineupsData}
             renderItem={renderItem}
             keyExtractor={(item) => item.id.toString()}
           />
-        </>
+        </TouchableOpacity>
       )}
     </View>
   );
