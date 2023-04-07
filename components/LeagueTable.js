@@ -9,7 +9,7 @@ const LeagueTable = () => {
   useEffect(() => {
     setIsLoading(true);
     getStandingsData().then((res) => {
-      setTableData(res?.league?.standings[0]);
+      setTableData(res);
       setInterval(() => {
         setIsLoading(false);
       }, 2000);
