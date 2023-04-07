@@ -19,7 +19,7 @@ const StandingsScreen = () => {
   useEffect(() => {
     setIsLoading(true);
     getStandingsData().then((res) => {
-      setStandingData(res[0]?.league?.standings[0]);
+      setStandingData(res?.league?.standings[0]);
       setInterval(() => {
         setIsLoading(false);
       }, 2000);
