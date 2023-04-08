@@ -4,6 +4,7 @@ import { useNavigation } from "@react-navigation/native";
 import { BellIcon, MagnifyingGlassIcon } from "react-native-heroicons/outline";
 import Widgets from "../components/Widgets";
 import LeagueTable from "../components/LeagueTable";
+import Lineups from "../components/Lineups";
 
 const DiscoverScreen = () => {
   const navigation = useNavigation();
@@ -32,7 +33,7 @@ const DiscoverScreen = () => {
         </View>
       </View>
 
-      <View>{/* <LeagueTable /> */}</View>
+      <View><Lineups /></View>
     </SafeAreaView>
   );
 };

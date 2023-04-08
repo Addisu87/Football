@@ -28,10 +28,6 @@ const Lineups = () => {
     });
   }, []);
 
-  const {
-    params: { teamHome, teamAway, stadiumName, teamHomeImgUrl, teamAwayImgUrl },
-  } = useRoute();
-
   const renderItem = ({ item }) => (
     <View key={item.id}>
       <TouchableOpacity
@@ -41,19 +37,34 @@ const Lineups = () => {
         <ArrowLeftIcon size={20} color="#00CCBB" />
       </TouchableOpacity>
       <View>
-        <Text>{item.team.name}</Text>
-        <Text>{item.coach.name}</Text>
-        <Image
-          source={{ uri: item.coach.photo }}
-          className="w-12 h-12 rounded-full"
-        />
-        <Text>{item.formation}</Text>
+        <View className="flex-row justify-between">
+          <View className="flex-row space-x-2">
+            <Text>{item.team.name}</Text>
+            <Text>{item.formation}</Text>
+          </View>
+          <Image
+            source={{ uri: item.team.logo }}
+            className="w-10 h-10 rounded-full"
+          />
+        </View>
+
+        <View>
+          <Text className="uppercase text-bold">Coach</Text>
+          <View className="flex-row justify-between">
+            <Image
+              source={{ uri: item.coach.photo }}
+              className="w-10 h-10 rounded-full"
+            />
+            <Text>{item.coach.name}</Text>
+          </View>
+        </View>
       </View>
 
       <View>
+        <Text className="uppercase text-bold">StartingXI</Text>
         <ImageBackground
           source={soccerField}
-          className="flex-1 resize-cover justify-center items-center"
+          className="flex-1 bg-cover justify-center items-center"
         >
           <Text>{item.startXI.player.name}</Text>
           <Text>{item.startXI.player.number}</Text>
@@ -61,8 +72,13 @@ const Lineups = () => {
           <Text>{item.startXI.player.grid}</Text>
         </ImageBackground>
       </View>
+
+      <View>
+        <Text className="uppercase text-bold">Substitutes</Text>
+      </View>
     </View>
   );
+
   return (
     <View>
       {isLoading ? (
@@ -70,11 +86,13 @@ const Lineups = () => {
           <ActivityIndicator size="large" color="#0B646B" />
         </View>
       ) : (
-        <FlatList
-          data={lineupsData}
-          renderItem={renderItem}
-          keyExtractor={(item) => item.id.toString()}
-        />
+        <>
+          <FlatList
+            data={lineupsData}
+            renderItem={renderItem}
+            keyExtractor={(item) => item.id.toString()}
+          />
+        </>
       )}
     </View>
   );
