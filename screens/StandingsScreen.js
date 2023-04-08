@@ -1,69 +1,69 @@
-import React, { useEffect, useLayoutEffect, useState } from "react";
-import { View, SafeAreaView, ActivityIndicator } from "react-native";
-import { useNavigation } from "@react-navigation/native";
+import React, { useEffect, useState } from "react";
+import { View, Text, FlatList, ActivityIndicator } from "react-native";
 import { getStandingsData } from "../api/API";
-import NotFound from "../components/NotFound";
-import StandingCard from "../components/standingCard";
+import { LinearGradient } from "expo-linear-gradient";
 
-const StandingsScreen = () => {
-  const [standingData, setStandingData] = useState([]);
+const StandingScreen = () => {
+  const [tableData, setTableData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const navigation = useNavigation();
-
-  useLayoutEffect(() => {
-    navigation.setOptions({
-      headerShown: false,
-    });
-  }, []);
 
   useEffect(() => {
     setIsLoading(true);
     getStandingsData().then((res) => {
-      setStandingData(res?.league?.standings[0]);
+      setTableData(res[0]?.league?.standings[0]);
       setInterval(() => {
         setIsLoading(false);
       }, 2000);
     });
   }, []);
 
+  const renderTableRow = ({ item }) => {
+    return (
+      <View className="flex-row mb-3">
+        <Text className="flex-1">{item?.rank}</Text>
+        <Text className="flex-1">{item.team?.name}</Text>
+        <Text className="flex-1">{item.all?.played}</Text>
+        <Text className="flex-1">{item.all?.win}</Text>
+        <Text className="flex-1">{item.all?.draw}</Text>
+        <Text className="flex-1">{item.all?.lose}</Text>
+        <Text className="flex-1">{item?.goalsDiff}</Text>
+        <Text className="flex-1">{item?.points}</Text>
+      </View>
+    );
+  };
+
   return (
-    <SafeAreaView>
-      <View className="flex-1 p-4 pt-8 bg-white">
+    <View className="flex-1 p-3">
+      <LinearGradient
+        colors={["#5ED2A0", "#339CB1"]}
+        className="pl-4 pr-4 rounded-md h-40"
+      >
         {isLoading ? (
           <View className=" flex-1 items-center justify-center">
-            <ActivityIndicator size="large" color="#0B646B" />
+            <ActivityIndicator size="large" color="#00CCBB" />
           </View>
         ) : (
           <>
-            <View>
-              {standingData?.length > 0 ? (
-                <>
-                  {standingData?.map((stand, index) => (
-                    <StandingCard
-                      key={index}
-                      Rank={stand?.rank}
-                      TeamName={stand?.team?.name}
-                      TeamLogo={{ uri: stand?.team?.logo }}
-                      Played={stand?.all?.played}
-                      Win={stand?.all?.win}
-                      Draw={stand?.all?.draw}
-                      Lose={stand?.all?.lose}
-                      Points={stand?.points}
-                      Form={stand?.form}
-                    />
-                  ))}
-                </>
-              ) : (
-                <>
-                  <NotFound />
-                </>
-              )}
+            <View className="flex-row mb-3">
+              <Text className="font-bold flex-1">Pos</Text>
+              <Text className="font-bold flex-1">Team</Text>
+              <Text className="font-bold flex-1">P</Text>
+              <Text className="font-bold flex-1">W</Text>
+              <Text className="font-bold flex-1">D</Text>
+              <Text className="font-bold flex-1">L</Text>
+              <Text className="font-bold flex-1">GD</Text>
+              <Text className="font-bold flex-1">Pts</Text>
             </View>
+            <FlatList
+              data={tableData}
+              keyExtractor={(item) => item.team_id}
+              renderItem={renderTableRow}
+            />
           </>
         )}
-      </View>
-    </SafeAreaView>
+      </LinearGradient>
+    </View>
   );
 };
 
-export default StandingsScreen;
+export default StandingScreen;

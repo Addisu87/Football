@@ -9,7 +9,7 @@ const LeagueTable = () => {
   useEffect(() => {
     setIsLoading(true);
     getStandingsData().then((res) => {
-      setTableData(res);
+      setTableData(res[0]?.league?.standings[0]);
       setInterval(() => {
         setIsLoading(false);
       }, 2000);
@@ -19,14 +19,14 @@ const LeagueTable = () => {
   const renderTableRow = ({ item }) => {
     return (
       <View style={styles.tableRow}>
-        <Text style={styles.position}>{item.rank}</Text>
-        <Text style={styles.team}>{item.team.name}</Text>
-        <Text style={styles.played}>{item.all.played}</Text>
-        <Text style={styles.win}>{item.all.win}</Text>
-        <Text style={styles.draw}>{item.all.draw}</Text>
-        <Text style={styles.lose}>{item.all.lose}</Text>
-        <Text style={styles.goalDiff}>{item.goalsDiff}</Text>
-        <Text style={styles.points}>{item.points}</Text>
+        <Text style={styles.position}>{item?.rank}</Text>
+        <Text style={styles.team}>{item.team?.name}</Text>
+        <Text style={styles.played}>{item.all?.played}</Text>
+        <Text style={styles.win}>{item.all?.win}</Text>
+        <Text style={styles.draw}>{item.all?.draw}</Text>
+        <Text style={styles.lose}>{item.all?.lose}</Text>
+        <Text style={styles.goalDiff}>{item?.goalsDiff}</Text>
+        <Text style={styles.points}>{item?.points}</Text>
       </View>
     );
   };

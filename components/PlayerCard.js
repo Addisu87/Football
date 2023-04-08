@@ -37,7 +37,7 @@ const PlayerCard = ({
       className="bg-white mr-3 shadow"
     >
       <View className="grid grid-cols-2 gap-4">
-        <View className="items-center justify-center flex-row space-x-2">
+        <View className="items-center flex-row space-x-2">
           <View>
             <Image
               source={Photo}
