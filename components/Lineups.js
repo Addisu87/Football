@@ -8,7 +8,7 @@ import {
 } from "react-native";
 import React, { useEffect, useState } from "react";
 import { getLineUps } from "../api/API";
-import { useNavigation, useRoute } from "@react-navigation/native";
+import { useNavigation } from "@react-navigation/native";
 import { soccerField } from "../assets/images/index";
 import { ArrowLeftIcon } from "react-native-heroicons/outline";
 
@@ -74,7 +74,14 @@ const Lineups = () => {
       </View>
 
       <View>
-        <Text className="uppercase text-bold">Substitutes</Text>
+        <View>
+          <Text className="uppercase text-bold">Substitutes</Text>
+        </View>
+        <View className="flex-row">
+          <Text>{item.substitutes.player.name}</Text>
+          <Text>{item.substitutes.player.number}</Text>
+          <Text>{item.substitutes.player.pos}</Text>
+        </View>
       </View>
     </View>
   );
