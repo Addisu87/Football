@@ -39,7 +39,6 @@ const LeagueTable = () => {
         </View>
       ) : (
         <>
-          {" "}
           <View style={styles.headerRow}>
             <Text style={styles.positionHeader}>Pos</Text>
             <Text style={styles.teamHeader}>Team</Text>
