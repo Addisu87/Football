@@ -39,8 +39,8 @@ const Lineups = () => {
       <View>
         <View className="flex-row justify-between">
           <View className="flex-row space-x-2">
-            <Text>{item.team.name}</Text>
-            <Text>{item.formation}</Text>
+            <Text className="uppercase text-bold">{item.team.name}</Text>
+            <Text className="text-gray-400">{item.formation}</Text>
           </View>
           <Image
             source={{ uri: item.team.logo }}
@@ -49,7 +49,7 @@ const Lineups = () => {
         </View>
 
         <View>
-          <Text className="uppercase text-bold">Coach</Text>
+          <Text className="uppercase text-bold text-gray-400">Coach</Text>
           <View className="flex-row justify-between">
             <Image
               source={{ uri: item.coach.photo }}
@@ -61,7 +61,7 @@ const Lineups = () => {
       </View>
 
       <View>
-        <Text className="uppercase text-bold">StartingXI</Text>
+        <Text className="uppercase text-bold text-gray-400">StartingXI</Text>
         <ImageBackground
           source={soccerField}
           className="flex-1 bg-cover justify-center items-center"
@@ -75,7 +75,7 @@ const Lineups = () => {
 
       <View>
         <View>
-          <Text className="uppercase text-bold">Substitutes</Text>
+          <Text className="uppercase text-bold text-gray-400">Substitutes</Text>
         </View>
         <View className="flex-row">
           <Text>{item.substitutes.player.name}</Text>
