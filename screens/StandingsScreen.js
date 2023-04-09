@@ -31,14 +31,14 @@ const StandingScreen = () => {
         <View className="flex-initial w-[10%]">
           <Text>{item?.rank}</Text>
         </View>
-        <View className="flex-row w-[30%] space-x-2">
+        <View className="flex-row w-[30%] space-x-2 items-center justify-center">
           <Image
             source={{ uri: item.team?.logo }}
             className="w-3 h-3 rounded-full"
           />
           <Text>
             {item.team?.name?.length > 9
-              ? `${item.team?.name.slice(0, 9)}...`
+              ? `${item.team?.name.slice(0, 9)}..`
               : item.team?.name}
           </Text>
         </View>
