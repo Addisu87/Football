@@ -33,7 +33,9 @@ const DiscoverScreen = () => {
         </View>
       </View>
 
-      <View><Lineups /></View>
+      <View>
+        <Lineups />
+      </View>
     </SafeAreaView>
   );
 };

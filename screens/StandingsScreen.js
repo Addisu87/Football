@@ -28,8 +28,10 @@ const StandingScreen = () => {
   const renderTableRow = ({ item }) => {
     return (
       <View className="flex-row mb-2">
-        <Text className="flex-initial w-7">{item?.rank}</Text>
-        <View className="flex-4 space-x-2">
+        <View className="flex-initial w-[10%]">
+          <Text>{item?.rank}</Text>
+        </View>
+        <View className="flex-row w-[30%] space-x-2">
           <Image
             source={{ uri: item.team?.logo }}
             className="w-3 h-3 rounded-full"
@@ -40,12 +42,24 @@ const StandingScreen = () => {
               : item.team?.name}
           </Text>
         </View>
-        <Text className="flex-auto">{item.all?.played}</Text>
-        <Text className="flex-auto">{item.all?.win}</Text>
-        <Text className="flex-auto">{item.all?.draw}</Text>
-        <Text className="flex-auto">{item.all?.lose}</Text>
-        <Text className="flex-auto">{item?.goalsDiff}</Text>
-        <Text className="flex-auto">{item?.points}</Text>
+        <View className="flex-initial w-[10%]">
+          <Text>{item.all?.played}</Text>
+        </View>
+        <View className="flex-initial w-[10%]">
+          <Text>{item.all?.win}</Text>
+        </View>
+        <View className="flex-initial w-[10%]">
+          <Text>{item.all?.draw}</Text>
+        </View>
+        <View className="flex-initial w-[10%]">
+          <Text>{item.all?.lose}</Text>
+        </View>
+        <View className="flex-initial w-[10%]">
+          <Text>{item?.goalsDiff}</Text>
+        </View>
+        <View className="flex-initial w-[10%]">
+          <Text>{item?.points}</Text>
+        </View>
       </View>
     );
   };
@@ -66,14 +80,30 @@ const StandingScreen = () => {
               <Text>England - Premier League</Text>
             </View>
             <View className="flex-row mb-2.5 bg-[#00CCBB]">
-              <Text className="font-semibold flex-initial w-7">Pos</Text>
-              <Text className="font-semibold flex-4">Team</Text>
-              <Text className="font-semibold flex-auto">P</Text>
-              <Text className="font-semibold flex-auto">W</Text>
-              <Text className="font-semibold flex-auto">D</Text>
-              <Text className="font-semibold flex-auto">L</Text>
-              <Text className="font-semibold flex-auto">GD</Text>
-              <Text className="font-semibold flex-auto">Pts</Text>
+              <View className="flex-initial w-[10%]">
+                <Text className="font-semibold">Pos</Text>
+              </View>
+              <View className="flex-initial w-[30%]">
+                <Text className="font-semibold">Team</Text>
+              </View>
+              <View className="flex-initial w-[10%]">
+                <Text className="font-semibold">P</Text>
+              </View>
+              <View className="flex-initial w-[10%]">
+                <Text className="font-semibold">W</Text>
+              </View>
+              <View className="flex-initial w-[10%]">
+                <Text className="font-semibold">D</Text>
+              </View>
+              <View className="flex-initial w-[10%]">
+                <Text className="font-semibold">L</Text>
+              </View>
+              <View className="flex-initial w-[10%]">
+                <Text className="font-semibold">GD</Text>
+              </View>
+              <View className="flex-initial w-[10%]">
+                <Text className="font-semibold">Pts</Text>
+              </View>
             </View>
             <FlatList
               data={tableData}
