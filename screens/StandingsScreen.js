@@ -1,8 +1,9 @@
 import React, { useEffect, useLayoutEffect, useState } from "react";
-import { View, Text, FlatList, ActivityIndicator, Image } from "react-native";
+import { View, Text, ActivityIndicator, Image } from "react-native";
 import { getStandingsData } from "../api/API";
 import { LinearGradient } from "expo-linear-gradient";
 import { useNavigation } from "@react-navigation/native";
+import { FlashList } from "@shopify/flash-list";
 
 const StandingScreen = () => {
   const [tableData, setTableData] = useState([]);
@@ -27,7 +28,10 @@ const StandingScreen = () => {
 
   const renderTableRow = ({ item }) => {
     return (
-      <View className="flex-row space-y-2 items-center justify-center">
+      <View
+        key={item.team.id}
+        className="flex-row space-y-2 items-center justify-center"
+      >
         <View className="flex-initial w-[10%]">
           <Text>{item?.rank}</Text>
         </View>
@@ -107,10 +111,11 @@ const StandingScreen = () => {
                 <Text className="font-semibold">Pts</Text>
               </View>
             </View>
-            <FlatList
+            <FlashList
               data={tableData}
-              keyExtractor={(item) => item.team_id}
+              keyExtractor={(item) => item.team.id}
               renderItem={renderTableRow}
+              estimatedItemSize={50}
             />
           </View>
         )}
