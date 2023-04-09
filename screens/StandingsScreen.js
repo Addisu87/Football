@@ -27,7 +27,7 @@ const StandingScreen = () => {
 
   const renderTableRow = ({ item }) => {
     return (
-      <View className="flex-row mb-2">
+      <View className="flex-row space-y-2.5">
         <View className="flex-initial w-[10%]">
           <Text>{item?.rank}</Text>
         </View>
@@ -68,7 +68,7 @@ const StandingScreen = () => {
     <View className="flex-1 p-2">
       <LinearGradient
         colors={["#5ED2A0", "#339CB1"]}
-        className="pl-4 pr-4 rounded-md h-90"
+        className="pl-4 pr-4 rounded-md h-full"
       >
         {isLoading ? (
           <View className=" flex-1 items-center justify-center">
@@ -76,10 +76,12 @@ const StandingScreen = () => {
           </View>
         ) : (
           <View>
-            <View>
-              <Text>England - Premier League</Text>
+            <View className="mb-3">
+              <Text className="font-bold uppercase">
+                England - Premier League
+              </Text>
             </View>
-            <View className="flex-row mb-2.5 bg-[#00CCBB]">
+            <View className="flex-row mb-3 bg-[#00CCBB]">
               <View className="flex-initial w-[10%]">
                 <Text className="font-semibold">Pos</Text>
               </View>
