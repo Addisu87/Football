@@ -34,7 +34,7 @@ const StandingScreen = () => {
         <View className="flex-row w-[30%] space-x-2 items-center justify-center">
           <Image
             source={{ uri: item.team?.logo }}
-            className="w-3 h-3 rounded-full"
+            className="w-4 h-4 rounded-full"
           />
           <Text>
             {item.team?.name?.length > 9
