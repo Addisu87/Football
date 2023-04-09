@@ -11,9 +11,10 @@ import {
 import { soccerField } from "../assets/images/index";
 import { ArrowLeftIcon } from "react-native-heroicons/outline";
 import { FlashList } from "@shopify/flash-list";
+import NotFound from "../components/NotFound";
 
-const Lineups = () => {
-  const [lineUps, setLineUps] = useState([]);
+const LineupScreen = () => {
+  const [lineups, setLineups] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
   const navigation = useNavigation();
@@ -21,35 +22,35 @@ const Lineups = () => {
   useEffect(() => {
     setIsLoading(true);
     getLineUps().then((res) => {
-      setLineUps(res);
+      setLineups(res);
       setTimeout(() => {
         setIsLoading(false);
       }, 2000);
     });
   }, []);
 
-  const renderItem = ({ item }) => (
+  const renderLineup = ({ item }) => (
     <View>
-      <TouchableOpacity
+      {/* <TouchableOpacity
         className="absolute top-14 left-5 p-2 bg-gray-100 rounded-full"
         onPress={() => navigation.goBack()}
       >
         <ArrowLeftIcon size={20} color="#00CCBB" />
-      </TouchableOpacity>
-      {item?.map((lineup, index) => {
-        <View key={index}>
-          <View className="flex-row justify-between">
-            <View className="flex-row space-x-2">
-              <Text className="uppercase text-bold">{lineup?.team?.name}</Text>
-              <Text className="text-gray-400">{lineup?.formation}</Text>
-            </View>
-            <Image
-              source={{ uri: lineup?.team?.logo }}
-              className="w-10 h-10 rounded-full"
-            />
+      </TouchableOpacity> */}
+      {item?.map((lineup) => {
+        <View key={lineup.team?.id} className="flex-row justify-between">
+          <View className="flex-row space-x-2">
+            <Text className="uppercase text-bold">{lineup?.team?.name}</Text>
+            <Text className="text-gray-400">{lineup?.formation}</Text>
           </View>
+          <Image
+            source={{ uri: lineup?.team?.logo }}
+            className="w-10 h-10 rounded-full"
+          />
+        </View>;
+      })}
 
-          {/* <View>
+      {/* <View>
             <Text className="uppercase text-bold text-gray-400">Coach</Text>
             {lineup.coach.map((manager, index) => {
               <View key={index} className="flex-row justify-between">
@@ -91,8 +92,6 @@ const Lineups = () => {
               </View>
             </View>;
           })} */}
-        </View>;
-      })}
     </View>
   );
 
@@ -104,16 +103,24 @@ const Lineups = () => {
         </View>
       ) : (
         <>
-          <FlashList
-            data={lineUps}
-            renderItem={renderItem}
-            keyExtractor={(item) => item.team?.id.toString()}
-            estimatedItemSize={50}
-          />
+          {lineups.length > 0 ? (
+            <>
+              <FlashList
+                data={lineups}
+                renderItem={renderLineup}
+                keyExtractor={(item) => item.team?.id.toString()}
+                estimatedItemSize={50}
+              />
+            </>
+          ) : (
+            <>
+              <NotFound />
+            </>
+          )}
         </>
       )}
     </View>
   );
 };
 
-export default Lineups;
+export default LineupScreen;

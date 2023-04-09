@@ -4,7 +4,7 @@ import ArticleDetail from "../screens/ArticleDetail";
 import Tabs from "./Tabs";
 import Players from "../components/Players";
 import PlayerStatistics from "../components/PlayerStatistics";
-import Lineups from "../components/Lineups";
+import LineupScreen from "../screens/LineupScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -41,7 +41,7 @@ const NavStacks = () => {
 
       <Stack.Screen
         name="Lineups"
-        component={Lineups}
+        component={LineupScreen}
         options={{ headerShown: false }}
       />
     </Stack.Navigator>

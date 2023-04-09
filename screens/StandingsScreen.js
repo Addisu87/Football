@@ -85,7 +85,7 @@ const StandingScreen = () => {
                 England - Premier League
               </Text>
             </View>
-            <View className="flex-row mb-2 bg-[#00CCBB] items-center justify-center">
+            <View className="flex-row mb-1 bg-[#00CCBB] items-center justify-center">
               <View className="flex-initial w-[10%]">
                 <Text className="font-semibold">Pos</Text>
               </View>

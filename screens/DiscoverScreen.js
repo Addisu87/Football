@@ -2,7 +2,7 @@ import React, { useLayoutEffect } from "react";
 import { View, Text, SafeAreaView, Image } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { BellIcon, MagnifyingGlassIcon } from "react-native-heroicons/outline";
-import Lineups from "../components/Lineups";
+import LineupScreen from "./LineupScreen";
 
 const DiscoverScreen = () => {
   const navigation = useNavigation();
@@ -32,7 +32,7 @@ const DiscoverScreen = () => {
       </View>
 
       <View>
-        <Lineups />
+        <LineupScreen />
       </View>
     </SafeAreaView>
   );
