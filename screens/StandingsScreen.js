@@ -27,11 +27,11 @@ const StandingScreen = () => {
 
   const renderTableRow = ({ item }) => {
     return (
-      <View className="flex-row space-y-2.5">
+      <View className="flex-row space-y-2 items-center justify-center">
         <View className="flex-initial w-[10%]">
           <Text>{item?.rank}</Text>
         </View>
-        <View className="flex-row w-[30%] space-x-2 items-center justify-center">
+        <View className="flex-row w-[30%] space-x-2 items-center">
           <Image
             source={{ uri: item.team?.logo }}
             className="w-4 h-4 rounded-full"
@@ -81,7 +81,7 @@ const StandingScreen = () => {
                 England - Premier League
               </Text>
             </View>
-            <View className="flex-row mb-3 bg-[#00CCBB]">
+            <View className="flex-row mb-2 bg-[#00CCBB] items-center justify-center">
               <View className="flex-initial w-[10%]">
                 <Text className="font-semibold">Pos</Text>
               </View>

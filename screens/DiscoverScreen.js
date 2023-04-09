@@ -2,8 +2,6 @@ import React, { useLayoutEffect } from "react";
 import { View, Text, SafeAreaView, Image } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { BellIcon, MagnifyingGlassIcon } from "react-native-heroicons/outline";
-import Widgets from "../components/Widgets";
-import LeagueTable from "../components/LeagueTable";
 import Lineups from "../components/Lineups";
 
 const DiscoverScreen = () => {
