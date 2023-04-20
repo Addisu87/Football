@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const instance = axios.create({
+export const instance = axios.create({
   baseURL: "https://v3.football.api-sports.io",
   headers: {
     "x-rapidapi-key": "95f8210a47b0bc73dcba2614e4c2cb9f",
@@ -9,7 +9,7 @@ const instance = axios.create({
   timeout: 5000,
 });
 
-const getData = async (endpoint, params) => {
+export const getData = async (endpoint, params) => {
   try {
     const { data } = await instance.get(endpoint, { params });
     return data.response;

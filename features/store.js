@@ -5,8 +5,8 @@ import teamReducer from "./teamSlice";
 
 export default configureStore({
   reducer: {
-    team: teamReducer,
+    teams: teamReducer,
     match: matchReducer,
-    standing: standingReducer,
+    standings: standingReducer,
   },
 });
