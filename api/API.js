@@ -18,9 +18,6 @@ export const getData = async (endpoint, params) => {
   }
 };
 
-export const getTeamData = async () =>
-  getData(`/teams`, { league: "39", season: "2022" });
-
 export const getFixturesData = async () =>
   getData(`/fixtures`, {
     league: "39",
