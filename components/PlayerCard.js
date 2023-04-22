@@ -1,4 +1,5 @@
 import { useNavigation } from "@react-navigation/native";
+import { LinearGradient } from "expo-linear-gradient";
 import React from "react";
 import { View, Text, Image, TouchableOpacity } from "react-native";
 
@@ -34,9 +35,12 @@ const PlayerCard = ({
           Cards,
         })
       }
-      className="bg-white mr-3 shadow"
+      className="relative p-2 m-2 drop-shadow-lg max-w-md mx-auto rounded-xl overflow-hidden bg-gray-200"
     >
-      <View className="grid grid-cols-2 gap-4">
+      <LinearGradient
+        colors={["#5ED2A0", "#339CB1"]}
+        className="m-2 max-w-md mx-auto rounded-xl overflow-hidden drop-shadow-lg md:max-w-2xl"
+      >
         <View className="items-center flex-row space-x-2">
           <View>
             <Image
@@ -56,7 +60,7 @@ const PlayerCard = ({
             </Text>
           </View>
         </View>
-      </View>
+      </LinearGradient>
     </TouchableOpacity>
   );
 };
