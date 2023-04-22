@@ -41,23 +41,25 @@ const PlayerCard = ({
         colors={["#5ED2A0", "#339CB1"]}
         className="m-2 max-w-md mx-auto rounded-xl overflow-hidden drop-shadow-lg md:max-w-2xl"
       >
-        <View className="items-center flex-row space-x-2">
-          <View>
-            <Image
-              source={Photo}
-              className="w-20 h-20 rounded-full drop-shadow-lg"
-            />
-          </View>
-          <View className="space-y-1">
-            <Text className="text-neutral-700 dark:text-neutral-800">
-              {Name}
-            </Text>
-            <Text className="text-neutral-700 dark:text-neutral-800">
-              {Age}
-            </Text>
-            <Text className="text-neutral-700 dark:text-neutral-800">
-              {Position}
-            </Text>
+        <View className="w-32 h-40">
+          <View className="items-center justify-center">
+            <View>
+              <Image
+                source={Photo}
+                className="w-20 h-20 rounded-full drop-shadow-lg"
+              />
+            </View>
+            <View className="space-y-1">
+              <Text className="text-neutral-700 dark:text-neutral-800">
+                {Name}
+              </Text>
+              <Text className="text-neutral-700 dark:text-neutral-800">
+                {Age}
+              </Text>
+              <Text className="text-neutral-700 dark:text-neutral-800">
+                {Position}
+              </Text>
+            </View>
           </View>
         </View>
       </LinearGradient>
