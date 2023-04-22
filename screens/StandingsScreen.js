@@ -71,7 +71,7 @@ const StandingScreen = () => {
         colors={["#5ED2A0", "#339CB1"]}
         className="pl-4 pr-4 rounded-md h-full"
       >
-        {!standings?.length ? (
+        {!standings.length ? (
           <View className=" flex-1 items-center justify-center">
             <ActivityIndicator size="large" color="#00CCBB" />
           </View>

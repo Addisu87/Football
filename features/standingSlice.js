@@ -8,6 +8,7 @@ const initialState = {
   error: null,
 };
 
+// Fetching standings from API
 export const fetchStandings = createAsyncThunk(
   "standings/fetchStandings",
   async () => {
@@ -16,7 +17,7 @@ export const fetchStandings = createAsyncThunk(
         league: "39",
         season: "2022",
       });
-      return data.response[0]?.league?.standings[0];
+      return data?.response[0]?.league?.standings[0];
     } catch (error) {
       console.error("error", error);
     }
