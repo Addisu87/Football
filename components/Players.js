@@ -1,34 +1,31 @@
 import React, { useEffect, useState } from "react";
 import { View, ActivityIndicator, SafeAreaView } from "react-native";
 import PlayerCard from "./PlayerCard";
-import { getPlayersData } from "../api/API";
 import NotFound from "./NotFound";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchPlayers, selectPlayerItems } from "../features/playerSlice";
 
 const Players = () => {
-  const [isLoading, setIsLoading] = useState(false);
-  const [playerData, setPlayerData] = useState([]);
+  const players = useSelector(selectPlayerItems);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    setIsLoading(true);
-    getPlayersData().then((play) => {
-      setPlayerData(play);
-      setTimeout(() => {
-        setIsLoading(false);
-      }, 2000);
-    });
-  }, []);
+    if (!players?.length) {
+      dispatch(fetchPlayers());
+    }
+  }, [dispatch]);
 
   return (
     <SafeAreaView>
-      {isLoading ? (
+      {!players?.length ? (
         <View className=" flex-1 items-center justify-center">
           <ActivityIndicator size="large" color="#0B646B" />
         </View>
       ) : (
         <>
-          {playerData.length > 0 ? (
-            <View>
-              {playerData?.map((play, index) => (
+          {players.length > 0 ? (
+            <>
+              {players?.map((play, index) => (
                 <PlayerCard
                   key={index}
                   Photo={{ uri: play?.player?.photo }}
@@ -44,7 +41,7 @@ const Players = () => {
                   Cards={play?.statistics[0]?.cards?.yellowred}
                 />
               ))}
-            </View>
+            </>
           ) : (
             <>
               <NotFound />

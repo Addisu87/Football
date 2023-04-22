@@ -18,13 +18,6 @@ export const getData = async (endpoint, params) => {
   }
 };
 
-export const getFixturesData = async () =>
-  getData(`/fixtures`, {
-    league: "39",
-    season: "2022",
-    date: "2023-04-09",
-  });
-
 export const getLineUps = async () => {
   getData(`/fixtures/lineups`, {
     league: "39",
@@ -32,12 +25,3 @@ export const getLineUps = async () => {
     fixture: "215662",
   });
 };
-
-export const getPlayersData = async () =>
-  getData(`/players`, { league: "39", season: "2022" });
-
-export const getStandingsData = async () =>
-  getData(`/standings`, { league: "39", season: "2022" });
-
-export const getGameData = async () =>
-  getData(`/widgets/game`, { league: "39", season: "2022" });

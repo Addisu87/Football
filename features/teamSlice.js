@@ -27,7 +27,6 @@ export const teamSlice = createSlice({
         state.status = "succeeded";
         state.loading = false;
         // Add any fetched teams to the array
-        // state.items = state.items.concat(action.payload);
         state.items = [...state.items, ...action.payload];
       })
       .addCase(fetchTeams.rejected, (state, action) => {

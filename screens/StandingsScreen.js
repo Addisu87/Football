@@ -1,14 +1,15 @@
-import React, { useEffect, useLayoutEffect, useState } from "react";
+import React, { useEffect, useLayoutEffect } from "react";
 import { View, Text, ActivityIndicator, Image } from "react-native";
-import { getStandingsData } from "../api/API";
 import { LinearGradient } from "expo-linear-gradient";
 import { useNavigation } from "@react-navigation/native";
 import { FlashList } from "@shopify/flash-list";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchStandings, selectStandingItems } from "../features/standingSlice";
 
 const StandingScreen = () => {
-  const [tableData, setTableData] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
   const navigation = useNavigation();
+  const standings = useSelector(selectStandingItems);
+  const dispatch = useDispatch();
 
   useLayoutEffect(() => {
     navigation.setOptions({
@@ -17,19 +18,15 @@ const StandingScreen = () => {
   }, []);
 
   useEffect(() => {
-    setIsLoading(true);
-    getStandingsData().then((res) => {
-      setTableData(res[0]?.league?.standings[0]);
-      setInterval(() => {
-        setIsLoading(false);
-      }, 2000);
-    });
-  }, []);
+    if (!standings.length) {
+      dispatch(fetchStandings());
+    }
+  }, [dispatch]);
 
   const renderTableRow = ({ item }) => {
     return (
       <View
-        key={item.team.id}
+        key={item.team?.id}
         className="flex-row space-y-2 items-center justify-center"
       >
         <View className="flex-initial w-[10%]">
@@ -74,7 +71,7 @@ const StandingScreen = () => {
         colors={["#5ED2A0", "#339CB1"]}
         className="pl-4 pr-4 rounded-md h-full"
       >
-        {isLoading ? (
+        {!standings?.length ? (
           <View className=" flex-1 items-center justify-center">
             <ActivityIndicator size="large" color="#00CCBB" />
           </View>
@@ -112,8 +109,8 @@ const StandingScreen = () => {
               </View>
             </View>
             <FlashList
-              data={tableData}
-              keyExtractor={(item) => item.team.id}
+              data={standings}
+              keyExtractor={(item) => item.team?.id}
               renderItem={renderTableRow}
               estimatedItemSize={50}
             />

@@ -1,23 +1,26 @@
-import React, { useEffect, useState } from "react";
-import { View, Text, SafeAreaView, ActivityIndicator } from "react-native";
-import { ScrollView } from "react-native";
+import React, { useEffect } from "react";
+import {
+  View,
+  Text,
+  SafeAreaView,
+  ActivityIndicator,
+  ScrollView,
+} from "react-native";
 import MatchesCard from "./MatchesCard";
-import { getFixturesData } from "../api/API";
 import NotFound from "./NotFound";
+import { fetchMatch, selectMatchItems } from "../features/matchSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 const Matches = () => {
-  const [fixtureData, setFixtureData] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const match = useSelector(selectMatchItems);
+  const dispatch = useDispatch();
 
+  // show all match
   useEffect(() => {
-    setIsLoading(true);
-    getFixturesData().then((game) => {
-      setFixtureData(game);
-      setInterval(() => {
-        setIsLoading(false);
-      }, 2000);
-    });
-  }, []);
+    if (!match?.length) {
+      dispatch(fetchMatch());
+    }
+  }, [dispatch]);
 
   return (
     <SafeAreaView>
@@ -27,7 +30,7 @@ const Matches = () => {
         </Text>
         <Text className="uppercase">View All</Text>
       </View>
-      {isLoading ? (
+      {!match?.length ? (
         <>
           <View className=" flex-1 items-center justify-center">
             <ActivityIndicator size="large" color="#0B646B" />
@@ -40,9 +43,9 @@ const Matches = () => {
             showsHorizontalScrollIndicator={false}
             contentContainerStyle={{ paddingHorizontal: 15, paddingTop: 10 }}
           >
-            {fixtureData?.length > 0 ? (
+            {match?.length > 0 ? (
               <>
-                {fixtureData?.map((game, index) => (
+                {match?.map((game, index) => (
                   <MatchesCard
                     key={index}
                     teamHomeImgUrl={{ uri: game?.teams?.home?.logo }}
