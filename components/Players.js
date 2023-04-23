@@ -8,10 +8,14 @@ import {
 import PlayerCard from "./PlayerCard";
 import NotFound from "./NotFound";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchPlayers, selectPlayerItems } from "../features/playerSlice";
+import {
+  fetchPlayers,
+  selectPlayerById,
+  selectPlayerItems,
+} from "../features/playerSlice";
 
 const Players = () => {
-  const players = useSelector(selectPlayerItems);
+  const players = useSelector(selectPlayerById);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -29,7 +33,7 @@ const Players = () => {
       ) : (
         <>
           <ScrollView
-            horizontal
+            vertical
             showsHorizontalScrollIndicator={false}
             contentContainerStyle={{ paddingHorizontal: 15, paddingTop: 10 }}
           >
