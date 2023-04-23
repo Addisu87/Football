@@ -21,7 +21,7 @@ const StandingScreen = () => {
     if (!standings.length) {
       dispatch(fetchStandings());
     }
-  }, [dispatch]);
+  }, [dispatch, standings]);
 
   const renderTableRow = ({ item }) => {
     return (

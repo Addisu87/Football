@@ -1,22 +1,10 @@
-import React, { useEffect, useState } from "react";
-import {
-  View,
-  Text,
-  ActivityIndicator,
-  ScrollView,
-  Image,
-  TouchableOpacity,
-} from "react-native";
+import React from "react";
+import { View, Text, ScrollView, Image, TouchableOpacity } from "react-native";
 import { ArrowLeftIcon, ShareIcon } from "react-native-heroicons/outline";
 import { useNavigation, useRoute } from "@react-navigation/native";
 
 const PlayerStatistics = () => {
-  const [isLoading, setIsLoading] = useState(false);
   const navigation = useNavigation();
-
-  useEffect(() => {
-    setIsLoading(true);
-  }, []);
 
   const {
     params: {
@@ -36,48 +24,40 @@ const PlayerStatistics = () => {
 
   return (
     <ScrollView>
-      {isLoading ? (
-        <View className=" flex-1 items-center justify-center">
-          <ActivityIndicator size="large" color="#0B646B" />
-        </View>
-      ) : (
-        <View className="relative">
-          <Image source={Photo} className="w-full h-56 bg-gray-200 p-4" />
+      <View className="relative">
+        <Image source={Photo} className="w-full h-56 bg-gray-200 p-4 " />
 
-          <TouchableOpacity
-            className="absolute top-14 left-5 p-2 bg-gray-100 rounded-full"
-            onPress={() => navigation.goBack()}
-          >
-            <ArrowLeftIcon size={20} color="#00CCBB" />
-          </TouchableOpacity>
+        <TouchableOpacity
+          className="absolute top-14 left-5 p-2 bg-gray-100 rounded-full"
+          onPress={() => navigation.goBack()}
+        >
+          <ArrowLeftIcon size={20} color="#00CCBB" />
+        </TouchableOpacity>
 
-          <TouchableOpacity className="absolute top-14 left-5 p-2 bg-gray-100 rounded-full">
-            <ShareIcon size={20} color="#00CCBB" />
-          </TouchableOpacity>
-          <View className="flex-row justify-between">
-            <View className="flex-row space-x-2">
-              <View className="space-y-1">
-                <Image source={TeamLogo} className="w-10 h-10 rounded-full" />
-                <Text>{TeamName}</Text>
-              </View>
+        <TouchableOpacity className="absolute top-14 right-5 p-2 bg-gray-100 rounded-full">
+          <ShareIcon size={20} color="#00CCBB" />
+        </TouchableOpacity>
 
-              <View className="text-base space-y-1">
-                <Text>{Name}</Text>
-                <Text>{Age}</Text>
-                <Text>{Position}</Text>
-                <Text>{Nationality}</Text>
-              </View>
+        <View className="flex-row justify-between items-center">
+          <View className="flex-row space-x-2">
+            <View className="space-y-1">
+              <Image source={TeamLogo} className="w-10 h-10 rounded-full" />
+              <Text>{TeamName}</Text>
             </View>
 
-            <View>
-              <Text>{Appearance}</Text>
-              <Text>{Goals}</Text>
-              <Text>{Passes}</Text>
-              <Text>{Cards}</Text>
+            <View className="space-y-1">
+              <Text className="text-base">{Name}</Text>
+              <Text>Age: {Age}</Text>
+              <Text>Position: {Position}</Text>
+              <Text>Nationality: {Nationality}</Text>
+              <Text>Appearance: {Appearance}</Text>
+              <Text>Goals: {Goals}</Text>
+              <Text>Passes: {Passes}</Text>
+              <Text>Cards: {Cards}</Text>
             </View>
           </View>
         </View>
-      )}
+      </View>
     </ScrollView>
   );
 };
