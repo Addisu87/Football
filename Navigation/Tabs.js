@@ -19,7 +19,10 @@ const Tabs = () => {
   return (
     <Tab.Navigator
       screenOptions={{
-        tabBarStyle: { position: "absolute" },
+        headerShown: false,
+        tabBarStyle: {
+          position: "absolute",
+        },
         tabBarActiveTintColor: "#00CCBB",
         tabBarBackground: () => (
           <BlurView
@@ -34,10 +37,10 @@ const Tabs = () => {
         name="Home"
         component={HomeScreen}
         options={{
-          tabBarLabel: ({ color }) => (
-            <View style={{ flexDirection: "column", alignItems: "center" }}>
+          tabBarLabel: "Home",
+          tabBarIcon: ({ color }) => (
+            <View className="flex-col items-center">
               <HomeIcon color={color} size={24} />
-              <Text style={{ color: color }}>Home</Text>
             </View>
           ),
         }}
@@ -47,10 +50,10 @@ const Tabs = () => {
         name="More"
         component={TransferScreen}
         options={{
-          tabBarLabel: ({ color }) => (
-            <View style={{ flexDirection: "column", alignItems: "center" }}>
+          tabBarLabel: "Transfer",
+          tabBarIcon: ({ color }) => (
+            <View className="flex-col items-center">
               <SquaresPlusIcon color={color} size={24} />
-              <Text style={{ color: color }}>Transfer</Text>
             </View>
           ),
         }}
@@ -60,10 +63,10 @@ const Tabs = () => {
         name="Standings"
         component={StandingsScreen}
         options={{
-          tabBarLabel: ({ color }) => (
-            <View style={{ flexDirection: "column", alignItems: "center" }}>
+          tabBarLabel: "Stats",
+          tabBarIcon: ({ color }) => (
+            <View className="flex-col items-center">
               <ChartBarIcon color={color} size={24} />
-              <Text style={{ color: color }}>Stats</Text>
             </View>
           ),
         }}
@@ -73,10 +76,10 @@ const Tabs = () => {
         name="Discover"
         component={DiscoverScreen}
         options={{
-          tabBarLabel: ({ color }) => (
-            <View style={{ flexDirection: "column", alignItems: "center" }}>
+          tabBarLabel: "Explore",
+          tabBarIcon: ({ color }) => (
+            <View className="flex-col items-center">
               <ArrowsPointingOutIcon color={color} size={24} />
-              <Text style={{ color: color }}>Explore</Text>
             </View>
           ),
         }}
