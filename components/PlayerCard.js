@@ -36,28 +36,25 @@ const PlayerCard = ({
             Cards,
           })
         }
-        className="relative p-2 m-1 drop-shadow-lg max-w-md mx-auto rounded-xl overflow-hidden bg-gray-200 grid-cols-2"
+        className="relative p-1 drop-shadow-lg max-w-md mx-auto rounded-lg"
       >
         <LinearGradient
           colors={["#5ED2A0", "#339CB1"]}
-          className="m-2 max-w-md mx-auto rounded-xl overflow-hidden drop-shadow-lg md:max-w-2xl"
+          className="m-2 max-w-md mx-auto rounded-xl overflow-hidden drop-shadow-lg"
         >
-          <View className="w-full h-32">
-            <View className="items-center justify-center space-y-2 top-3 flex-row space-x-2">
-              <View>
-                <Image
-                  source={Photo}
-                  className="w-24 h-24 rounded-full drop-shadow-lg"
-                />
-              </View>
-              <View className="space-y-2">
-                <Text className="text-neutral-700 dark:text-neutral-800">
+          <View className="w-full h-24">
+            <View className="py-2 px-2 mx-auto items-center justify-center flex-row space-x-6">
+              <Image
+                source={Photo}
+                className="block w-12 h-12 rounded-full drop-shadow-lg shrink-0"
+              />
+
+              <View className="text-left space-y-1">
+                <Text className="text-lg text-black font-semibold">
                   Name: {Name}
                 </Text>
-                <Text className="text-neutral-700 dark:text-neutral-800">
-                  Age: {Age}
-                </Text>
-                <Text className="text-neutral-700 dark:text-neutral-800">
+                <Text className="text-slate-500 font-medium">Age: {Age}</Text>
+                <Text className="text-slate-500 font-medium">
                   Position: {Position}
                 </Text>
               </View>

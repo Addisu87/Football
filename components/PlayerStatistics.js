@@ -25,7 +25,7 @@ const PlayerStatistics = () => {
   return (
     <ScrollView>
       <View className="relative">
-        <Image source={Photo} className="w-full h-56 bg-gray-200 p-4 " />
+        <Image source={Photo} className="w-full h-36 bg-gray-200 p-4 " />
 
         <TouchableOpacity
           className="absolute top-14 left-5 p-2 bg-gray-100 rounded-full"
