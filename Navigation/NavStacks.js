@@ -10,7 +10,7 @@ const Stack = createNativeStackNavigator();
 
 const NavStacks = () => {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator headerMode="none">
       <Stack.Screen
         name="Tabs"
         component={Tabs}

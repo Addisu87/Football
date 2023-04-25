@@ -1,23 +1,26 @@
-import React, { useEffect, useState } from "react";
-import { View, Text, SafeAreaView, ActivityIndicator } from "react-native";
-import { ScrollView } from "react-native";
+import React, { useEffect } from "react";
+import {
+  View,
+  Text,
+  SafeAreaView,
+  ActivityIndicator,
+  ScrollView,
+} from "react-native";
 import TeamsCard from "./TeamsCard";
-import { getTeamData } from "../api/API";
+
 import NotFound from "./NotFound";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchTeams, selectTeamItems } from "../features/teamSlice";
 
 const Teams = () => {
-  const [isLoading, setIsLoading] = useState(false);
-  const [mainTeam, setMainTeam] = useState([]);
+  const teams = useSelector(selectTeamItems);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    setIsLoading(true);
-    getTeamData().then((team) => {
-      setMainTeam(team);
-      setInterval(() => {
-        setIsLoading(false);
-      }, 2000);
-    });
-  }, []);
+    if (!teams?.length) {
+      dispatch(fetchTeams());
+    }
+  }, [dispatch]);
 
   return (
     <SafeAreaView>
@@ -26,35 +29,37 @@ const Teams = () => {
         <Text className="uppercase">View All</Text>
       </View>
 
-      {isLoading ? (
+      {!teams?.length ? (
         <>
           <View className=" flex-1 items-center justify-center">
             <ActivityIndicator size="large" color="#0B646B" />
           </View>
         </>
       ) : (
-        <ScrollView
-          contentContainerStyle={{ paddingHorizontal: 15, paddingTop: 10 }}
-          horizontal
-          showsHorizontalScrollIndicator={false}
-        >
-          {mainTeam?.length > 0 ? (
-            <>
-              {mainTeam?.map((data, id) => (
-                <TeamsCard
-                  key={id}
-                  imgUrl={{ uri: data?.team?.logo }}
-                  name={data?.team?.name}
-                  foundedYear={data?.team?.founded}
-                />
-              ))}
-            </>
-          ) : (
-            <>
-              <NotFound />
-            </>
-          )}
-        </ScrollView>
+        <>
+          <ScrollView
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            contentContainerStyle={{ paddingHorizontal: 15, paddingTop: 10 }}
+          >
+            {teams?.length > 0 ? (
+              <>
+                {teams?.map((data, id) => (
+                  <TeamsCard
+                    key={id}
+                    imgUrl={{ uri: data?.team?.logo }}
+                    name={data?.team?.name}
+                    foundedYear={data?.team?.founded}
+                  />
+                ))}
+              </>
+            ) : (
+              <>
+                <NotFound />
+              </>
+            )}
+          </ScrollView>
+        </>
       )}
     </SafeAreaView>
   );

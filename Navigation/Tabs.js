@@ -1,17 +1,17 @@
 import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { StyleSheet, Text } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 import { BlurView } from "expo-blur";
 import HomeScreen from "../screens/HomeScreen";
 import DiscoverScreen from "../screens/DiscoverScreen";
 import StandingsScreen from "../screens/StandingsScreen";
-import MoreScreen from "../screens/MoreScreen";
 import {
   ArrowsPointingOutIcon,
   ChartBarIcon,
   HomeIcon,
   SquaresPlusIcon,
 } from "react-native-heroicons/outline";
+import TransferScreen from "../screens/TransferScreen";
 
 const Tab = createBottomTabNavigator();
 
@@ -19,7 +19,10 @@ const Tabs = () => {
   return (
     <Tab.Navigator
       screenOptions={{
-        tabBarStyle: { position: "absolute" },
+        headerShown: false,
+        tabBarStyle: {
+          position: "absolute",
+        },
         tabBarActiveTintColor: "#00CCBB",
         tabBarBackground: () => (
           <BlurView
@@ -34,13 +37,37 @@ const Tabs = () => {
         name="Home"
         component={HomeScreen}
         options={{
-          tabBarLabel: () => (
-            <Text className="focus:text-white focus:outline-none text-gray-700">
-              Home
-            </Text>
+          tabBarLabel: "Home",
+          tabBarIcon: ({ color }) => (
+            <View className="flex-col items-center">
+              <HomeIcon color={color} size={24} />
+            </View>
           ),
-          tabBarIcon: ({ color, size }) => (
-            <HomeIcon color={color} size={size} />
+        }}
+      />
+
+      <Tab.Screen
+        name="More"
+        component={TransferScreen}
+        options={{
+          tabBarLabel: "Transfer",
+          tabBarIcon: ({ color }) => (
+            <View className="flex-col items-center">
+              <SquaresPlusIcon color={color} size={24} />
+            </View>
+          ),
+        }}
+      />
+
+      <Tab.Screen
+        name="Standings"
+        component={StandingsScreen}
+        options={{
+          tabBarLabel: "Stats",
+          tabBarIcon: ({ color }) => (
+            <View className="flex-col items-center">
+              <ChartBarIcon color={color} size={24} />
+            </View>
           ),
         }}
       />
@@ -49,41 +76,11 @@ const Tabs = () => {
         name="Discover"
         component={DiscoverScreen}
         options={{
-          tabBarLabel: () => (
-            <Text className="focus:text-white focus:outline-none text-gray-700">
-              Discover
-            </Text>
-          ),
-          tabBarIcon: ({ color, size }) => (
-            <ArrowsPointingOutIcon color={color} size={size} />
-          ),
-        }}
-      />
-      <Tab.Screen
-        name="Standings"
-        component={StandingsScreen}
-        options={{
-          tabBarLabel: () => (
-            <Text className="focus:text-white focus:outline-none text-gray-700">
-              Standings
-            </Text>
-          ),
-          tabBarIcon: ({ color, size }) => (
-            <ChartBarIcon color={color} size={size} />
-          ),
-        }}
-      />
-      <Tab.Screen
-        name="More"
-        component={MoreScreen}
-        options={{
-          tabBarLabel: () => (
-            <Text className="focus:text-white focus:outline-none text-gray-700">
-              More
-            </Text>
-          ),
-          tabBarIcon: ({ color, size }) => (
-            <SquaresPlusIcon color={color} size={size} />
+          tabBarLabel: "Explore",
+          tabBarIcon: ({ color }) => (
+            <View className="flex-col items-center">
+              <ArrowsPointingOutIcon color={color} size={24} />
+            </View>
           ),
         }}
       />

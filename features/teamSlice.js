@@ -1,43 +1,45 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { getData } from "../api/API";
 
 const initialState = {
   items: [],
+  loading: false,
+  error: null,
 };
 
+export const fetchTeams = createAsyncThunk("teams/fetchTeams", async () =>
+  getData(`/teams`, { league: "39", season: "2022" })
+);
+
 export const teamSlice = createSlice({
-  name: "team",
+  name: "teams",
   initialState,
-  reducers: {
-    addTeam: (state, action) => {
-      state.items = [...state.items, action.payload];
-    },
+  reducers: {},
 
-    removeTeam: (state, action) => {
-      const index = state.items.findIndex(
-        (item) => item.id === action.payload.id
-      );
-
-      let newTeam = [...state.items];
-
-      if (index >= 0) {
-        newTeam.splice(index, 1);
-      } else {
-        console.log(
-          `Can not remove Team (id: ${action.payload.id}) as it is not in fixture!`
-        );
-      }
-
-      state.items = newTeam;
-    },
+  // extraReducers to listen fetch teams additional actions
+  extraReducers(builder) {
+    builder
+      .addCase(fetchTeams.pending, (state) => {
+        state.status = "loading";
+        state.loading = true;
+      })
+      .addCase(fetchTeams.fulfilled, (state, action) => {
+        state.status = "succeeded";
+        state.loading = false;
+        // Add any fetched teams to the array
+        state.items = [...state.items, ...action.payload];
+      })
+      .addCase(fetchTeams.rejected, (state, action) => {
+        state.status = "failed";
+        state.loading = false;
+        state.error = action.error.message;
+      });
   },
 });
 
-// Action creators are generated for each case reducer function
-export const { addTeam, removeTeam } = teamSlice.actions;
-
-export const selectTeamItems = (state) => state.team.items;
+export const selectTeamItems = (state) => state.teams.items;
 
 export const selectTeamById = (state, id) =>
-  state.team.items.filter((item) => item.id === id);
+  state.teams.items.filter((item) => item?.id === id);
 
 export default teamSlice.reducer;

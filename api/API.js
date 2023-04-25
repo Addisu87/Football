@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const instance = axios.create({
+export const instance = axios.create({
   baseURL: "https://v3.football.api-sports.io",
   headers: {
     "x-rapidapi-key": "95f8210a47b0bc73dcba2614e4c2cb9f",
@@ -9,7 +9,7 @@ const instance = axios.create({
   timeout: 5000,
 });
 
-const getData = async (endpoint, params) => {
+export const getData = async (endpoint, params) => {
   try {
     const { data } = await instance.get(endpoint, { params });
     return data.response;
@@ -18,15 +18,12 @@ const getData = async (endpoint, params) => {
   }
 };
 
-export const getTeamData = async () =>
-  getData(`/teams`, { league: "39", season: "2022" });
-
-export const getFixturesData = async () =>
-  getData(`/fixtures`, {
+export const getLeague = async () => {
+  getData(`/leagues`, {
     league: "39",
     season: "2022",
-    date: "2023-04-09",
   });
+};
 
 export const getLineUps = async () => {
   getData(`/fixtures/lineups`, {
@@ -35,12 +32,3 @@ export const getLineUps = async () => {
     fixture: "215662",
   });
 };
-
-export const getPlayersData = async () =>
-  getData(`/players`, { league: "39", season: "2022" });
-
-export const getStandingsData = async () =>
-  getData(`/standings`, { league: "39", season: "2022" });
-
-export const getGameData = async () =>
-  getData(`/widgets/game`, { league: "39", season: "2022" });

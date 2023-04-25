@@ -1,4 +1,5 @@
 export { default as Messi } from "./Messi.jpeg";
+export { default as PrimerLeague } from "./Premier_League-Logo.png";
 export { default as Arsenal } from "./Arsenal_FC.png";
 export { default as RealMadrid } from "./Real_Madrid.png";
 export { default as Barcelona } from "./FC_Barcelona.png";

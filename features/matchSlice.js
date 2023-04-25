@@ -1,39 +1,45 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { getData } from "../api/API";
 
 const initialState = {
   items: [],
+  loading: false,
+  error: null,
 };
+
+export const fetchMatch = createAsyncThunk("match/fetchMatch", async () =>
+  getData(`/fixtures`, {
+    league: "39",
+    season: "2022",
+    from: "2023-04-23",
+    to: "2023-06-23",
+  })
+);
 
 export const matchSlice = createSlice({
   name: "match",
   initialState,
-  reducers: {
-    addMatch: (state, action) => {
-      state.items = [...state.items, action.payload];
-    },
-
-    removeMatch: (state, action) => {
-      const index = state.items.findIndex(
-        (item) => item.id === action.payload.id
-      );
-
-      let newMatch = [...state.items];
-
-      if (index >= 0) {
-        newMatch.splice(index, 1);
-      } else {
-        console.log(
-          `Can not remove match (id: ${action.payload.id}) as it is not in fixture!`
-        );
-      }
-
-      state.items = newMatch;
-    },
+  reducers: {},
+  // extraReducers to listen fetch match additional actions
+  extraReducers(builder) {
+    builder
+      .addCase(fetchMatch.pending, (state) => {
+        state.status = "loading";
+        state.loading = true;
+      })
+      .addCase(fetchMatch.fulfilled, (state, action) => {
+        state.status = "succeeded";
+        state.loading = false;
+        // Add any fetched match to the array
+        state.items = [...state.items, ...action.payload];
+      })
+      .addCase(fetchMatch.rejected, (state, action) => {
+        state.status = "failed";
+        state.loading = false;
+        state.error = action.error.message;
+      });
   },
 });
-
-// Action creators are generated for each case reducer function
-export const { addMatch, removeMatch } = matchSlice.actions;
 
 export const selectMatchItems = (state) => state.match.items;
 

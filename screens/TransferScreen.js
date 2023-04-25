@@ -1,8 +1,9 @@
-import { View, Text, SafeAreaView } from "react-native";
 import React, { useLayoutEffect } from "react";
+import { SafeAreaView } from "react-native";
 import { useNavigation } from "@react-navigation/native";
+import Transfer from "../components/Transfer";
 
-const MoreScreen = () => {
+const TransferScreen = () => {
   const navigation = useNavigation();
 
   useLayoutEffect(() => {
@@ -13,9 +14,9 @@ const MoreScreen = () => {
 
   return (
     <SafeAreaView>
-      <Text>MoreScreen</Text>
+      <Transfer />
     </SafeAreaView>
   );
 };
 
-export default MoreScreen;
+export default TransferScreen;
