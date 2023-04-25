@@ -46,7 +46,7 @@ const PlayerCard = ({
             <View className="py-2 px-2 mx-auto items-center justify-center flex-row space-x-6">
               <Image
                 source={Photo}
-                className="block w-12 h-12 rounded-full drop-shadow-lg shrink-0"
+                className="block w-16 h-16 rounded-full drop-shadow-lg shrink-0"
               />
 
               <View className="text-left space-y-1">
