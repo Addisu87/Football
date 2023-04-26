@@ -31,12 +31,12 @@ const LineupScreen = () => {
 
   const renderLineup = ({ item }) => (
     <View>
-      {/* <TouchableOpacity
+      <TouchableOpacity
         className="absolute top-14 left-5 p-2 bg-gray-100 rounded-full"
         onPress={() => navigation.goBack()}
       >
         <ArrowLeftIcon size={20} color="#00CCBB" />
-      </TouchableOpacity> */}
+      </TouchableOpacity>
       {item?.map((lineup) => {
         <View key={lineup.team?.id} className="flex-row justify-between">
           <View className="flex-row space-x-2">
@@ -47,10 +47,7 @@ const LineupScreen = () => {
             source={{ uri: lineup?.team?.logo }}
             className="w-10 h-10 rounded-full"
           />
-        </View>;
-      })}
-
-      {/* <View>
+          <View>
             <Text className="uppercase text-bold text-gray-400">Coach</Text>
             {lineup.coach.map((manager, index) => {
               <View key={index} className="flex-row justify-between">
@@ -91,7 +88,9 @@ const LineupScreen = () => {
                 <Text>{sub.player?.pos}</Text>
               </View>
             </View>;
-          })} */}
+          })}
+        </View>;
+      })}
     </View>
   );
 
