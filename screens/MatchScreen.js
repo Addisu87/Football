@@ -1,5 +1,5 @@
 import React, { useLayoutEffect } from "react";
-import { View, SafeAreaView } from "react-native";
+import { SafeAreaView } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import LineupScreen from "./LineupScreen";
 import Matches from "../components/Matches";
