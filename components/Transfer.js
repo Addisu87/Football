@@ -18,7 +18,9 @@ const Transfer = ({ playerId }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchTransfers(playerId));
+    if (!transfers) {
+      dispatch(fetchTransfers(playerId));
+    }
   }, [dispatch, playerId]);
 
   return (

@@ -18,8 +18,10 @@ const LineupScreen = (fixtureId) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchLineups(fixtureId));
-  }, [dispatch]);
+    if (!lineups) {
+      dispatch(fetchLineups(fixtureId));
+    }
+  }, [dispatch, fixtureId]);
 
   return (
     <View>
