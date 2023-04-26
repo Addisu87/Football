@@ -4,6 +4,7 @@ import standingReducer from "./standingSlice";
 import teamReducer from "./teamSlice";
 import playersReducer from "./playerSlice";
 import transfersReducer from "./transfersSlice";
+import lineupReducer from "./lineupSlice";
 
 export default configureStore({
   reducer: {
@@ -12,5 +13,6 @@ export default configureStore({
     standings: standingReducer,
     players: playersReducer,
     transfers: transfersReducer,
+    lineup: lineupReducer,
   },
 });
