@@ -6,7 +6,7 @@ import Matches from "../components/Matches";
 import News from "../components/News";
 import Header from "../components/Header";
 
-const HomeScreen = () => {
+const TeamScreen = () => {
   const navigation = useNavigation();
 
   useLayoutEffect(() => {
@@ -23,13 +23,10 @@ const HomeScreen = () => {
       {/* Teams Section */}
       <Teams />
 
-      {/* Matches Section */}
-      <Matches />
-
       {/* News Section */}
       <News />
     </SafeAreaView>
   );
 };
 
-export default HomeScreen;
+export default TeamScreen;

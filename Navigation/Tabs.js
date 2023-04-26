@@ -2,8 +2,8 @@ import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { StyleSheet, Text, View } from "react-native";
 import { BlurView } from "expo-blur";
-import HomeScreen from "../screens/HomeScreen";
-import DiscoverScreen from "../screens/DiscoverScreen";
+import TeamScreen from "../screens/TeamScreen";
+import MatchScreen from "../screens/MatchScreen";
 import StandingsScreen from "../screens/StandingsScreen";
 import TransferScreen from "../screens/TransferScreen";
 import IonIcons from "react-native-vector-icons/Ionicons";
@@ -32,7 +32,7 @@ const Tabs = () => {
     >
       <Tab.Screen
         name="Team"
-        component={HomeScreen}
+        component={TeamScreen}
         options={{
           tabBarLabel: "Team",
           tabBarIcon: ({ color }) => (
@@ -45,7 +45,7 @@ const Tabs = () => {
 
       <Tab.Screen
         name="Match"
-        component={DiscoverScreen}
+        component={MatchScreen}
         options={{
           tabBarLabel: "Match",
           tabBarIcon: ({ color }) => (

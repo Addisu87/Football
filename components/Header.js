@@ -5,10 +5,10 @@ import premierLeague from "../assets/images/Premier_League-Logo.png";
 
 const Header = () => {
   return (
-    <View className="px-2 mx-auto items-center justify-between space-y-0 flex-row space-x-6 bg-white drop-shadow-xl bg-[#37003CE6]">
+    <View className="px-2 mx-auto items-center justify-between space-y-0 flex-row space-x-4 bg-white drop-shadow-xl bg-[#37003CE6]">
       <Image
         source={premierLeague}
-        className="block w-36 h-24 bg-white rounded-r-full shrink-0"
+        className="block w-36 h-16 bg-white rounded-r-full"
       />
 
       <View className="flex-row justify-between space-x-1 ">
