@@ -1,6 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useNavigation } from "@react-navigation/native";
-import { getLineUps } from "../api/API";
 import {
   View,
   Text,
@@ -10,112 +9,69 @@ import {
 } from "react-native";
 import { soccerField } from "../assets/images/index";
 import { ArrowLeftIcon } from "react-native-heroicons/outline";
-import { FlashList } from "@shopify/flash-list";
-import NotFound from "../components/NotFound";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchLineups, selectLineupItems } from "../features/lineupSlice";
 
-const LineupScreen = () => {
-  const [lineups, setLineups] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
-
+const LineupScreen = (fixtureId) => {
   const navigation = useNavigation();
+  const lineups = useSelector(selectLineupItems);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    setIsLoading(true);
-    getLineUps().then((res) => {
-      setLineups(res);
-      setTimeout(() => {
-        setIsLoading(false);
-      }, 2000);
-    });
-  }, []);
-
-  const renderLineup = ({ item }) => (
-    <View>
-      <TouchableOpacity
-        className="absolute top-14 left-5 p-2 bg-gray-100 rounded-full"
-        onPress={() => navigation.goBack()}
-      >
-        <ArrowLeftIcon size={20} color="#00CCBB" />
-      </TouchableOpacity>
-      {item?.map((lineup) => {
-        <View key={lineup.team?.id} className="flex-row justify-between">
-          <View className="flex-row space-x-2">
-            <Text className="uppercase text-bold">{lineup?.team?.name}</Text>
-            <Text className="text-gray-400">{lineup?.formation}</Text>
-          </View>
-          <Image
-            source={{ uri: lineup?.team?.logo }}
-            className="w-10 h-10 rounded-full"
-          />
-          <View>
-            <Text className="uppercase text-bold text-gray-400">Coach</Text>
-            {lineup.coach.map((manager, index) => {
-              <View key={index} className="flex-row justify-between">
-                <Image
-                  source={{ uri: manager?.photo }}
-                  className="w-10 h-10 rounded-full"
-                />
-                <Text>{manager?.name}</Text>
-              </View>;
-            })}
-          </View>
-
-          {lineup.startXI.map((play, index) => {
-            <View key={index}>
-              <Text className="uppercase text-bold text-gray-400">
-                StartingXI
-              </Text>
-              <ImageBackground
-                source={soccerField}
-                className="flex-1 bg-cover justify-center items-center"
-              >
-                <Text>{play.player?.name}</Text>
-                <Text>{play.player?.number}</Text>
-                <Text>{play.player?.pos}</Text>
-                <Text>{play.player?.grid}</Text>
-              </ImageBackground>
-            </View>;
-          })}
-
-          {lineup?.substitutes?.map((sub, index) => {
-            <View key={index}>
-              <Text className="uppercase text-bold text-gray-400">
-                Substitutes
-              </Text>
-              <View className="flex-row">
-                <Text>{sub.player?.name}</Text>
-                <Text>{sub.player?.number}</Text>
-                <Text>{sub.player?.pos}</Text>
-              </View>
-            </View>;
-          })}
-        </View>;
-      })}
-    </View>
-  );
+    dispatch(fetchLineups(fixtureId));
+  }, [dispatch]);
 
   return (
     <View>
-      {isLoading ? (
-        <View className=" flex-1 items-center justify-center">
-          <ActivityIndicator size="large" color="#0B646B" />
-        </View>
+      {!lineups ? (
+        <>
+          <View className=" flex-1 items-center justify-center">
+            <ActivityIndicator size="large" color="#0B646B" />
+          </View>
+        </>
       ) : (
         <>
-          {lineups.length > 0 ? (
-            <>
-              <FlashList
-                data={lineups}
-                renderItem={renderLineup}
-                keyExtractor={(item) => item.team?.id.toString()}
-                estimatedItemSize={50}
+          <TouchableOpacity
+            className="absolute top-14 left-5 p-2 bg-gray-100 rounded-full"
+            onPress={() => navigation.goBack()}
+          >
+            <ArrowLeftIcon size={20} color="#00CCBB" />
+          </TouchableOpacity>
+
+          {lineups?.map((lineup) => (
+            <View key={lineup.team?.id} className="flex-row space-x-2">
+              <Text>{lineup.team?.name}</Text>
+              <Text className="text-gray-400">{lineup?.formation}</Text>
+              <Image
+                source={{ uri: lineup?.team?.logo }}
+                className="w-10 h-10 rounded-full"
               />
-            </>
-          ) : (
-            <>
-              <NotFound />
-            </>
-          )}
+
+              <Text className="uppercase text-bold">Starters:</Text>
+              {lineup.startXI?.map((player) => (
+                <ImageBackground
+                  source={soccerField}
+                  className="flex-1 bg-cover justify-center items-center"
+                >
+                  <View key={player.player?.id}>
+                    <Text>{player.player?.name}</Text>
+                    <Text>{player.player?.number}</Text>
+                    <Text>{player.player?.pos}</Text>
+                    <Text>{player.player?.grid}</Text>
+                  </View>
+                </ImageBackground>
+              ))}
+
+              <Text className="uppercase text-bold">Substitutes:</Text>
+              {lineup.substitutes?.map((player) => (
+                <View key={player.player?.id}>
+                  <Text>{player.player?.name}</Text>
+                  <Text>{player.player?.number}</Text>
+                  <Text>{player.player?.pos}</Text>
+                </View>
+              ))}
+            </View>
+          ))}
         </>
       )}
     </View>

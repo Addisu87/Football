@@ -35,7 +35,7 @@ export const lineupSlice = createSlice({
   },
 });
 
-export const selectLineupItems = (state) => state.lineups.items;
+export const selectLineupItems = (state) => state.lineups?.items;
 
 export const selectLineupById = (state, id) =>
   state.lineups.items.filter((lineup) => lineup?.id === id);
