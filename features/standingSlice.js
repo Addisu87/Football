@@ -14,8 +14,10 @@ export const fetchStandings = createAsyncThunk(
   async () => {
     try {
       const { data } = await instance.get(`/standings`, {
-        league: "39",
-        season: "2022",
+        params: {
+          league: "39",
+          season: "2022",
+        },
       });
       return data?.response[0]?.league?.standings[0];
     } catch (error) {
@@ -39,8 +41,7 @@ export const standingSlice = createSlice({
       .addCase(fetchStandings.fulfilled, (state, action) => {
         state.status = "succeeded";
         state.loading = false;
-        // Add any fetched standings to the array
-        state.items = [...state.items, ...action.payload];
+        state.items = [...state?.items, ...action?.payload];
       })
       .addCase(fetchStandings.rejected, (state, action) => {
         state.status = "failed";

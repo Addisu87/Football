@@ -51,12 +51,10 @@ const PlayerCard = ({
 
               <View className="text-left space-y-1">
                 <Text className="text-lg text-black font-semibold">
-                  Name: {Name}
+                  {Name?.length > 14 ? `${Name.slice(0, 16)}...` : Name}
                 </Text>
-                <Text className="text-slate-500 font-medium">Age: {Age}</Text>
-                <Text className="text-slate-500 font-medium">
-                  Position: {Position}
-                </Text>
+                <Text className="text-slate-500 font-medium">{Age}</Text>
+                <Text className="text-slate-500 font-medium">{Position}</Text>
               </View>
             </View>
           </View>

@@ -1,5 +1,5 @@
-import { View, Text, Image } from "react-native";
 import React from "react";
+import { View, Text, Image } from "react-native";
 import { MagnifyingGlassIcon } from "react-native-heroicons/outline";
 import premierLeague from "../assets/images/Premier_League-Logo.png";
 

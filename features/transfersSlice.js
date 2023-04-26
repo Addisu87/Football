@@ -10,7 +10,8 @@ const initialState = {
 
 export const fetchTransfers = createAsyncThunk(
   "transfers/fetchTransfers",
-  async () => getData(`/transfers`, { league: "39", season: "2022" })
+  async (playerId) =>
+    getData(`/transfers?player=${playerId}`, { league: "39", season: "2022" })
 );
 
 export const transfersSlice = createSlice({
@@ -29,7 +30,7 @@ export const transfersSlice = createSlice({
         state.status = "succeeded";
         state.loading = false;
         // Add any fetched transfers to the array
-        state.items = [...state.items, ...action.payload];
+        state.items = [...state.items, ...action?.payload];
       })
       .addCase(fetchTransfers.rejected, (state, action) => {
         state.status = "failed";

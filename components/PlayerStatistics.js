@@ -27,7 +27,7 @@ const PlayerStatistics = () => {
       <View className="relative">
         <Image
           source={Photo}
-          className="w-full h-60 bg-gray-200 p-4 shrink-0 "
+          className="w-full h-56 bg-gray-200 p-4 shrink-0 "
         />
 
         <TouchableOpacity
