@@ -5,13 +5,10 @@ import { BlurView } from "expo-blur";
 import HomeScreen from "../screens/HomeScreen";
 import DiscoverScreen from "../screens/DiscoverScreen";
 import StandingsScreen from "../screens/StandingsScreen";
-import {
-  ArrowsPointingOutIcon,
-  ChartBarIcon,
-  HomeIcon,
-  SquaresPlusIcon,
-} from "react-native-heroicons/outline";
 import TransferScreen from "../screens/TransferScreen";
+import IonIcons from "react-native-vector-icons/Ionicons";
+import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
+import Entypo from "react-native-vector-icons/Entypo";
 
 const Tab = createBottomTabNavigator();
 
@@ -34,26 +31,43 @@ const Tabs = () => {
       }}
     >
       <Tab.Screen
-        name="Home"
+        name="Team"
         component={HomeScreen}
         options={{
-          tabBarLabel: "Home",
+          tabBarLabel: "Team",
           tabBarIcon: ({ color }) => (
             <View className="flex-col items-center">
-              <HomeIcon color={color} size={24} />
+              <IonIcons name="football" color={color} size={24} />
             </View>
           ),
         }}
       />
 
       <Tab.Screen
-        name="More"
+        name="Match"
+        component={DiscoverScreen}
+        options={{
+          tabBarLabel: "Match",
+          tabBarIcon: ({ color }) => (
+            <View className="flex-col items-center">
+              <MaterialCommunityIcons
+                name="soccer-field"
+                color={color}
+                size={24}
+              />
+            </View>
+          ),
+        }}
+      />
+
+      <Tab.Screen
+        name="Transfer"
         component={TransferScreen}
         options={{
           tabBarLabel: "Transfer",
           tabBarIcon: ({ color }) => (
             <View className="flex-col items-center">
-              <SquaresPlusIcon color={color} size={24} />
+              <MaterialCommunityIcons name="run" color={color} size={24} />
             </View>
           ),
         }}
@@ -66,20 +80,7 @@ const Tabs = () => {
           tabBarLabel: "Stats",
           tabBarIcon: ({ color }) => (
             <View className="flex-col items-center">
-              <ChartBarIcon color={color} size={24} />
-            </View>
-          ),
-        }}
-      />
-
-      <Tab.Screen
-        name="Discover"
-        component={DiscoverScreen}
-        options={{
-          tabBarLabel: "Explore",
-          tabBarIcon: ({ color }) => (
-            <View className="flex-col items-center">
-              <ArrowsPointingOutIcon color={color} size={24} />
+              <Entypo name="bar-graph" color={color} size={24} />
             </View>
           ),
         }}
