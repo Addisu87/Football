@@ -42,8 +42,8 @@ const PlayerCard = ({
           colors={["#5ED2A0", "#339CB1"]}
           className="m-2 max-w-md mx-auto rounded-xl overflow-hidden drop-shadow-lg"
         >
-          <View className="w-full h-24">
-            <View className="py-2 px-2 mx-auto items-center justify-center flex-row space-x-6">
+          <View className="flex-wrap flex-row justify-between px-2">
+            <View className="py-2 px-2 mx-auto items-center justify-center overflow-hidden">
               <Image
                 source={Photo}
                 className="block w-16 h-16 rounded-full drop-shadow-lg shrink-0"
