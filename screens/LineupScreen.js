@@ -6,31 +6,30 @@ import {
   ActivityIndicator,
   TouchableOpacity,
   ImageBackground,
+  SafeAreaView,
 } from "react-native";
 import { soccerField } from "../assets/images/index";
 import { ArrowLeftIcon } from "react-native-heroicons/outline";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchLineups, selectLineupItems } from "../features/lineupSlice";
 
-const LineupScreen = (fixtureId) => {
+const LineupScreen = ({ fixtureId }) => {
   const navigation = useNavigation();
   const lineups = useSelector(selectLineupItems);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (!lineups) {
+    if (!lineups.length) {
       dispatch(fetchLineups(fixtureId));
     }
   }, [dispatch, fixtureId]);
 
   return (
-    <View>
+    <SafeAreaView>
       {!lineups ? (
-        <>
-          <View className=" flex-1 items-center justify-center">
-            <ActivityIndicator size="large" color="#0B646B" />
-          </View>
-        </>
+        <View className=" flex-1 items-center justify-center">
+          <ActivityIndicator size="large" color="#0B646B" />
+        </View>
       ) : (
         <>
           <TouchableOpacity
@@ -76,7 +75,7 @@ const LineupScreen = (fixtureId) => {
           ))}
         </>
       )}
-    </View>
+    </SafeAreaView>
   );
 };
 

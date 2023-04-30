@@ -53,6 +53,12 @@ const Matches = () => {
                     teamHome={game?.teams?.home?.name}
                     teamAway={game?.teams?.away?.name}
                     stadiumName={game?.fixture?.venue?.name}
+                    gameDate={game?.fixture?.date}
+                    homeGoal={game?.goals?.home}
+                    awayGoal={game?.goals?.away}
+                    league={game?.league?.name}
+                    season={game?.league?.season}
+                    country={game?.league?.country}
                   />
                 ))}
               </>

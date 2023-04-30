@@ -4,7 +4,6 @@ import { getData } from "../api/API";
 const initialState = {
   items: [],
   loading: false,
-  status: "idle",
   error: null,
 };
 
@@ -23,17 +22,13 @@ export const transfersSlice = createSlice({
   extraReducers(builder) {
     builder
       .addCase(fetchTransfers.pending, (state) => {
-        state.status = "loading";
         state.loading = true;
       })
       .addCase(fetchTransfers.fulfilled, (state, action) => {
-        state.status = "succeeded";
         state.loading = false;
-        // Add any fetched transfers to the array
         state.items = [...state.items, ...action?.payload];
       })
       .addCase(fetchTransfers.rejected, (state, action) => {
-        state.status = "failed";
         state.loading = false;
         state.error = action.error.message;
       });

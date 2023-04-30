@@ -1,55 +1,57 @@
-import { View, Text, TouchableOpacity, Image } from "react-native";
 import React from "react";
+import { View, Text, TouchableOpacity, Image } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { useNavigation } from "@react-navigation/native";
 
 const MatchesCard = ({
+  teamHomeImgUrl,
+  teamAwayImgUrl,
   teamHome,
   teamAway,
   stadiumName,
-  teamHomeImgUrl,
-  teamAwayImgUrl,
+  gameDate,
+  homeGoal,
+  awayGoal,
+  league,
+  season,
+  country,
 }) => {
   const navigation = useNavigation();
+
   return (
     <TouchableOpacity
       onPress={() =>
-        navigation.navigate("Lineups", {
+        navigation.navigate("headToHead", {
+          teamHomeImgUrl,
+          teamAwayImgUrl,
           teamHome,
           teamAway,
           stadiumName,
-          teamHomeImgUrl,
-          teamAwayImgUrl,
+          gameDate,
+          homeGoal,
+          awayGoal,
+          league,
+          season,
+          country,
         })
       }
       className="bg-white mr-3 shadow"
     >
       <LinearGradient
         colors={["#5ED2A0", "#339CB1"]}
-        className="m-2 max-w-md mx-auto rounded-xl overflow-hidden drop-shadow-lg md:max-w-2xl"
+        className="m-2 max-w-md mx-auto rounded-xl overflow-hidden drop-shadow-lg"
       >
         <View className="w-32 h-40">
-          <View className="items-center justify-center">
-            <Text className="text-sm font-light p-2">
-              {stadiumName?.length > 14
-                ? `${stadiumName.slice(0, 14)}...`
-                : stadiumName}
-            </Text>
-          </View>
-
-          <View className="flex-row items-center justify-evenly md:shrink-0">
-            <Image source={teamHomeImgUrl} className="object-cover w-7 h-7" />
-            <Image source={teamAwayImgUrl} className="object-cover w-7 h-7" />
-          </View>
-
-          <View className="items-center justify-center">
-            <Text className="tracking-normal text-sm font-light truncate">
-              {teamHome}
-            </Text>
+          <View className="items-center justify-center space-y-2">
+            <Image
+              source={teamHomeImgUrl}
+              className="object-cover w-14 h-14 shrink-0"
+            />
             <Text className="font-thin">Vs</Text>
-            <Text className="tracking-normal text-sm font-light truncate">
-              {teamAway}
-            </Text>
+            <Image
+              source={teamAwayImgUrl}
+              className="object-cover w-14 h-14 shrink-0"
+            />
           </View>
         </View>
       </LinearGradient>

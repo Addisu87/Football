@@ -5,6 +5,7 @@ import Tabs from "./Tabs";
 import Players from "../components/Players";
 import PlayerStatistics from "../components/PlayerStatistics";
 import LineupScreen from "../screens/LineupScreen";
+import HeadToHead from "../components/HeadToHead";
 
 const Stack = createNativeStackNavigator();
 
@@ -42,6 +43,12 @@ const NavStacks = () => {
       <Stack.Screen
         name="Lineups"
         component={LineupScreen}
+        options={{ headerShown: false }}
+      />
+
+      <Stack.Screen
+        name="headToHead"
+        component={HeadToHead}
         options={{ headerShown: false }}
       />
     </Stack.Navigator>

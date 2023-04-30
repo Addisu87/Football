@@ -5,6 +5,8 @@ import {
   SafeAreaView,
   ActivityIndicator,
   TouchableOpacity,
+  Text,
+  Image,
 } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -18,7 +20,7 @@ const Transfer = ({ playerId }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (!transfers) {
+    if (transfers.length === 0) {
       dispatch(fetchTransfers(playerId));
     }
   }, [dispatch, playerId]);
@@ -43,26 +45,24 @@ const Transfer = ({ playerId }) => {
               >
                 <Text className="font-semibold mb-2.5">Transfer History</Text>
                 <View className="px-2.5">
-                  {transfers?.map(({ transfers, player }) => (
+                  {transfers?.map(({ transfer, player }) => (
                     <View key={player?.id} className="mt-2.5">
                       <Text className="font-bold mb-1.5">{player?.name}</Text>
                       <View className="ml-2.5">
-                        {transfers?.map((transfer) => (
-                          <View key={transfer?.date} className="mt-1.25">
-                            <Text>Date: {transfer?.date}</Text>
-                            <Text>Type: {transfer?.type}</Text>
+                        {transfer?.map((trans) => (
+                          <View key={trans?.date} className="mt-1.25">
+                            <Text>Date: {trans?.date}</Text>
+                            <Text>Type: {trans?.type}</Text>
                             <View>
-                              <Text>In: {transfer.teams?.in?.name}</Text>
+                              <Text>Out: {trans?.teams?.out?.name}</Text>
                               <Image
-                                source={{ uri: transfer.teams?.in?.logo }}
+                                source={{ uri: trans?.teams?.out?.logo }}
                                 className="w-8 h-8 rounded-full"
                               />
                             </View>
                             <View>
-                              <Text>In: {transfer.teams?.in?.name}</Text>
-                              <Image
-                                source={{ uri: transfer.teams?.in?.logo }}
-                              />
+                              <Text>In: {trans?.teams?.in?.name}</Text>
+                              <Image source={{ uri: trans?.teams?.in?.logo }} />
                             </View>
                           </View>
                         ))}
