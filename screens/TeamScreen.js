@@ -21,9 +21,6 @@ const TeamScreen = () => {
 
       {/* Teams Section */}
       <Teams />
-
-      {/* News Section */}
-      <News />
     </SafeAreaView>
   );
 };

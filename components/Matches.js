@@ -38,11 +38,7 @@ const Matches = () => {
         </>
       ) : (
         <>
-          <ScrollView
-            horizontal
-            showsHorizontalScrollIndicator={false}
-            contentContainerStyle={{ paddingHorizontal: 15, paddingTop: 10 }}
-          >
+          <ScrollView>
             {match?.length > 0 ? (
               <>
                 {match?.map((game, index) => (
@@ -54,9 +50,9 @@ const Matches = () => {
                     teamAway={game?.teams?.away?.name}
                     stadiumName={game?.fixture?.venue?.name}
                     gameDate={game?.fixture?.date}
-                    homeGoal={game?.goals?.home}
-                    awayGoal={game?.goals?.away}
-                    league={game?.league?.name}
+                    goalHome={game?.goals?.home}
+                    goalAway={game?.goals?.away}
+                    leagueName={game?.league?.name}
                     season={game?.league?.season}
                     country={game?.league?.country}
                   />

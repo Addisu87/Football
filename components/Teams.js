@@ -37,11 +37,7 @@ const Teams = () => {
         </>
       ) : (
         <>
-          <ScrollView
-            horizontal
-            showsHorizontalScrollIndicator={false}
-            contentContainerStyle={{ paddingHorizontal: 15, paddingTop: 10 }}
-          >
+          <ScrollView>
             {teams?.length > 0 ? (
               <>
                 {teams?.map((data, id) => (
