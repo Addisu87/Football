@@ -36,7 +36,7 @@ const MatchesCard = ({
           country,
         })
       }
-      className="bg-white mr-3 shadow"
+      className="relative overflow-hidden"
     >
       <LinearGradient
         colors={["#5ED2A0", "#339CB1"]}
@@ -46,8 +46,8 @@ const MatchesCard = ({
           <Text className="mt-2 text-slate-500">
             {moment(gameDate).format("MMMM DD, YYYY")}
           </Text>
-          <View className="flex-row p-2">
-            <View className="shrink-0 ">
+          <View className="flex-row space-x-2">
+            <View className="shrink-0">
               <Image
                 source={teamHomeImgUrl}
                 className="w-16 h-16 object-cover"
