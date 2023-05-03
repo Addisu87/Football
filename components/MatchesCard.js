@@ -42,18 +42,18 @@ const MatchesCard = ({
         colors={["#5ED2A0", "#339CB1"]}
         className="m-2 max-w-md mx-auto rounded-xl overflow-hidden drop-shadow-lg"
       >
-        <View className="max-w-md mx-auto rounded-xl drop-shadow-lg overflow-hidden items-center justify-evenly">
+        <View className="mx-auto rounded-lg drop-shadow-lg items-center">
           <Text className="mt-2 text-slate-500">
             {moment(gameDate).format("MMMM DD, YYYY")}
           </Text>
-          <View className="flex-row space-x-2">
+          <View className="flex-row space-y-1 space-x-3">
             <View className="shrink-0">
               <Image
                 source={teamHomeImgUrl}
-                className="w-16 h-16 object-cover"
+                className="w-14 h-14 object-cover"
               />
-              <Text className="uppercase block mt-1 text-lg leading-tight font-medium text-black ">
-                {teamHome.length > 10 ? `${teamHome.slice(0, 10)}..` : teamHome}
+              <Text className="uppercase block mt-1 text-base leading-tight font-medium text-black ">
+                {teamHome.length > 8 ? `${teamHome.slice(0, 8)}..` : teamHome}
               </Text>
             </View>
 
@@ -64,10 +64,10 @@ const MatchesCard = ({
             <View className="shrink-0">
               <Image
                 source={teamAwayImgUrl}
-                className="w-16 h-16 object-cover"
+                className="w-14 h-14 object-cover"
               />
-              <Text className="uppercase block mt-1 text-lg leading-tight font-medium text-black ">
-                {teamAway.length > 10 ? `${teamAway.slice(0, 10)}..` : teamAway}
+              <Text className="uppercase block mt-1 text-base leading-tight font-medium text-black ">
+                {teamAway.length > 8 ? `${teamAway.slice(0, 8)}..` : teamAway}
               </Text>
             </View>
           </View>

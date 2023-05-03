@@ -18,13 +18,13 @@ const TeamsCard = ({ imgUrl, name, foundedYear, Photo, Name }) => {
       >
         <View className="max-w-md mx-auto rounded-xl drop-shadow-lg overflow-hidden">
           <View className="flex-row">
-            <View className="shrink-0 p-2">
+            <View className="shrink-0 p-1 pl-3">
               <Image
                 source={imgUrl}
-                className="rounded w-24 h-24 object-cover"
+                className="rounded w-16 h-16 object-cover"
               />
             </View>
-            <View className="p-8">
+            <View className="p-2 pl-4">
               <Text className="uppercase block mt-1 text-lg leading-tight font-medium text-black ">
                 {name}
               </Text>
