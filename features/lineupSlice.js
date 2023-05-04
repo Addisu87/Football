@@ -10,7 +10,7 @@ const initialState = {
 export const fetchLineups = createAsyncThunk(
   "lineups/fetchLineups",
   async (fixtureId) =>
-    getData(`/lineups?fixture=${fixtureId}`, { league: "39", season: "2022" })
+    getData(`/lineups`, { league: "39", season: "2022", fixture: fixtureId })
 );
 
 export const lineupSlice = createSlice({

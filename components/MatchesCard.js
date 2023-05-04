@@ -36,7 +36,7 @@ const MatchesCard = ({
           country,
         })
       }
-      className="relative overflow-hidden"
+      className="relative overflow-hidden cursor-pointer"
     >
       <LinearGradient
         colors={["#5ED2A0", "#339CB1"]}

@@ -32,20 +32,16 @@ const Transfer = ({ playerId }) => {
           <ActivityIndicator size="large" color="#0B646B" />
         </View>
       ) : (
-        <ScrollView
-          vertical
-          showsHorizontalScrollIndicator={false}
-          contentContainerStyle={{ paddingHorizontal: 15, paddingTop: 10 }}
-        >
-          <View className="relative">
-            <TouchableOpacity className="relative p-1 m-1 drop-shadow-lg max-w-md mx-auto rounded-xl bg-gray-200">
-              <LinearGradient
-                colors={["#5ED2A0", "#339CB1"]}
-                className="m-2 max-w-md mx-auto rounded-xl overflow-hidden drop-shadow-lg md:max-w-2xl"
-              >
-                <Text className="font-semibold mb-2.5">Transfer History</Text>
-                <View className="px-2.5">
-                  {transfers?.map(({ transfer, player }) => (
+        <View className="relative">
+          <TouchableOpacity className="relative overflow-hidden">
+            <LinearGradient
+              colors={["#5ED2A0", "#339CB1"]}
+              className="m-2 max-w-md mx-auto rounded-xl overflow-hidden drop-shadow-lg"
+            >
+              <Text className="font-semibold mb-2.5">Transfer History</Text>
+              <View className="h-[600px]">
+                <ScrollView className="flex-1 p-2">
+                  {transfers?.map((transfer, player) => (
                     <View key={player?.id} className="mt-2.5">
                       <Text className="font-bold mb-1.5">{player?.name}</Text>
                       <View className="ml-2.5">
@@ -69,11 +65,11 @@ const Transfer = ({ playerId }) => {
                       </View>
                     </View>
                   ))}
-                </View>
-              </LinearGradient>
-            </TouchableOpacity>
-          </View>
-        </ScrollView>
+                </ScrollView>
+              </View>
+            </LinearGradient>
+          </TouchableOpacity>
+        </View>
       )}
     </SafeAreaView>
   );

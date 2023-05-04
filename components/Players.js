@@ -28,36 +28,34 @@ const Players = ({ teamId }) => {
         </View>
       ) : (
         <>
-          <ScrollView
-            vertical
-            showsHorizontalScrollIndicator={false}
-            contentContainerStyle={{ paddingHorizontal: 15, paddingTop: 10 }}
-          >
-            {squad?.length > 0 ? (
-              <>
-                {squad?.map(({ player }) => (
-                  <PlayerCard
-                    key={player?.id}
-                    Photo={{ uri: player?.photo }}
-                    Name={player?.name}
-                    Age={player?.age}
-                    Position={player?.position}
-                    Nationality={player?.nationality}
-                    TeamLogo={player?.statistics[0]?.team?.logo}
-                    TeamName={player?.statistics[0]?.team?.name}
-                    Appearance={player?.statistics[0]?.games?.appearences}
-                    Goals={player?.statistics[0]?.goals?.total}
-                    Passes={player?.statistics[0]?.passes?.total}
-                    Cards={player?.statistics[0]?.cards?.red}
-                  />
-                ))}
-              </>
-            ) : (
-              <>
-                <NotFound />
-              </>
-            )}
-          </ScrollView>
+          <View className="h-[600px]">
+            <ScrollView className="flex-1 p-2">
+              {squad?.length > 0 ? (
+                <>
+                  {squad?.map((player) => (
+                    <PlayerCard
+                      key={player?.player?.id}
+                      Photo={{ uri: player?.player?.photo }}
+                      Name={player?.player?.name}
+                      Age={player?.player?.age}
+                      Nationality={player?.player?.nationality}
+                      TeamLogo={player?.statistics[0]?.team?.logo}
+                      TeamName={player?.statistics[0]?.team?.name}
+                      Position={player?.statistics[0]?.games?.position}
+                      Appearance={player?.statistics[0]?.games?.appearences}
+                      Goals={player?.statistics[0]?.goals?.total}
+                      Passes={player?.statistics[0]?.passes?.total}
+                      Cards={player?.statistics[0]?.cards?.red}
+                    />
+                  ))}
+                </>
+              ) : (
+                <>
+                  <NotFound />
+                </>
+              )}
+            </ScrollView>
+          </View>
         </>
       )}
     </SafeAreaView>

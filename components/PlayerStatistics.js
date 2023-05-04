@@ -2,6 +2,7 @@ import React from "react";
 import { View, Text, ScrollView, Image, TouchableOpacity } from "react-native";
 import { ArrowLeftIcon, ShareIcon } from "react-native-heroicons/outline";
 import { useNavigation, useRoute } from "@react-navigation/native";
+import { LinearGradient } from "expo-linear-gradient";
 
 const PlayerStatistics = () => {
   const navigation = useNavigation();
@@ -27,7 +28,7 @@ const PlayerStatistics = () => {
       <View className="relative">
         <Image
           source={Photo}
-          className="w-full h-56 bg-gray-200 p-4 shrink-0 "
+          className="w-full h-56 bg-gray-200 p-4 object-cover"
         />
 
         <TouchableOpacity
@@ -41,25 +42,43 @@ const PlayerStatistics = () => {
           <ShareIcon size={20} color="#00CCBB" />
         </TouchableOpacity>
 
-        <View className="flex-row justify-between items-center">
-          <View className="flex-row space-x-2">
-            <View className="space-y-1">
-              <Image source={TeamLogo} className="w-10 h-10 rounded-full" />
-              <Text>{TeamName}</Text>
-            </View>
+        <LinearGradient
+          colors={["#5ED2A0", "#339CB1"]}
+          className="m-2 max-w-md mx-auto h-full rounded-xl overflow-hidden drop-shadow-lg"
+        >
+          <View className="max-w-md mx-auto rounded-xl drop-shadow-lg overflow-hidden">
+            <View className="flex-row">
+              <View className="space-y-1">
+                <Image
+                  source={TeamLogo}
+                  className="rounded w-16 h-16 object-cover"
+                />
+                <Text className="uppercase block mt-1 text-lg leading-tight font-medium text-black">
+                  {TeamName}
+                </Text>
+              </View>
 
-            <View className="space-y-1">
-              <Text className="text-base">{Name}</Text>
-              <Text>Age: {Age}</Text>
-              <Text>Position: {Position}</Text>
-              <Text>Nationality: {Nationality}</Text>
-              <Text>Appearance: {Appearance}</Text>
-              <Text>Goals: {Goals}</Text>
-              <Text>Passes: {Passes}</Text>
-              <Text>Cards: {Cards}</Text>
+              <View className="p-2 pl-4">
+                <Text className="uppercase block mt-1 text-lg leading-tight font-medium text-black">
+                  Name: {Name}
+                </Text>
+                <Text className="mt-2 text-slate-700">Age: {Age}</Text>
+                <Text className="mt-2 text-slate-700">
+                  Position: {Position}
+                </Text>
+                <Text className="mt-2 text-slate-700">
+                  Nationality: {Nationality}
+                </Text>
+                <Text className="mt-2 text-slate-700">
+                  Appearance: {Appearance}
+                </Text>
+                <Text className="mt-2 text-slate-700">Goals: {Goals}</Text>
+                <Text className="mt-2 text-slate-700">Passes: {Passes}</Text>
+                <Text className="mt-2 text-slate-700">Cards: {Cards}</Text>
+              </View>
             </View>
           </View>
-        </View>
+        </LinearGradient>
       </View>
     </ScrollView>
   );

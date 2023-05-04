@@ -10,9 +10,10 @@ const initialState = {
 export const fetchPlayers = createAsyncThunk(
   "players/fetchPlayers",
   async (teamId) =>
-    getData(`/players?team=${teamId}`, {
+    getData(`/players`, {
       league: "39",
       season: "2022",
+      team: teamId,
     })
 );
 

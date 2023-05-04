@@ -10,7 +10,7 @@ const TeamsCard = ({ imgUrl, name, foundedYear, Photo, Name }) => {
   return (
     <TouchableOpacity
       onPress={() => navigation.navigate("Players", { Photo, Name })}
-      className="relative overflow-hidden"
+      className="relative overflow-hidden cursor-pointer"
     >
       <LinearGradient
         colors={["#5ED2A0", "#339CB1"]}
@@ -25,7 +25,7 @@ const TeamsCard = ({ imgUrl, name, foundedYear, Photo, Name }) => {
               />
             </View>
             <View className="p-2 pl-4">
-              <Text className="uppercase block mt-1 text-lg leading-tight font-medium text-black ">
+              <Text className="uppercase block mt-1 text-lg leading-tight font-medium text-black">
                 {name}
               </Text>
               <View className="mt-2 text-slate-500">

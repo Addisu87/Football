@@ -34,7 +34,7 @@ const HeadToHead = () => {
     <SafeAreaView>
       <LinearGradient
         colors={["#5ED2A0", "#339CB1"]}
-        className="m-2 max-w-md mx-auto rounded-xl overflow-hidden drop-shadow-lg"
+        className="m-2 max-w-md mx-auto rounded-xl overflow-hidden drop-shadow-lg h-full"
       >
         <View className="relative">
           <View className="flex-row justify-between p-4 border-b-3 border-[#339CB1]">
