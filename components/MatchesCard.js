@@ -39,11 +39,11 @@ const MatchesCard = ({
       className="relative overflow-hidden cursor-pointer"
     >
       <LinearGradient
-        colors={["#5ED2A0", "#339CB1"]}
+        colors={["#0af5ce", "#5ED2A0", "#339CB1"]}
         className="m-2 max-w-md mx-auto rounded-xl overflow-hidden drop-shadow-lg"
       >
         <View className="mx-auto rounded-lg drop-shadow-lg items-center">
-          <Text className="mt-2 text-slate-500">
+          <Text className="mt-2 text-slate-900">
             {moment(gameDate).format("MMMM DD, YYYY")}
           </Text>
           <View className="flex-row space-y-1 space-x-3">
@@ -58,7 +58,7 @@ const MatchesCard = ({
             </View>
 
             <View className="items-center justify-center">
-              <Text className="text-slate-500">Vs</Text>
+              <Text className="text-slate-900">Vs</Text>
             </View>
 
             <View className="shrink-0">

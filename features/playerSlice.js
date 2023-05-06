@@ -1,20 +1,30 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { getData } from "../api/API";
+import { getData, instance } from "../api/API";
 
 const initialState = {
   items: [],
   loading: false,
+  status: "idle",
   error: null,
 };
 
+// Fetching standings from API
 export const fetchPlayers = createAsyncThunk(
   "players/fetchPlayers",
-  async (teamId) =>
-    getData(`/players`, {
-      league: "39",
-      season: "2022",
-      team: teamId,
-    })
+  async (teamId) => {
+    try {
+      const { data } = await instance.get(`/players/squads`, {
+        params: {
+          league: "39",
+          season: "2022",
+          team: teamId,
+        },
+      });
+      return data?.response[0]?.players;
+    } catch (error) {
+      console.error("error", error);
+    }
+  }
 );
 
 export const playerSlice = createSlice({
@@ -23,16 +33,19 @@ export const playerSlice = createSlice({
   reducers: {},
 
   // extraReducers to listen fetch players additional actions
-  extraReducers(builder) {
+  extraReducers: (builder) => {
     builder
       .addCase(fetchPlayers.pending, (state) => {
+        state.status = "loading";
         state.loading = true;
       })
       .addCase(fetchPlayers.fulfilled, (state, action) => {
+        state.status = "succeeded";
         state.loading = false;
-        state.items = [...state.items, ...action.payload];
+        state.items = action.payload;
       })
       .addCase(fetchPlayers.rejected, (state, action) => {
+        state.status = "failed";
         state.loading = false;
         state.error = action.error.message;
       });

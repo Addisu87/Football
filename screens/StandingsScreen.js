@@ -68,7 +68,7 @@ const StandingScreen = () => {
   return (
     <View className="flex-1 p-2">
       <LinearGradient
-        colors={["#5ED2A0", "#339CB1"]}
+        colors={["#0af5ce", "#5ED2A0", "#339CB1"]}
         className="pl-4 pr-4 rounded-md h-full"
       >
         {!standings.length ? (

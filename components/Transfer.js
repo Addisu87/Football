@@ -20,14 +20,12 @@ const Transfer = ({ playerId }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (transfers.length === 0) {
-      dispatch(fetchTransfers(playerId));
-    }
+    dispatch(fetchTransfers(playerId));
   }, [dispatch, playerId]);
 
   return (
     <SafeAreaView>
-      {!transfers.length ? (
+      {!transfers?.length ? (
         <View className=" flex-1 items-center justify-center">
           <ActivityIndicator size="large" color="#0B646B" />
         </View>
@@ -35,7 +33,7 @@ const Transfer = ({ playerId }) => {
         <View className="relative">
           <TouchableOpacity className="relative overflow-hidden">
             <LinearGradient
-              colors={["#5ED2A0", "#339CB1"]}
+              colors={["#0af5ce", "#5ED2A0", "#339CB1"]}
               className="m-2 max-w-md mx-auto rounded-xl overflow-hidden drop-shadow-lg"
             >
               <Text className="font-semibold mb-2.5">Transfer History</Text>
