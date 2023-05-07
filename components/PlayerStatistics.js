@@ -16,8 +16,8 @@ const PlayerStatistics = () => {
       TeamLogo,
       TeamName,
       Position,
-      Appearance,
       Passes,
+      Appearences,
       Goals,
       Cards,
     },
@@ -28,7 +28,7 @@ const PlayerStatistics = () => {
       <View className="relative">
         <Image
           source={Photo}
-          className="w-full h-56 bg-gray-200 p-4 object-cover"
+          className="w-full h-60 bg-gray-200 p-2 object-cover"
         />
 
         <TouchableOpacity
@@ -43,38 +43,38 @@ const PlayerStatistics = () => {
         </TouchableOpacity>
 
         <LinearGradient
-          colors={["#5ED2A0", "#339CB1"]}
+          colors={["#0af5ce", "#5ED2A0", "#339CB1"]}
           className="m-2 max-w-md mx-auto h-full rounded-xl overflow-hidden drop-shadow-lg"
         >
           <View className="max-w-md mx-auto rounded-xl drop-shadow-lg overflow-hidden">
-            <View className="flex-row">
-              <View className="space-y-1">
+            <View className="flex-row justify-evenly">
+              <View className="space-y-1 pl-2">
                 <Image
                   source={TeamLogo}
                   className="rounded w-16 h-16 object-cover"
                 />
                 <Text className="uppercase block mt-1 text-lg leading-tight font-medium text-black">
-                  {TeamName}
+                  {TeamName?.length > 12
+                    ? `${TeamName.slice(0, 12)}...`
+                    : TeamName}
                 </Text>
               </View>
 
-              <View className="p-2 pl-4">
+              <View className="p-4">
                 <Text className="uppercase block mt-1 text-lg leading-tight font-medium text-black">
                   Name: {Name}
                 </Text>
-                <Text className="mt-2 text-slate-700">Age: {Age}</Text>
-                <Text className="mt-2 text-slate-700">
-                  Position: {Position}
-                </Text>
-                <Text className="mt-2 text-slate-700">
+                <Text className="mt-2 text-black">Age: {Age}</Text>
+                <Text className="mt-2 text-black">Position: {Position}</Text>
+                <Text className="mt-2 text-black">
                   Nationality: {Nationality}
                 </Text>
-                <Text className="mt-2 text-slate-700">
-                  Appearance: {Appearance}
+                <Text className="mt-2 text-black">
+                  Appearance: {Appearences}
                 </Text>
-                <Text className="mt-2 text-slate-700">Goals: {Goals}</Text>
-                <Text className="mt-2 text-slate-700">Passes: {Passes}</Text>
-                <Text className="mt-2 text-slate-700">Cards: {Cards}</Text>
+                <Text className="mt-2 text-black">Goals: {Goals}</Text>
+                <Text className="mt-2 text-black">Passes: {Passes}</Text>
+                <Text className="mt-2 text-black">Cards: {Cards}</Text>
               </View>
             </View>
           </View>

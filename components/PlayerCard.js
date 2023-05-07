@@ -12,7 +12,7 @@ const PlayerCard = ({
   TeamLogo,
   TeamName,
   Position,
-  Appearance,
+  Appearences,
   Passes,
   Goals,
   Cards,
@@ -31,7 +31,7 @@ const PlayerCard = ({
             TeamLogo,
             TeamName,
             Position,
-            Appearance,
+            Appearences,
             Passes,
             Goals,
             Cards,
@@ -40,14 +40,14 @@ const PlayerCard = ({
         className="relative p-1 drop-shadow-lg max-w-md mx-auto rounded-lg cursor-pointer"
       >
         <LinearGradient
-          colors={["#5ED2A0", "#339CB1"]}
+          colors={["#0af5ce", "#5ED2A0", "#339CB1"]}
           className="m-2 max-w-md mx-auto rounded-xl overflow-hidden drop-shadow-lg"
         >
           <View className="mx-auto rounded-xl drop-shadow-lg overflow-hidden">
-            <View className="flex-row space-x-2">
-              <View className="p-2">
+            <View className="flex-row justify-evenly">
+              <View>
                 <TouchableOpacity
-                  className="absolute top-5 p-2 bg-gray-100 rounded-full"
+                  className="top-5 p-2 bg-gray-100 rounded-full"
                   onPress={() => navigation.goBack()}
                 >
                   <ArrowLeftIcon size={20} color="#00CCBB" />
@@ -61,9 +61,9 @@ const PlayerCard = ({
                 />
               </View>
 
-              <View className="p-2 pl-4">
+              <View>
                 <Text className="uppercase block mt-1 text-lg leading-tight font-medium text-black ">
-                  {Name?.length > 14 ? `${Name.slice(0, 16)}...` : Name}
+                  {Name?.length > 12 ? `${Name.slice(0, 12)}...` : Name}
                 </Text>
                 <Text className="mt-2 text-slate-700">{Age}</Text>
                 <Text className="mt-2 text-slate-700">{Position}</Text>

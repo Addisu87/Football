@@ -4,12 +4,18 @@ import { View } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { LinearGradient } from "expo-linear-gradient";
 
-const TeamsCard = ({ imgUrl, name, foundedYear, Photo, Name }) => {
+const TeamsCard = ({ imgUrl, name, foundedYear, Photo, Name, Position }) => {
   const navigation = useNavigation();
 
   return (
     <TouchableOpacity
-      onPress={() => navigation.navigate("Players", { Photo, Name })}
+      onPress={() =>
+        navigation.navigate("Players", {
+          Photo,
+          Name,
+          Position,
+        })
+      }
       className="relative overflow-hidden cursor-pointer"
     >
       <LinearGradient

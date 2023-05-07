@@ -33,10 +33,17 @@ const Players = ({ teamId }) => {
                   {squad?.map((player) => (
                     <PlayerCard
                       key={player?.id}
-                      Photo={{ uri: player?.photo }}
-                      Name={player?.name}
-                      Age={player?.age}
-                      Position={player?.position}
+                      Photo={{ uri: player?.player?.photo }}
+                      Name={player?.player?.name}
+                      Age={player?.player?.age}
+                      Nationality={player?.player?.nationality}
+                      TeamLogo={player?.statistics[0]?.team?.logo}
+                      TeamName={player?.statistics[0]?.team?.name}
+                      Position={player?.statistics[0]?.games?.position}
+                      Appearences={player?.statistics[0]?.games?.appearences}
+                      Goals={player?.statistics[0]?.goals?.total}
+                      Passes={player?.statistics[0]?.passes?.total}
+                      Cards={player?.statistics[0]?.cards?.red}
                     />
                   ))}
                 </>
