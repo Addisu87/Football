@@ -11,9 +11,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchPlayers, selectPlayerItems } from "../features/playerSlice";
 
 const Players = ({ teamId }) => {
+  // Access the squad of players from the state
   const squad = useSelector(selectPlayerItems);
   const dispatch = useDispatch();
 
+  // Fetch the squad of players for the selected team from the API
   useEffect(() => {
     dispatch(fetchPlayers(teamId));
   }, [dispatch, teamId]);
@@ -21,7 +23,7 @@ const Players = ({ teamId }) => {
   return (
     <SafeAreaView>
       {!squad?.length ? (
-        <View className=" flex-1 items-center justify-center">
+        <View className="flex-1 items-center justify-center">
           <ActivityIndicator size="large" color="#0B646B" />
         </View>
       ) : (

@@ -93,13 +93,12 @@ To get a local copy up and running, follow these steps.
 
 In order to run this project you need:
 
-<!--
 Example command:
 
 ```sh
- npm i
+ npm start
+ npx expo start
 ```
- -->
 
 ### Built
 

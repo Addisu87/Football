@@ -12,7 +12,11 @@ const initialState = {
 export const fetchPlayers = createAsyncThunk(
   "players/fetchPlayers",
   async (teamId) =>
-    getData(`/players`, { league: "39", season: "2022", team: teamId })
+    getData(`/players`, {
+      league: "39",
+      season: "2022",
+      team: teamId,
+    })
 );
 
 export const playerSlice = createSlice({
@@ -43,6 +47,6 @@ export const playerSlice = createSlice({
 export const selectPlayerItems = (state) => state.players.items;
 
 export const selectPlayerById = (state, id) =>
-  state.players.items.filter((player) => player?.id === id);
+  state.players.items?.filter((player) => player?.id === id);
 
 export default playerSlice.reducer;
