@@ -31,34 +31,32 @@ const Teams = () => {
 
       {!teams?.length ? (
         <>
-          <View className=" flex-1 items-center justify-center">
+          <View className="flex-1 items-center justify-center">
             <ActivityIndicator size="large" color="#0B646B" />
           </View>
         </>
       ) : (
         <>
-          <ScrollView
-            horizontal
-            showsHorizontalScrollIndicator={false}
-            contentContainerStyle={{ paddingHorizontal: 15, paddingTop: 10 }}
-          >
-            {teams?.length > 0 ? (
-              <>
-                {teams?.map((data, id) => (
-                  <TeamsCard
-                    key={id}
-                    imgUrl={{ uri: data?.team?.logo }}
-                    name={data?.team?.name}
-                    foundedYear={data?.team?.founded}
-                  />
-                ))}
-              </>
-            ) : (
-              <>
-                <NotFound />
-              </>
-            )}
-          </ScrollView>
+          <View className="h-[600px]">
+            <ScrollView className="flex-1 p-2">
+              {teams?.length > 0 ? (
+                <>
+                  {teams?.map((data, id) => (
+                    <TeamsCard
+                      key={id}
+                      imgUrl={{ uri: data?.team?.logo }}
+                      name={data?.team?.name}
+                      foundedYear={data?.team?.founded}
+                    />
+                  ))}
+                </>
+              ) : (
+                <>
+                  <NotFound />
+                </>
+              )}
+            </ScrollView>
+          </View>
         </>
       )}
     </SafeAreaView>

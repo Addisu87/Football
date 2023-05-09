@@ -4,11 +4,19 @@ import { getData } from "../api/API";
 const initialState = {
   items: [],
   loading: false,
+  status: "idle",
   error: null,
 };
 
-export const fetchPlayers = createAsyncThunk("players/fetchPlayers", async () =>
-  getData(`/players`, { league: "39", season: "2022" })
+// Fetching standings from API
+export const fetchPlayers = createAsyncThunk(
+  "players/fetchPlayers",
+  async (teamId) =>
+    getData(`/players`, {
+      league: "39",
+      season: "2022",
+      team: teamId,
+    })
 );
 
 export const playerSlice = createSlice({
@@ -17,7 +25,7 @@ export const playerSlice = createSlice({
   reducers: {},
 
   // extraReducers to listen fetch players additional actions
-  extraReducers(builder) {
+  extraReducers: (builder) => {
     builder
       .addCase(fetchPlayers.pending, (state) => {
         state.status = "loading";
@@ -26,8 +34,7 @@ export const playerSlice = createSlice({
       .addCase(fetchPlayers.fulfilled, (state, action) => {
         state.status = "succeeded";
         state.loading = false;
-        // Add any fetched players to the array
-        state.items = [...state.items, ...action.payload];
+        state.items = action.payload;
       })
       .addCase(fetchPlayers.rejected, (state, action) => {
         state.status = "failed";
@@ -40,6 +47,6 @@ export const playerSlice = createSlice({
 export const selectPlayerItems = (state) => state.players.items;
 
 export const selectPlayerById = (state, id) =>
-  state.players.items.filter((item) => item?.id === id);
+  state.players.items?.filter((player) => player?.id === id);
 
 export default playerSlice.reducer;

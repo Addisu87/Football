@@ -1,55 +1,75 @@
-import { View, Text, TouchableOpacity, Image } from "react-native";
 import React from "react";
+import { View, Text, TouchableOpacity, Image } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { useNavigation } from "@react-navigation/native";
+import moment from "moment";
 
 const MatchesCard = ({
+  teamHomeImgUrl,
+  teamAwayImgUrl,
   teamHome,
   teamAway,
   stadiumName,
-  teamHomeImgUrl,
-  teamAwayImgUrl,
+  gameDate,
+  goalHome,
+  goalAway,
+  leagueName,
+  season,
+  country,
 }) => {
   const navigation = useNavigation();
+
   return (
     <TouchableOpacity
       onPress={() =>
-        navigation.navigate("Lineups", {
+        navigation.navigate("headToHead", {
+          teamHomeImgUrl,
+          teamAwayImgUrl,
           teamHome,
           teamAway,
           stadiumName,
-          teamHomeImgUrl,
-          teamAwayImgUrl,
+          gameDate,
+          goalHome,
+          goalAway,
+          leagueName,
+          season,
+          country,
         })
       }
-      className="bg-white mr-3 shadow"
+      className="relative overflow-hidden cursor-pointer"
     >
       <LinearGradient
-        colors={["#5ED2A0", "#339CB1"]}
-        className="m-2 max-w-md mx-auto rounded-xl overflow-hidden drop-shadow-lg md:max-w-2xl"
+        colors={["#0af5ce", "#5ED2A0", "#339CB1"]}
+        className="m-2 max-w-md mx-auto rounded-xl overflow-hidden drop-shadow-lg"
       >
-        <View className="w-32 h-40">
-          <View className="items-center justify-center">
-            <Text className="text-sm font-light p-2">
-              {stadiumName?.length > 14
-                ? `${stadiumName.slice(0, 14)}...`
-                : stadiumName}
-            </Text>
-          </View>
+        <View className="mx-auto rounded-lg drop-shadow-lg items-center">
+          <Text className="mt-2 text-slate-900">
+            {moment(gameDate).format("MMMM DD, YYYY")}
+          </Text>
+          <View className="flex-row space-y-1 space-x-3">
+            <View className="shrink-0">
+              <Image
+                source={teamHomeImgUrl}
+                className="w-14 h-14 object-cover"
+              />
+              <Text className="uppercase block mt-1 text-base leading-tight font-medium text-black ">
+                {teamHome.length > 8 ? `${teamHome.slice(0, 8)}..` : teamHome}
+              </Text>
+            </View>
 
-          <View className="flex-row items-center justify-evenly md:shrink-0">
-            <Image source={teamHomeImgUrl} className="object-cover w-7 h-7" />
-            <Image source={teamAwayImgUrl} className="object-cover w-7 h-7" />
-          </View>
+            <View className="items-center justify-center">
+              <Text className="text-slate-900">Vs</Text>
+            </View>
 
-          <View className="items-center justify-center">
-            <Text className="tracking-normal text-sm font-light truncate">
-              {teamHome}
-            </Text>
-            <Text className="font-thin">Vs</Text>
-            <Text className="tracking-normal text-sm font-light truncate">
-              {teamAway}
-            </Text>
+            <View className="shrink-0">
+              <Image
+                source={teamAwayImgUrl}
+                className="w-14 h-14 object-cover"
+              />
+              <Text className="uppercase block mt-1 text-base leading-tight font-medium text-black ">
+                {teamAway.length > 8 ? `${teamAway.slice(0, 8)}..` : teamAway}
+              </Text>
+            </View>
           </View>
         </View>
       </LinearGradient>

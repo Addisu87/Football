@@ -1,10 +1,11 @@
+import { useNavigation } from "@react-navigation/native";
 import React, { useLayoutEffect } from "react";
 import { SafeAreaView } from "react-native";
-import { useNavigation } from "@react-navigation/native";
-import Transfer from "../components/Transfer";
+import Teams from "../components/Teams";
+import News from "../components/News";
 import Header from "../components/Header";
 
-const TransferScreen = () => {
+const TeamScreen = () => {
   const navigation = useNavigation();
 
   useLayoutEffect(() => {
@@ -14,14 +15,14 @@ const TransferScreen = () => {
   }, []);
 
   return (
-    <SafeAreaView>
+    <SafeAreaView className="flex-1 relative bg-white">
       {/* Header Section */}
       <Header />
 
-      {/* Transfer Section */}
-      <Transfer />
+      {/* Teams Section */}
+      <Teams />
     </SafeAreaView>
   );
 };
 
-export default TransferScreen;
+export default TeamScreen;

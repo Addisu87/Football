@@ -27,7 +27,7 @@ const StandingScreen = () => {
     return (
       <View
         key={item.team?.id}
-        className="flex-row space-y-2 items-center justify-center"
+        className="flex-row space-y-2.5 items-center justify-center"
       >
         <View className="flex-initial w-[10%]">
           <Text>{item?.rank}</Text>
@@ -68,7 +68,7 @@ const StandingScreen = () => {
   return (
     <View className="flex-1 p-2">
       <LinearGradient
-        colors={["#5ED2A0", "#339CB1"]}
+        colors={["#0af5ce", "#5ED2A0", "#339CB1"]}
         className="pl-4 pr-4 rounded-md h-full"
       >
         {!standings.length ? (
@@ -77,12 +77,12 @@ const StandingScreen = () => {
           </View>
         ) : (
           <View>
-            <View className="mb-3">
+            <View className="mb-2">
               <Text className="font-bold uppercase">
                 England - Premier League
               </Text>
             </View>
-            <View className="flex-row mb-1 bg-[#00CCBB] items-center justify-center">
+            <View className="flex-row mb-0.5 items-center justify-center">
               <View className="flex-initial w-[10%]">
                 <Text className="font-semibold">Pos</Text>
               </View>

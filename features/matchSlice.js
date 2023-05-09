@@ -11,7 +11,7 @@ export const fetchMatch = createAsyncThunk("match/fetchMatch", async () =>
   getData(`/fixtures`, {
     league: "39",
     season: "2022",
-    from: "2023-04-23",
+    from: "2023-05-01",
     to: "2023-06-23",
   })
 );

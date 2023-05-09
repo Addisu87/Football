@@ -4,50 +4,70 @@ import {
   ScrollView,
   SafeAreaView,
   ActivityIndicator,
+  TouchableOpacity,
+  Text,
+  Image,
 } from "react-native";
-import TransferCard from "./TransferCard";
 import { useDispatch, useSelector } from "react-redux";
 import {
   fetchTransfers,
   selectTransfersItems,
 } from "../features/transfersSlice";
+import { LinearGradient } from "expo-linear-gradient";
 
-const Transfer = () => {
+const Transfer = ({ playerId }) => {
   const transfers = useSelector(selectTransfersItems);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (!transfers.length) {
-      dispatch(fetchTransfers());
-    }
-  }, [dispatch]);
+    dispatch(fetchTransfers(playerId));
+  }, [dispatch, playerId]);
 
   return (
     <SafeAreaView>
-      {!transfers.length ? (
+      {!transfers?.length ? (
         <View className=" flex-1 items-center justify-center">
           <ActivityIndicator size="large" color="#0B646B" />
         </View>
       ) : (
-        <ScrollView
-          vertical
-          showsHorizontalScrollIndicator={false}
-          contentContainerStyle={{ paddingHorizontal: 15, paddingTop: 10 }}
-        >
-          {transfers?.map((trans, index) => (
-            <TransferCard
-              key={index}
-              DateTrans={trans.transfers?.date}
-              TransType={trans.transfers?.type}
-              Photo={{ uri: trans?.player?.photo }}
-              Name={trans.player?.name}
-              TeamIn={trans.transfers?.teams?.in?.name}
-              TeamInLogo={trans.transfers?.teams?.in?.logo}
-              TeamOut={trans.transfers?.teams?.out?.name}
-              TeamOutLogo={trans.transfers?.teams?.out?.logo}
-            />
-          ))}
-        </ScrollView>
+        <View className="relative">
+          <TouchableOpacity className="relative overflow-hidden">
+            <LinearGradient
+              colors={["#0af5ce", "#5ED2A0", "#339CB1"]}
+              className="m-2 max-w-md mx-auto rounded-xl overflow-hidden drop-shadow-lg"
+            >
+              <Text className="font-semibold mb-2.5">Transfer History</Text>
+              <View className="h-[600px]">
+                <ScrollView className="flex-1 p-2">
+                  {transfers?.map((transfer, player) => (
+                    <View key={player?.id} className="mt-2.5">
+                      <Text className="font-bold mb-1.5">{player?.name}</Text>
+                      <View className="ml-2.5">
+                        {transfer?.map((trans) => (
+                          <View key={trans?.date} className="mt-1.25">
+                            <Text>Date: {trans?.date}</Text>
+                            <Text>Type: {trans?.type}</Text>
+                            <View>
+                              <Text>Out: {trans?.teams?.out?.name}</Text>
+                              <Image
+                                source={{ uri: trans?.teams?.out?.logo }}
+                                className="w-8 h-8 rounded-full"
+                              />
+                            </View>
+                            <View>
+                              <Text>In: {trans?.teams?.in?.name}</Text>
+                              <Image source={{ uri: trans?.teams?.in?.logo }} />
+                            </View>
+                          </View>
+                        ))}
+                      </View>
+                    </View>
+                  ))}
+                </ScrollView>
+              </View>
+            </LinearGradient>
+          </TouchableOpacity>
+        </View>
       )}
     </SafeAreaView>
   );

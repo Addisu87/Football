@@ -1,12 +1,10 @@
-import { useNavigation } from "@react-navigation/native";
 import React, { useLayoutEffect } from "react";
 import { SafeAreaView } from "react-native";
-import Teams from "../components/Teams";
+import { useNavigation } from "@react-navigation/native";
 import Matches from "../components/Matches";
-import News from "../components/News";
 import Header from "../components/Header";
 
-const HomeScreen = () => {
+const MatchScreen = () => {
   const navigation = useNavigation();
 
   useLayoutEffect(() => {
@@ -20,16 +18,10 @@ const HomeScreen = () => {
       {/* Header Section */}
       <Header />
 
-      {/* Teams Section */}
-      <Teams />
-
-      {/* Matches Section */}
+      {/* Match Section */}
       <Matches />
-
-      {/* News Section */}
-      <News />
     </SafeAreaView>
   );
 };
 
-export default HomeScreen;
+export default MatchScreen;
