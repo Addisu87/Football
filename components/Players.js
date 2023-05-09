@@ -32,9 +32,9 @@ const Players = ({ teamId }) => {
             <ScrollView className="flex-1 p-2">
               {squad?.length > 0 ? (
                 <>
-                  {squad?.map((player) => (
+                  {squad?.map((player, index) => (
                     <PlayerCard
-                      key={player?.id}
+                      key={index}
                       Photo={{ uri: player?.player?.photo }}
                       Name={player?.player?.name}
                       Age={player?.player?.age}

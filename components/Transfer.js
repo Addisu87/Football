@@ -11,12 +11,12 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import {
   fetchTransfers,
-  selectTransfersItems,
+  selectTransfersPlayers,
 } from "../features/transfersSlice";
 import { LinearGradient } from "expo-linear-gradient";
 
 const Transfer = ({ playerId }) => {
-  const transfers = useSelector(selectTransfersItems);
+  const transferPlayers = useSelector(selectTransfersPlayers);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -25,7 +25,7 @@ const Transfer = ({ playerId }) => {
 
   return (
     <SafeAreaView>
-      {!transfers?.length ? (
+      {!transferPlayers?.length ? (
         <View className=" flex-1 items-center justify-center">
           <ActivityIndicator size="large" color="#0B646B" />
         </View>
@@ -39,27 +39,30 @@ const Transfer = ({ playerId }) => {
               <Text className="font-semibold mb-2.5">Transfer History</Text>
               <View className="h-[600px]">
                 <ScrollView className="flex-1 p-2">
-                  {transfers?.map((transfer, player) => (
+                  {transferPlayers?.map((transfers, player) => (
                     <View key={player?.id} className="mt-2.5">
                       <Text className="font-bold mb-1.5">{player?.name}</Text>
                       <View className="ml-2.5">
-                        {transfer?.map((trans) => (
-                          <View key={trans?.date} className="mt-1.25">
-                            <Text>Date: {trans?.date}</Text>
-                            <Text>Type: {trans?.type}</Text>
-                            <View>
-                              <Text>Out: {trans?.teams?.out?.name}</Text>
-                              <Image
-                                source={{ uri: trans?.teams?.out?.logo }}
-                                className="w-8 h-8 rounded-full"
-                              />
+                        {transfers?.length > 0 &&
+                          transfers[0]?.map((trans) => (
+                            <View key={trans?.date} className="mt-1.25">
+                              <Text>Date: {trans?.date}</Text>
+                              <Text>Type: {trans?.type}</Text>
+                              <View>
+                                <Text>Out: {trans?.teams?.out?.name}</Text>
+                                <Image
+                                  source={{ uri: trans?.teams?.out?.logo }}
+                                  className="w-8 h-8 rounded-full"
+                                />
+                              </View>
+                              <View>
+                                <Text>In: {trans?.teams?.in?.name}</Text>
+                                <Image
+                                  source={{ uri: trans?.teams?.in?.logo }}
+                                />
+                              </View>
                             </View>
-                            <View>
-                              <Text>In: {trans?.teams?.in?.name}</Text>
-                              <Image source={{ uri: trans?.teams?.in?.logo }} />
-                            </View>
-                          </View>
-                        ))}
+                          ))}
                       </View>
                     </View>
                   ))}

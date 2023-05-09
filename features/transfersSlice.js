@@ -39,7 +39,7 @@ export const transfersSlice = createSlice({
   },
 });
 
-export const selectTransfersItems = (state) => state.transfers.items;
+export const selectTransfersPlayers = (state) => state.transfers.items;
 
 export const selectTransfersById = (state, id) =>
   state.transfers.items.filter((trans) => trans?.id === id);
