@@ -43,7 +43,7 @@ const PlayerStatistics = () => {
         </TouchableOpacity>
 
         <LinearGradient
-          colors={["#0af5ce", "#5ED2A0", "#339CB1"]}
+          colors={["#60a5fa", "#34d399"]}
           className="m-2 max-w-md mx-auto h-full rounded-xl overflow-hidden drop-shadow-lg"
         >
           <View className="max-w-md mx-auto rounded-xl drop-shadow-lg overflow-hidden">

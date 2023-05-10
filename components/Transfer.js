@@ -11,12 +11,12 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import {
   fetchTransfers,
-  selectTransfersPlayers,
+  selectTransferPlayers,
 } from "../features/transfersSlice";
 import { LinearGradient } from "expo-linear-gradient";
 
 const Transfer = ({ playerId }) => {
-  const transferPlayers = useSelector(selectTransfersPlayers);
+  const transferPlayers = useSelector(selectTransferPlayers);
   const dispatch = useDispatch();
 
   useEffect(() => {

@@ -39,9 +39,9 @@ export const transfersSlice = createSlice({
   },
 });
 
-export const selectTransfersPlayers = (state) => state.transfers.items;
+export const selectTransferPlayers = (state) => state.transfers.items;
 
 export const selectTransfersById = (state, id) =>
-  state.transfers.items.filter((trans) => trans?.id === id);
+  state.transfers.items.filter((trans) => trans.id === id);
 
 export default transfersSlice.reducer;
