@@ -20,7 +20,13 @@ const Transfer = ({ playerId }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchTransfers(playerId));
+    dispatch(fetchTransfers(playerId))
+      .then((response) => {
+        console.log("response", response);
+      })
+      .catch((error) => {
+        console.error("error", error);
+      });
   }, [dispatch, playerId]);
 
   return (
@@ -33,38 +39,42 @@ const Transfer = ({ playerId }) => {
         <View className="relative">
           <TouchableOpacity className="relative overflow-hidden">
             <LinearGradient
-              colors={["#0af5ce", "#5ED2A0", "#339CB1"]}
+              colors={["#60a5fa", "#34d399"]}
               className="m-2 max-w-md mx-auto rounded-xl overflow-hidden drop-shadow-lg"
             >
               <Text className="font-semibold mb-2.5">Transfer History</Text>
               <View className="h-[600px]">
                 <ScrollView className="flex-1 p-2">
-                  {transferPlayers?.map((transfers, player) => (
-                    <View key={player?.id} className="mt-2.5">
-                      <Text className="font-bold mb-1.5">{player?.name}</Text>
-                      <View className="ml-2.5">
-                        {transfers?.length > 0 &&
-                          transfers[0]?.map((trans) => (
-                            <View key={trans?.date} className="mt-1.25">
-                              <Text>Date: {trans?.date}</Text>
-                              <Text>Type: {trans?.type}</Text>
-                              <View>
-                                <Text>Out: {trans?.teams?.out?.name}</Text>
-                                <Image
-                                  source={{ uri: trans?.teams?.out?.logo }}
-                                  className="w-8 h-8 rounded-full"
-                                />
-                              </View>
-                              <View>
-                                <Text>In: {trans?.teams?.in?.name}</Text>
-                                <Image
-                                  source={{ uri: trans?.teams?.in?.logo }}
-                                />
-                              </View>
-                            </View>
-                          ))}
+                  {transferPlayers?.map((player) => (
+                    <>
+                      <View key={player?.id} className="mt-2.5">
+                        <Text className="font-bold mb-1.5">{player?.name}</Text>
+                        <View className="ml-2.5">
+                          {player.transfers?.length > 0 &&
+                            player.transfers?.map((trans) => (
+                              <>
+                                <View key={trans?.date} className="mt-1.25">
+                                  <Text>Date: {trans?.date}</Text>
+                                  <Text>Type: {trans?.type}</Text>
+                                  <View>
+                                    <Text>Out: {trans?.teams?.out?.name}</Text>
+                                    <Image
+                                      source={{ uri: trans?.teams?.out?.logo }}
+                                      className="w-8 h-8 rounded-full"
+                                    />
+                                  </View>
+                                  <View>
+                                    <Text>In: {trans?.teams?.in?.name}</Text>
+                                    <Image
+                                      source={{ uri: trans?.teams?.in?.logo }}
+                                    />
+                                  </View>
+                                </View>
+                              </>
+                            ))}
+                        </View>
                       </View>
-                    </View>
+                    </>
                   ))}
                 </ScrollView>
               </View>

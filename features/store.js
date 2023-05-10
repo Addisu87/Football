@@ -5,6 +5,7 @@ import teamReducer from "./teamSlice";
 import playersReducer from "./playerSlice";
 import transfersReducer from "./transfersSlice";
 import lineupReducer from "./lineupSlice";
+import trophiesReducer from "./trophiesSlice";
 
 export default configureStore({
   reducer: {
@@ -14,5 +15,6 @@ export default configureStore({
     players: playersReducer,
     transfers: transfersReducer,
     lineup: lineupReducer,
+    trophies: trophiesReducer,
   },
 });

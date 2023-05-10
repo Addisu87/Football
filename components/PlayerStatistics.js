@@ -3,6 +3,7 @@ import { View, Text, ScrollView, Image, TouchableOpacity } from "react-native";
 import { ArrowLeftIcon, ShareIcon } from "react-native-heroicons/outline";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import { LinearGradient } from "expo-linear-gradient";
+import Trophies from "./Trophies";
 
 const PlayerStatistics = () => {
   const navigation = useNavigation();
@@ -75,6 +76,11 @@ const PlayerStatistics = () => {
                 <Text className="mt-2 text-black">Goals: {Goals}</Text>
                 <Text className="mt-2 text-black">Passes: {Passes}</Text>
                 <Text className="mt-2 text-black">Cards: {Cards}</Text>
+              </View>
+
+              {/* Trophies */}
+              <View className="p-4">
+                <Trophies />
               </View>
             </View>
           </View>
