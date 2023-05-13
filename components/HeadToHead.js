@@ -64,16 +64,16 @@ const HeadToHead = () => {
           </TouchableOpacity>
 
           <View className="flex-row justify-evenly">
-            <View className="space-y-2">
+            <View className="space-y-2 pl-4">
               <Image
                 source={teamHomeImgUrl}
-                className="object-cover w-16 h-16"
+                className="object-cover w-12 h-12"
               />
               <Text className="font-semibold uppercase text-lg">
                 {teamHome.length > 10 ? `${teamHome.slice(0, 10)}..` : teamHome}
               </Text>
             </View>
-            <View className="space-x-2">
+            <View className="">
               <Text className="font-bold text-xl">
                 {goalHome} - {goalAway}
               </Text>
@@ -81,7 +81,7 @@ const HeadToHead = () => {
             <View>
               <Image
                 source={teamAwayImgUrl}
-                className="object-cover w-16 h-16"
+                className="object-cover w-12 h-12"
               />
               <Text className="font-semibold uppercase text-lg">
                 {teamAway.length > 10 ? `${teamAway.slice(0, 10)}..` : teamAway}

@@ -9,8 +9,7 @@ const initialState = {
 
 export const fetchTrophies = createAsyncThunk(
   "trophies/fetchTrophies",
-  async (playerId) =>
-    getData(`/trophies`, { league: "39", season: "2022", player: playerId })
+  async (playerId) => getData(`/trophies`, { player: playerId })
 );
 
 export const trophiesSlice = createSlice({

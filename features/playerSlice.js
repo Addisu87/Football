@@ -12,10 +12,9 @@ const initialState = {
 // export const fetchPlayers = createAsyncThunk(
 //   "players/fetchPlayers",
 //   async (teamId) =>
-//     getData(`/players/squads`, {
+//     getData(`teams/?team=${teamId}/players`, {
 //       league: "39",
 //       season: "2022",
-//       team: teamId,
 //     })
 // );
 
@@ -30,7 +29,7 @@ export const fetchPlayers = createAsyncThunk(
           team: teamId,
         },
       });
-      return data?.response[0].players;
+      return data?.response[0]?.players;
     } catch (error) {
       console.error("error", error);
     }
@@ -64,7 +63,7 @@ export const playerSlice = createSlice({
 
 export const selectPlayerItems = (state) => state.players.items;
 
-export const selectPlayerById = (state, id) =>
-  state.players.items?.filter((player) => player?.id === id);
+export const selectPlayerById = (state, playerId) =>
+  state.players.items?.filter((player) => player?.id === playerId);
 
 export default playerSlice.reducer;

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { View, Text, ScrollView, Image, TouchableOpacity } from "react-native";
 import { ArrowLeftIcon, ShareIcon } from "react-native-heroicons/outline";
 import { useNavigation, useRoute } from "@react-navigation/native";
@@ -10,6 +10,7 @@ const PlayerStatistics = () => {
 
   const {
     params: {
+      teamId,
       Photo,
       Name,
       Age,
@@ -63,7 +64,7 @@ const PlayerStatistics = () => {
 
               <View className="p-4">
                 <Text className="uppercase block mt-1 text-lg leading-tight font-medium text-black">
-                  Name: {Name}
+                  {Name}
                 </Text>
                 <Text className="mt-2 text-black">Age: {Age}</Text>
                 <Text className="mt-2 text-black">Position: {Position}</Text>
@@ -76,11 +77,11 @@ const PlayerStatistics = () => {
                 <Text className="mt-2 text-black">Goals: {Goals}</Text>
                 <Text className="mt-2 text-black">Passes: {Passes}</Text>
                 <Text className="mt-2 text-black">Cards: {Cards}</Text>
-              </View>
 
-              {/* Trophies */}
-              <View className="p-4">
-                <Trophies />
+                {/* Trophies */}
+                <View className="p-4">
+                  <Trophies />
+                </View>
               </View>
             </View>
           </View>

@@ -38,14 +38,15 @@ const Players = ({ teamId }) => {
                       Name={player?.name}
                       Age={player?.age}
                       Position={player?.position}
-                      Nationality={player?.player?.nationality}
-                      TeamLogo={player?.statistics[0]?.team?.logo}
-                      TeamName={player?.statistics[0]?.team?.name}
+                      Number={player?.number}
+                      // Nationality={player?.player?.nationality}
+                      // TeamLogo={player?.statistics[0]?.team?.logo}
+                      // TeamName={player?.statistics[0]?.team?.name}
                       // Position={player?.statistics[0]?.games?.position}
-                      Appearences={player?.statistics[0]?.games?.appearences}
-                      Goals={player?.statistics[0]?.goals?.total}
-                      Passes={player?.statistics[0]?.passes?.total}
-                      Cards={player?.statistics[0]?.cards?.red}
+                      // Appearences={player?.statistics[0]?.games?.appearences}
+                      // Goals={player?.statistics[0]?.goals?.total}
+                      // Passes={player?.statistics[0]?.passes?.total}
+                      // Cards={player?.statistics[0]?.cards?.red}
                     />
                   ))}
                 </>
