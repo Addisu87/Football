@@ -8,7 +8,6 @@ import {
 } from "react-native";
 import TeamsCard from "./TeamsCard";
 
-import NotFound from "./NotFound";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchTeams, selectTeamItems } from "../features/teamSlice";
 
@@ -16,8 +15,12 @@ const Teams = () => {
   const teams = useSelector(selectTeamItems);
   const dispatch = useDispatch();
 
+  const sortedTeams = [...teams].sort((a, b) =>
+    a.team?.name?.localeCompare(b.team?.name)
+  );
+
   useEffect(() => {
-    if (!teams?.length) {
+    if (!sortedTeams?.length) {
       dispatch(fetchTeams());
     }
   }, [dispatch]);
@@ -29,7 +32,7 @@ const Teams = () => {
         <Text className="uppercase">View All</Text>
       </View>
 
-      {!teams?.length ? (
+      {!sortedTeams?.length ? (
         <>
           <View className="flex-1 items-center justify-center">
             <ActivityIndicator size="large" color="#0B646B" />
@@ -37,11 +40,11 @@ const Teams = () => {
         </>
       ) : (
         <>
-          <View className="h-[600px]">
+          <View className="h-[550px]">
             <ScrollView className="flex-1 p-2">
-              {teams?.length > 0 ? (
-                <>
-                  {teams?.map((data, id) => (
+              <>
+                {sortedTeams?.length > 0 &&
+                  sortedTeams?.map((data, id) => (
                     <TeamsCard
                       key={id}
                       imgUrl={{ uri: data?.team?.logo }}
@@ -49,12 +52,7 @@ const Teams = () => {
                       foundedYear={data?.team?.founded}
                     />
                   ))}
-                </>
-              ) : (
-                <>
-                  <NotFound />
-                </>
-              )}
+              </>
             </ScrollView>
           </View>
         </>
