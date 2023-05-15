@@ -5,12 +5,17 @@ const initialState = {
   items: [],
   loading: false,
   error: null,
+  status: null,
 };
 
 export const fetchTransfers = createAsyncThunk(
   "transfers/fetchTransfers",
   async (playerId) =>
-    getData(`/transfers`, { league: "39", season: "2022", player: playerId })
+    getData(`/transfers`, {
+      league: "39",
+      season: "2022",
+      player: playerId,
+    })
 );
 
 export const transfersSlice = createSlice({
