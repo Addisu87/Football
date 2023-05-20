@@ -44,9 +44,9 @@ const Teams = () => {
             <ScrollView className="flex-1 p-2">
               <>
                 {sortedTeams?.length > 0 &&
-                  sortedTeams?.map((data, id) => (
+                  sortedTeams?.map((data, teamId) => (
                     <TeamsCard
-                      key={id}
+                      key={teamId}
                       imgUrl={{ uri: data?.team?.logo }}
                       name={data?.team?.name}
                       foundedYear={data?.team?.founded}

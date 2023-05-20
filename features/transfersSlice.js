@@ -12,8 +12,6 @@ export const fetchTransfers = createAsyncThunk(
   "transfers/fetchTransfers",
   async (playerId) =>
     getData(`/transfers`, {
-      league: "39",
-      season: "2022",
       player: playerId,
     })
 );

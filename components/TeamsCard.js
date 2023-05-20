@@ -12,6 +12,7 @@ const TeamsCard = ({
   Name,
   Position,
   teamId,
+  Number,
 }) => {
   const navigation = useNavigation();
 
@@ -23,6 +24,7 @@ const TeamsCard = ({
           Photo,
           Name,
           Position,
+          Number,
         })
       }
       className="relative overflow-hidden cursor-pointer"

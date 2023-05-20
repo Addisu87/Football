@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { getData, instance } from "../api/API";
+import { getData } from "../api/API";
 
 const initialState = {
   items: [],
@@ -9,30 +9,12 @@ const initialState = {
 };
 
 // Fetching standings from API
-// export const fetchPlayers = createAsyncThunk(
-//   "players/fetchPlayers",
-//   async (teamId) =>
-//     getData(`teams/?team=${teamId}/players`, {
-//       league: "39",
-//       season: "2022",
-//     })
-// );
-
 export const fetchPlayers = createAsyncThunk(
   "players/fetchPlayers",
   async (teamId) => {
-    try {
-      const { data } = await instance.get(`/players/squads`, {
-        params: {
-          league: "39",
-          season: "2022",
-          team: teamId,
-        },
-      });
-      return data?.response[0]?.players;
-    } catch (error) {
-      console.error("error", error);
-    }
+    await getData(`teams/?team=${teamId}/players`, {
+      team: teamId,
+    });
   }
 );
 
@@ -64,6 +46,6 @@ export const playerSlice = createSlice({
 export const selectPlayerItems = (state) => state.players.items;
 
 export const selectPlayerById = (state, playerId) =>
-  state.players.items?.filter((player) => player?.id === playerId);
+  state.players.items?.filter((player) => player.id === playerId);
 
 export default playerSlice.reducer;
