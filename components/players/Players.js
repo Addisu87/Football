@@ -8,16 +8,27 @@ import {
 import PlayerCard from "./PlayerCard";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchPlayers, selectPlayerLists } from "../../features/playerSlice";
+import { selectTeamById } from "../../features/teamSlice";
 
 const Players = () => {
   // Access the squad of players from the state
   const squad = useSelector(selectPlayerLists);
+  const selectedTeam = useSelector(selectTeamById);
   const dispatch = useDispatch();
 
   // Fetch the squad of players for the selected team from the API
   useEffect(() => {
-    dispatch(fetchPlayers());
-  }, [dispatch]);
+    const fetchPlayersData = async () => {
+      const playersData = await Promise.all(
+        selectedTeam?.map(async (team) => {
+          const teamPlayers = await dispatch(fetchPlayers(team?.id));
+          return teamPlayers;
+        })
+      );
+      dispatch(playersData.flat());
+    };
+    fetchPlayersData();
+  }, [dispatch, selectedTeam]);
 
   return (
     <SafeAreaView>
@@ -29,25 +40,24 @@ const Players = () => {
         <>
           <View className="h-[600px]">
             <ScrollView className="flex-1 p-2">
-              {squad?.length > 0 &&
-                squad.map((player, index) => (
-                  <PlayerCard
-                    key={index}
-                    Photo={{ uri: player?.players?.photo }}
-                    Name={player?.players?.name}
-                    Age={player?.players?.age}
-                    Position={player?.players?.position}
-                    Number={player?.players?.number}
-                    // Nationality={player?.player?.nationality}
-                    // TeamLogo={player?.statistics[0]?.team?.logo}
-                    // TeamName={player?.statistics[0]?.team?.name}
-                    // Position={player?.statistics[0]?.games?.position}
-                    // Appearences={player?.statistics[0]?.games?.appearences}
-                    // Goals={player?.statistics[0]?.goals?.total}
-                    // Passes={player?.statistics[0]?.passes?.total}
-                    // Cards={player?.statistics[0]?.cards?.red}
-                  />
-                ))}
+              {squad?.players?.map((player, index) => (
+                <PlayerCard
+                  key={index}
+                  Photo={{ uri: player?.photo }}
+                  Name={player?.name}
+                  Age={player?.age}
+                  Position={player?.position}
+                  Number={player?.number}
+                  // Nationality={player?.player?.nationality}
+                  // TeamLogo={player?.statistics[0]?.team?.logo}
+                  // TeamName={player?.statistics[0]?.team?.name}
+                  // Position={player?.statistics[0]?.games?.position}
+                  // Appearences={player?.statistics[0]?.games?.appearences}
+                  // Goals={player?.statistics[0]?.goals?.total}
+                  // Passes={player?.statistics[0]?.passes?.total}
+                  // Cards={player?.statistics[0]?.cards?.red}
+                />
+              ))}
             </ScrollView>
           </View>
         </>

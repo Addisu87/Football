@@ -8,11 +8,10 @@ const initialState = {
   error: null,
 };
 
-const teamId = 33;
 // Fetching standings from API
 export const fetchPlayers = createAsyncThunk(
   "players/fetchPlayers",
-  async () => await getData(`/players/squads?team=${teamId} `)
+  async (teamId) => await getData(`/players/squads`, { team: teamId })
 );
 
 export const playerSlice = createSlice({
@@ -30,7 +29,7 @@ export const playerSlice = createSlice({
       .addCase(fetchPlayers.fulfilled, (state, action) => {
         state.status = "succeeded";
         state.loading = false;
-        state.items = action.payload;
+        state.items = [...state.items, action.payload];
       })
       .addCase(fetchPlayers.rejected, (state, action) => {
         state.status = "failed";

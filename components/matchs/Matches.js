@@ -14,6 +14,7 @@ import moment from "moment";
 const Matches = () => {
   const match = useSelector(selectMatchItems);
   const dispatch = useDispatch();
+
   const sortedMatches = [...match].sort((a, b) =>
     moment(a.fixture.date).diff(moment(b.fixture.date))
   );
