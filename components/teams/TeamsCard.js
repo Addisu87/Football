@@ -10,8 +10,8 @@ const TeamsCard = ({
   foundedYear,
   Photo,
   Name,
+  Age,
   Position,
-  teamId,
   Number,
 }) => {
   const navigation = useNavigation();
@@ -20,9 +20,9 @@ const TeamsCard = ({
     <TouchableOpacity
       onPress={() =>
         navigation.navigate("Players", {
-          teamId,
           Photo,
           Name,
+          Age,
           Position,
           Number,
         })
