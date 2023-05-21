@@ -7,7 +7,7 @@ import {
   ScrollView,
 } from "react-native";
 import MatchesCard from "./MatchesCard";
-import { fetchMatch, selectMatchItems } from "../features/matchSlice";
+import { fetchMatch, selectMatchItems } from "../../features/matchSlice";
 import { useDispatch, useSelector } from "react-redux";
 import moment from "moment";
 

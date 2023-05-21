@@ -9,7 +9,7 @@ import {
 import TeamsCard from "./TeamsCard";
 
 import { useDispatch, useSelector } from "react-redux";
-import { fetchTeams, selectTeamItems } from "../features/teamSlice";
+import { fetchTeams, selectTeamItems } from "../../features/teamSlice";
 
 const Teams = () => {
   const teams = useSelector(selectTeamItems);

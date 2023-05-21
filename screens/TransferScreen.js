@@ -1,7 +1,7 @@
 import React, { useLayoutEffect } from "react";
 import { SafeAreaView } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import Transfer from "../components/Transfer";
+import Transfer from "../components/players/Transfer";
 import Header from "../components/Header";
 
 const TransferScreen = () => {

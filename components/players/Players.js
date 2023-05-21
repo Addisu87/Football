@@ -7,22 +7,26 @@ import {
 } from "react-native";
 import PlayerCard from "./PlayerCard";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchPlayers, selectPlayerItems } from "../features/playerSlice";
-import { fetchTeams, selectTeamById } from "../features/teamSlice";
+import {
+  fetchPlayers,
+  selectPlayerById,
+  selectPlayerItems,
+} from "../../features/playerSlice";
 
 const Players = ({ teamId }) => {
   // Access the squad of players from the state
-  const squad = useSelector(selectTeamById);
+  const squad = useSelector(selectPlayerItems);
   const dispatch = useDispatch();
 
   // Fetch the squad of players for the selected team from the API
   useEffect(() => {
-    dispatch(fetchTeams(teamId));
+    console.log("teamId is ", teamId);
+    dispatch(fetchPlayers(teamId));
   }, [teamId]);
 
   return (
     <SafeAreaView>
-      {!squad?.players?.length ? (
+      {!squad?.length ? (
         <View className="flex-1 items-center justify-center">
           <ActivityIndicator size="large" color="#0B646B" />
         </View>
@@ -30,7 +34,7 @@ const Players = ({ teamId }) => {
         <>
           <View className="h-[600px]">
             <ScrollView className="flex-1 p-2">
-              {squad?.players?.length > 0 &&
+              {squad?.length > 0 &&
                 squad?.players?.map((player, index) => (
                   <PlayerCard
                     key={index}

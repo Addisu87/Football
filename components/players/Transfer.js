@@ -12,24 +12,16 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   fetchTransfers,
   selectTransferPlayers,
-} from "../features/transfersSlice";
+} from "../../features/transfersSlice";
 import { LinearGradient } from "expo-linear-gradient";
-import { unwrapResult } from "@reduxjs/toolkit";
 
 const Transfer = ({ playerId }) => {
   const transferPlayers = useSelector(selectTransferPlayers);
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    (async () => {
-      try {
-        const response = await dispatch(fetchTransfers(playerId));
-        const result = unwrapResult(response);
-        console.log(result); // Do something with the result
-      } catch (error) {
-        console.error(error);
-      }
-    })();
+  useEffect(async () => {
+    const result = await dispatch(fetchTransfers(playerId));
+    console.log(result);
   }, [dispatch, playerId]);
 
   return (
@@ -47,10 +39,7 @@ const Transfer = ({ playerId }) => {
             >
               <Text className="font-semibold mb-2.5">Transfer History</Text>
               <View className="h-[600px]">
-                <ScrollView
-                  keyExtractor={(player) => player.id.toString()}
-                  className="flex-1 p-2"
-                >
+                <ScrollView className="flex-1 p-2">
                   {transferPlayers?.map((player) => (
                     <>
                       <View key={player?.id} className="mt-2.5">

@@ -12,8 +12,8 @@ const initialState = {
 export const fetchPlayers = createAsyncThunk(
   "players/fetchPlayers",
   async (teamId) => {
-    await getData(`teams/?team=${teamId}/players`, {
-      team: teamId,
+    await getData(`/teams?team=${teamId.id}/players/squads/`, {
+      team: teamId.id,
     });
   }
 );
@@ -46,6 +46,6 @@ export const playerSlice = createSlice({
 export const selectPlayerItems = (state) => state.players.items;
 
 export const selectPlayerById = (state, playerId) =>
-  state.players.items?.filter((player) => player.id === playerId);
+  state.players.items?.filter((player) => player?.id === playerId);
 
 export default playerSlice.reducer;

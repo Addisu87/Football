@@ -7,8 +7,8 @@ const initialState = {
   error: null,
 };
 
-export const fetchTeams = createAsyncThunk("teams/fetchTeams", async (teamId) =>
-  getData(`/teams`, { league: "39", season: "2022", team: teamId })
+export const fetchTeams = createAsyncThunk("teams/fetchTeams", async () =>
+  getData(`/teams`, { league: "39", season: "2022" })
 );
 
 export const teamSlice = createSlice({

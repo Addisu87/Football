@@ -1,7 +1,10 @@
 import React, { useEffect } from "react";
 import { View, Text, ActivityIndicator, SafeAreaView } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchTrophies, selectTrophiesItems } from "../features/trophiesSlice";
+import {
+  fetchTrophies,
+  selectTrophiesItems,
+} from "../../features/trophiesSlice";
 
 const Trophies = ({ playerId }) => {
   const Trophies = useSelector(selectTrophiesItems);
