@@ -8,9 +8,10 @@ const initialState = {
   status: null,
 };
 
-export const fetchTransfers = createAsyncThunk(
-  "transfers/fetchTransfers",
-  async (playerId) => await getData(`/transfers`, { player: playerId })
+// find players transfer
+export const getTransfers = createAsyncThunk(
+  "transfers/getTransfers",
+  async (playerId) => await getData(`/transfers/${playerId}`)
 );
 
 export const transfersSlice = createSlice({
@@ -21,16 +22,16 @@ export const transfersSlice = createSlice({
   // extraReducers to listen fetch transfers additional actions
   extraReducers: (builder) => {
     builder
-      .addCase(fetchTransfers.pending, (state) => {
+      .addCase(getTransfers.pending, (state) => {
         state.status = "loading";
         state.loading = true;
       })
-      .addCase(fetchTransfers.fulfilled, (state, action) => {
+      .addCase(getTransfers.fulfilled, (state, action) => {
         state.status = "succeeded";
         state.loading = false;
         state.items = action.payload;
       })
-      .addCase(fetchTransfers.rejected, (state, action) => {
+      .addCase(getTransfers.rejected, (state, action) => {
         state.status = "failed";
         state.loading = false;
         state.error = action.error.message;

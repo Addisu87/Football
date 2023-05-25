@@ -10,7 +10,7 @@ import {
 } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  fetchTransfers,
+  getTransfers,
   selectTransferPlayers,
 } from "../../features/transfersSlice";
 import { LinearGradient } from "expo-linear-gradient";
@@ -20,7 +20,7 @@ const Transfer = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchTransfers());
+    dispatch(getTransfers());
   }, []);
 
   return (
