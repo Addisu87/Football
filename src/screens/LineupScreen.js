@@ -8,10 +8,10 @@ import {
   ImageBackground,
   SafeAreaView,
 } from "react-native";
-import { soccerField } from "../assets/images/index";
+import { soccerField } from "../../assets/images/index";
 import { ArrowLeftIcon } from "react-native-heroicons/outline";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchLineups, selectLineupItems } from "../features/lineupSlice";
+import { fetchLineups, selectLineupItems } from "../../features/lineupSlice";
 
 const LineupScreen = ({ fixtureId }) => {
   const navigation = useNavigation();

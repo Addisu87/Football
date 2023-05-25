@@ -3,9 +3,9 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import ArticleDetail from "../screens/ArticleDetail";
 import Tabs from "./Tabs";
 import LineupScreen from "../screens/LineupScreen";
-import HeadToHead from "../components/matchs/HeadToHead";
-import PlayerStatistics from "../components/players/PlayerStatistics";
-import Players from "../components/Players/Players";
+import HeadToHead from "../../components/matchs/HeadToHead";
+import PlayerStatistics from "../../components/players/PlayerStatistics";
+import Players from "../../components/Players/Players";
 
 const Stack = createNativeStackNavigator();
 

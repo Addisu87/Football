@@ -1,10 +1,10 @@
+import { useNavigation } from "@react-navigation/native";
 import React, { useLayoutEffect } from "react";
 import { SafeAreaView } from "react-native";
-import { useNavigation } from "@react-navigation/native";
-import Matches from "../components/matchs/Matches";
-import Header from "../components/Header";
+import Teams from "../../components/teams/Teams";
+import Header from "../../components/Header";
 
-const MatchScreen = () => {
+const TeamScreen = () => {
   const navigation = useNavigation();
 
   useLayoutEffect(() => {
@@ -18,10 +18,10 @@ const MatchScreen = () => {
       {/* Header Section */}
       <Header />
 
-      {/* Match Section */}
-      <Matches />
+      {/* Teams Section */}
+      <Teams />
     </SafeAreaView>
   );
 };
 
-export default MatchScreen;
+export default TeamScreen;

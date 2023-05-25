@@ -4,7 +4,10 @@ import { LinearGradient } from "expo-linear-gradient";
 import { useNavigation } from "@react-navigation/native";
 import { FlashList } from "@shopify/flash-list";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchStandings, selectStandingItems } from "../features/standingSlice";
+import {
+  fetchStandings,
+  selectStandingItems,
+} from "../../features/standingSlice";
 
 const StandingScreen = () => {
   const navigation = useNavigation();
