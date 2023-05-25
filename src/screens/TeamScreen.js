@@ -2,7 +2,7 @@ import { useNavigation } from "@react-navigation/native";
 import React, { useLayoutEffect } from "react";
 import { SafeAreaView } from "react-native";
 import Teams from "../../components/teams/Teams";
-import Header from "../../components/Header";
+import Header from "../../components/organisms/Header";
 
 const TeamScreen = () => {
   const navigation = useNavigation();

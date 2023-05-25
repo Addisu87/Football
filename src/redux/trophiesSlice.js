@@ -5,6 +5,7 @@ const initialState = {
   items: [],
   loading: false,
   error: null,
+  status: "idle",
 };
 
 export const fetchTrophies = createAsyncThunk(
@@ -41,6 +42,6 @@ export const trophiesSlice = createSlice({
 export const selectTrophiesItems = (state) => state.trophies.items;
 
 export const selectTrophiesById = (state, id) =>
-  state.trophies.items.filter((item) => item.id === id);
+  state.trophies.items.filter((item) => item?.id === id);
 
 export default trophiesSlice.reducer;

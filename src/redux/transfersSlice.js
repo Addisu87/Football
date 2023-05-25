@@ -5,7 +5,7 @@ const initialState = {
   items: [],
   loading: false,
   error: null,
-  status: null,
+  status: "idle",
 };
 
 // find players transfer

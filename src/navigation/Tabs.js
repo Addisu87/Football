@@ -2,13 +2,13 @@ import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { StyleSheet, Text, View } from "react-native";
 import { BlurView } from "expo-blur";
-import TeamScreen from "../screens/TeamScreen";
-import MatchScreen from "../screens/MatchScreen";
-import StandingsScreen from "../screens/StandingsScreen";
-import TransferScreen from "../screens/TransferScreen";
 import IonIcons from "react-native-vector-icons/Ionicons";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import Entypo from "react-native-vector-icons/Entypo";
+import TeamScreen from "../../screens/TeamScreen";
+import MatchScreen from "../../screens/MatchScreen";
+import TransferScreen from "../../screens/TransferScreen";
+import StandingsScreen from "../../screens/StandingsScreen";
 
 const Tab = createBottomTabNavigator();
 

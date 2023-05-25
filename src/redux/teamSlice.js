@@ -5,6 +5,7 @@ const initialState = {
   items: [],
   loading: false,
   error: null,
+  status: "idle",
 };
 
 export const fetchTeams = createAsyncThunk("teams/fetchTeams", async () =>

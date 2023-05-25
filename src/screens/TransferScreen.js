@@ -1,8 +1,8 @@
 import React, { useLayoutEffect } from "react";
 import { SafeAreaView } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import Transfer from "../../components/players/Transfer";
-import Header from "../../components/Header";
+import Header from "../../components/organisms/Header";
+import Transfer from "../components/transfers/Transfer";
 
 const TransferScreen = () => {
   const navigation = useNavigation();

@@ -5,6 +5,7 @@ const initialState = {
   items: [],
   loading: false,
   error: null,
+  status: "idle",
 };
 
 export const fetchMatch = createAsyncThunk("match/fetchMatch", async () =>

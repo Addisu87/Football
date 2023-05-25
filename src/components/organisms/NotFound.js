@@ -1,6 +1,6 @@
 import { View, Text, Image } from "react-native";
 import React from "react";
-import { Arsenal } from "../assets/images";
+import { Arsenal } from "../../assets/images";
 
 const NotFound = () => {
   return (

@@ -5,6 +5,7 @@ const initialState = {
   items: [],
   loading: false,
   error: null,
+  status: "idle",
 };
 
 export const fetchLineups = createAsyncThunk(
@@ -22,13 +23,16 @@ export const lineupSlice = createSlice({
   extraReducers(builder) {
     builder
       .addCase(fetchLineups.pending, (state) => {
+        state.status = "loading";
         state.loading = true;
       })
       .addCase(fetchLineups.fulfilled, (state, action) => {
+        state.status = "succeeded";
         state.loading = false;
         state.items = [...state.items, ...action.payload];
       })
       .addCase(fetchLineups.rejected, (state, action) => {
+        state.status = "failed";
         state.loading = false;
         state.error = action.error.message;
       });
