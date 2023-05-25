@@ -14,10 +14,15 @@ import {
   selectTransferPlayers,
 } from "../../features/transfersSlice";
 import { LinearGradient } from "expo-linear-gradient";
+import moment from "moment";
 
 const Transfer = () => {
-  const transferPlayers = useSelector(selectTransferPlayers);
+  const transfer = useSelector(selectTransferPlayers);
   const dispatch = useDispatch();
+
+  const transferPlayers = [...transfer].sort((a, b) =>
+    moment(a.transfers.date).diff(moment(b.transfers.date))
+  );
 
   useEffect(() => {
     dispatch(getTransfers());
