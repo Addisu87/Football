@@ -5,10 +5,10 @@ import { BlurView } from "expo-blur";
 import IonIcons from "react-native-vector-icons/Ionicons";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import Entypo from "react-native-vector-icons/Entypo";
-import TeamScreen from "../../screens/TeamScreen";
-import MatchScreen from "../../screens/MatchScreen";
-import TransferScreen from "../../screens/TransferScreen";
-import StandingsScreen from "../../screens/StandingsScreen";
+import TeamScreen from "../screens/TeamScreen";
+import MatchScreen from "../screens/MatchScreen";
+import TransferScreen from "../screens/TransferScreen";
+import StandingsScreen from "../screens/StandingsScreen";
 
 const Tab = createBottomTabNavigator();
 

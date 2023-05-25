@@ -1,8 +1,8 @@
 import React, { useLayoutEffect } from "react";
 import { SafeAreaView } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import Matches from "../../components/matchs/Matches";
-import Header from "../../components/organisms/Header";
+import Matches from "../components/matchs/Matches";
+import Header from "../components/organisms/Header";
 
 const MatchScreen = () => {
   const navigation = useNavigation();

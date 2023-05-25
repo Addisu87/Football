@@ -3,7 +3,7 @@ import { View, Text, ScrollView, Image, TouchableOpacity } from "react-native";
 import { ArrowLeftIcon, ShareIcon } from "react-native-heroicons/outline";
 import { useNavigation, useRoute } from "@react-navigation/native";
 import { LinearGradient } from "expo-linear-gradient";
-import Trophies from "../teams/Trophies";
+import Trophies from "./Trophies";
 
 const PlayerStatistics = () => {
   const navigation = useNavigation();
