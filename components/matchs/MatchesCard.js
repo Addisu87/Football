@@ -39,32 +39,32 @@ const MatchesCard = ({
       className="relative overflow-hidden cursor-pointer"
     >
       <LinearGradient
-        colors={["#0af5ce", "#5ED2A0", "#339CB1"]}
-        className="m-2 max-w-md mx-auto rounded-xl overflow-hidden drop-shadow-lg"
+        colors={["#60a5fa", "#34d399"]}
+        className="m-2 max-w-md mx-auto rounded-2xl bg-clip-border min-w-0"
       >
-        <View className="mx-auto rounded-lg drop-shadow-lg items-center">
-          <Text className="mt-2 text-slate-900">
+        <View className="max-w-md mx-auto rounded-xl shadow-soft-xl break-words">
+          <Text className="items-center justify-center text-slate-900 pl-4 pt-2">
             {moment(gameDate).format("MMMM DD, YYYY")}
           </Text>
-          <View className="flex-row space-y-1 space-x-3">
-            <View className="shrink-0">
+          <View className="flex-row flex-wrap p-2">
+            <View className="shrink-0 pl-7">
               <Image
                 source={teamHomeImgUrl}
-                className="w-14 h-14 object-cover"
+                className="w-12 h-12 object-cover"
               />
               <Text className="uppercase block mt-1 text-base leading-tight font-medium text-black ">
                 {teamHome.length > 8 ? `${teamHome.slice(0, 8)}..` : teamHome}
               </Text>
             </View>
 
-            <View className="items-center justify-center">
+            <View className="items-center justify-center w-1/4">
               <Text className="text-slate-900">Vs</Text>
             </View>
 
-            <View className="shrink-0">
+            <View className="shrink-0 pl-4">
               <Image
                 source={teamAwayImgUrl}
-                className="w-14 h-14 object-cover"
+                className="w-12 h-12 object-cover"
               />
               <Text className="uppercase block mt-1 text-base leading-tight font-medium text-black ">
                 {teamAway.length > 8 ? `${teamAway.slice(0, 8)}..` : teamAway}

@@ -1,7 +1,7 @@
 import React, { useLayoutEffect } from "react";
 import { SafeAreaView } from "react-native";
 import { useNavigation } from "@react-navigation/native";
-import Matches from "../components/Matches";
+import Matches from "../components/matchs/Matches";
 import Header from "../components/Header";
 
 const MatchScreen = () => {

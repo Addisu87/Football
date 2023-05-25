@@ -11,12 +11,7 @@ const initialState = {
 // Fetching standings from API
 export const fetchPlayers = createAsyncThunk(
   "players/fetchPlayers",
-  async (teamId) =>
-    getData(`/players`, {
-      league: "39",
-      season: "2022",
-      team: teamId,
-    })
+  async (teamId) => await getData(`/players/squads`, { team: teamId })
 );
 
 export const playerSlice = createSlice({
@@ -34,7 +29,7 @@ export const playerSlice = createSlice({
       .addCase(fetchPlayers.fulfilled, (state, action) => {
         state.status = "succeeded";
         state.loading = false;
-        state.items = action.payload;
+        state.items = [...state.items, action.payload];
       })
       .addCase(fetchPlayers.rejected, (state, action) => {
         state.status = "failed";
@@ -44,9 +39,9 @@ export const playerSlice = createSlice({
   },
 });
 
-export const selectPlayerItems = (state) => state.players.items;
+export const selectPlayerLists = (state) => state.players.items;
 
-export const selectPlayerById = (state, id) =>
-  state.players.items?.filter((player) => player?.id === id);
+export const selectPlayerById = (state, playerId) =>
+  state.players.items?.filter((player) => player?.id === playerId);
 
 export default playerSlice.reducer;

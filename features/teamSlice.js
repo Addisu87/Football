@@ -39,7 +39,7 @@ export const teamSlice = createSlice({
 
 export const selectTeamItems = (state) => state.teams.items;
 
-export const selectTeamById = (state, id) =>
-  state.teams.items.filter((item) => item?.id === id);
+export const selectTeamById = (state, teamId) =>
+  state.teams.items.filter((item) => item?.id === teamId);
 
 export default teamSlice.reducer;

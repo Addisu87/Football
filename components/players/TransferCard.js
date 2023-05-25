@@ -17,7 +17,7 @@ const TransferCard = ({
     <View className="relative">
       <TouchableOpacity className="relative p-1 m-1 drop-shadow-lg max-w-md mx-auto rounded-xl bg-gray-200">
         <LinearGradient
-          colors={["#5ED2A0", "#339CB1"]}
+          colors={["#60a5fa", "#34d399"]}
           className="m-2 max-w-md mx-auto rounded-xl overflow-hidden drop-shadow-lg md:max-w-2xl"
         >
           <View className="w-full h-32">
