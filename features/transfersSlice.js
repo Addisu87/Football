@@ -29,7 +29,7 @@ export const transfersSlice = createSlice({
       .addCase(getTransfers.fulfilled, (state, action) => {
         state.status = "succeeded";
         state.loading = false;
-        state.items = action.payload;
+        state.items = [...state.items, action.payload];
       })
       .addCase(getTransfers.rejected, (state, action) => {
         state.status = "failed";
