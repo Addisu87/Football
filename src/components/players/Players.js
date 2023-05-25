@@ -7,8 +7,11 @@ import {
 } from "react-native";
 import PlayerCard from "./PlayerCard";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchPlayers, selectPlayerLists } from "../../redux/playerSlice";
-import { fetchTeams, selectTeamById } from "../../redux/teamSlice";
+import {
+  fetchPlayers,
+  selectPlayerLists,
+} from "../../redux/slices/playerSlice";
+import { fetchTeams, selectTeamById } from "../../redux/slices/teamSlice";
 
 const Players = () => {
   // Access the squad of players from the state

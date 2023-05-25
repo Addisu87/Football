@@ -12,7 +12,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   getTransfers,
   selectTransferPlayers,
-} from "../../redux/transfersSlice";
+} from "../../redux/slices/transfersSlice";
 import { LinearGradient } from "expo-linear-gradient";
 import moment from "moment";
 
