@@ -15,14 +15,13 @@ import {
 } from "../../features/transfersSlice";
 import { LinearGradient } from "expo-linear-gradient";
 
-const Transfer = ({ playerId }) => {
+const Transfer = () => {
   const transferPlayers = useSelector(selectTransferPlayers);
   const dispatch = useDispatch();
 
-  useEffect(async () => {
-    const result = await dispatch(fetchTransfers(playerId));
-    console.log(result);
-  }, [dispatch, playerId]);
+  useEffect(() => {
+    dispatch(fetchTransfers());
+  }, []);
 
   return (
     <SafeAreaView>

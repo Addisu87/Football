@@ -10,10 +10,7 @@ const initialState = {
 
 export const fetchTransfers = createAsyncThunk(
   "transfers/fetchTransfers",
-  async (playerId) =>
-    getData(`/transfers`, {
-      player: playerId,
-    })
+  async (playerId) => await getData(`/transfers`, { player: playerId })
 );
 
 export const transfersSlice = createSlice({
@@ -44,6 +41,6 @@ export const transfersSlice = createSlice({
 export const selectTransferPlayers = (state) => state.transfers.items;
 
 export const selectTransfersById = (state, id) =>
-  state.transfers.items.filter((trans) => trans.id === id);
+  state.transfers.items.filter((trans) => trans?.id === id);
 
 export default transfersSlice.reducer;

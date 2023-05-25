@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import {
   View,
   ActivityIndicator,
@@ -8,7 +8,7 @@ import {
 import PlayerCard from "./PlayerCard";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchPlayers, selectPlayerLists } from "../../features/playerSlice";
-import { selectTeamById } from "../../features/teamSlice";
+import { fetchTeams, selectTeamById } from "../../features/teamSlice";
 
 const Players = () => {
   // Access the squad of players from the state
@@ -17,18 +17,17 @@ const Players = () => {
   const dispatch = useDispatch();
 
   // Fetch the squad of players for the selected team from the API
+  // How to fetch players by selecting team using v3 api football?
+
   useEffect(() => {
-    const fetchPlayersData = async () => {
-      const playersData = await Promise.all(
-        selectedTeam?.map(async (team) => {
-          const teamPlayers = await dispatch(fetchPlayers(team?.id));
-          return teamPlayers;
-        })
-      );
-      dispatch(playersData.flat());
-    };
-    fetchPlayersData();
-  }, [dispatch, selectedTeam]);
+    selectedTeam?.map(async (team) => {
+      const teamPlayers = await dispatch(fetchTeams(team.id));
+      teamPlayers[0].Players.forEach(async (player) => {
+        const playerData = await dispatch(fetchPlayers(player.id));
+        return playerData;
+      });
+    });
+  }, []);
 
   return (
     <SafeAreaView>
@@ -40,7 +39,7 @@ const Players = () => {
         <>
           <View className="h-[600px]">
             <ScrollView className="flex-1 p-2">
-              {squad?.players?.map((player, index) => (
+              {squad?.map((player, index) => (
                 <PlayerCard
                   key={index}
                   Photo={{ uri: player?.photo }}

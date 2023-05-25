@@ -6,7 +6,7 @@ export const instance = axios.create({
     "x-rapidapi-key": "95f8210a47b0bc73dcba2614e4c2cb9f",
     "x-rapidapi-host": "v3.football.api-sports.io",
   },
-  timeout: 10000, // increase timeout value
+  timeout: 5000, // increase timeout value
 });
 
 export const getData = async (endpoint, params) => {

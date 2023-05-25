@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { View, Image } from "react-native";
 import premierLeague from "../assets/images/Premier_League-Logo.png";
-import { SearchBar } from "react-native-elements";
+import { Avatar, SearchBar } from "react-native-elements";
 
 const Header = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -22,10 +22,8 @@ const Header = () => {
           placeholder="Search"
           onChangeText={updateSearch}
           value={searchQuery}
-          lightTheme
           round
-          autoCorrect={false}
-          containerStyle={{ padding: 2 }}
+          lightTheme
         />
       </View>
     </View>
