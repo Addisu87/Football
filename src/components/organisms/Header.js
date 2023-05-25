@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { View, Image } from "react-native";
-import { PrimerLeague } from "../../assets/images/index";
 import { Avatar, SearchBar } from "react-native-elements";
+import { PrimerLeague } from "../../assets/images/index";
 
 const Header = () => {
   const [searchQuery, setSearchQuery] = useState("");

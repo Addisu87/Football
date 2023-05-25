@@ -8,7 +8,7 @@ const initialState = {
   error: null,
 };
 
-// Fetching standings from API
+// Fetching team players from API
 export const fetchPlayers = createAsyncThunk(
   "players/fetchPlayers",
   async (teamId) => await getData(`/players/squads`, { team: teamId })
