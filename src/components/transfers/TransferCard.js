@@ -1,63 +1,62 @@
-import { View, Text, TouchableOpacity, Image } from "react-native";
 import React from "react";
+import { View, Text, TouchableOpacity, Image } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
-import { ArrowRightIcon } from "react-native-heroicons/outline";
 
 const TransferCard = ({
   Photo,
   DateTrans,
   TransType,
   Name,
-  TeamIn,
   TeamOut,
-  TeamInLogo,
   TeamOutLogo,
+  TeamIn,
+  TeamInLogo,
 }) => {
   return (
-    <View className="relative">
-      <TouchableOpacity className="relative p-1 m-1 drop-shadow-lg max-w-md mx-auto rounded-xl bg-gray-200">
-        <LinearGradient
-          colors={["#60a5fa", "#34d399"]}
-          className="m-2 max-w-md mx-auto rounded-xl overflow-hidden drop-shadow-lg md:max-w-2xl"
-        >
-          <View className="w-full h-32">
-            <Text className="uppercase text-lg font-bold text-left">
-              {`Transfer on ${DateTrans}`}
+    <TouchableOpacity className="relative overflow-hidden">
+      <LinearGradient
+        colors={["#60a5fa", "#34d399"]}
+        className="m-2 max-w-md mx-auto rounded-xl overflow-hidden drop-shadow-lg"
+      >
+        <View className="max-w-md mx-auto rounded-xl shadow-soft-xl break-words">
+          <View className="p-2 flex-row justify-between items-center">
+            <Text className="font-medium text-base uppercase">
+              Date: {DateTrans}
             </Text>
-            <View className="py-4 px-4 mx-auto items-center justify-center space-y-0 top-3 flex-row space-x-6">
-              <Image
-                source={Photo}
-                className="block mx-0 h-18 rounded-full drop-shadow-lg shrink-0"
-              />
+            <Text className="uppercase">Type: {TransType}</Text>
+          </View>
 
-              <View className="space-y-2">
-                <Text className="text-lg text-black font-semibold">{Name}</Text>
-                <View className="flex-row space-x-2">
-                  <View>
-                    <Text className="text-slate-500 font-medium">{TeamIn}</Text>
-                    <Image
-                      source={TeamInLogo}
-                      className="w-12 h-12 rounded-full"
-                    />
-                  </View>
-                  <ArrowRightIcon />
-                  <View>
-                    <Text className="text-slate-500 font-medium">
-                      {TeamOut}
-                    </Text>
-                    <Image
-                      source={TeamOutLogo}
-                      className="w-12 h-12 rounded-full"
-                    />
-                  </View>
-                </View>
-                <Text className="text-base font-normal">{TransType}</Text>
-              </View>
+          <View className="flex-row flex-wrap p-2">
+            <View className="items-center justify-center w-1/4">
+              <Text className="uppercase font-bold mb-0 text-lg leading-tight text-black">
+                {Name}
+              </Text>
+              <Image source={Photo} />
+            </View>
+
+            <View className="shrink-0 pl-7">
+              <Image
+                source={TeamOutLogo}
+                className="rounded w-10 h-10 object-cover"
+              />
+              <Text className="uppercase block mt-1 text-base leading-tight font-medium text-black ">
+                Out: {TeamOut.length > 8 ? `${TeamOut.slice(0, 8)}..` : TeamOut}
+              </Text>
+            </View>
+
+            <View className="shrink-0 pl-4">
+              <Image
+                source={TeamInLogo}
+                className="rounded w-10 h-10 object-cover"
+              />
+              <Text className="uppercase block mt-1 text-base leading-tight font-medium text-black ">
+                In: {TeamIn > 8 ? `${TeamIn.slice(0, 8)}..` : TeamIn}
+              </Text>
             </View>
           </View>
-        </LinearGradient>
-      </TouchableOpacity>
-    </View>
+        </View>
+      </LinearGradient>
+    </TouchableOpacity>
   );
 };
 

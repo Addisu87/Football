@@ -4,14 +4,14 @@ import { getData } from "../services/api";
 const initialState = {
   items: [],
   loading: false,
-  error: null,
   status: "idle",
+  error: null,
 };
 
 // find players transfer
 export const getTransfers = createAsyncThunk(
   "transfers/getTransfers",
-  async (playerId) => await getData(`/transfers?player=${playerId}`)
+  async (playerId) => await getData(`/transfers`, { player: playerId })
 );
 
 export const transfersSlice = createSlice({
@@ -29,7 +29,7 @@ export const transfersSlice = createSlice({
       .addCase(getTransfers.fulfilled, (state, action) => {
         state.status = "succeeded";
         state.loading = false;
-        state.items = [...state.items, action.payload];
+        state.items = action.payload;
       })
       .addCase(getTransfers.rejected, (state, action) => {
         state.status = "failed";
@@ -41,7 +41,7 @@ export const transfersSlice = createSlice({
 
 export const selectTransferPlayers = (state) => state.transfers.items;
 
-export const selectTransfersById = (state, id) =>
-  state.transfers.items.filter((trans) => trans?.id === id);
+export const selectTransfersById = (state, playerId) =>
+  state.transfers.items.filter((trans) => trans?.id === playerId);
 
 export default transfersSlice.reducer;

@@ -4,81 +4,69 @@ import {
   ScrollView,
   SafeAreaView,
   ActivityIndicator,
-  TouchableOpacity,
   Text,
-  Image,
 } from "react-native";
 import { useDispatch, useSelector } from "react-redux";
 import {
   getTransfers,
   selectTransferPlayers,
 } from "../../redux/slices/transfersSlice";
-import { LinearGradient } from "expo-linear-gradient";
 import moment from "moment";
+import TransferCard from "./TransferCard";
 
 const Transfer = () => {
   const transfer = useSelector(selectTransferPlayers);
   const dispatch = useDispatch();
 
-  const transferPlayers = [...transfer].sort((a, b) =>
-    moment(a.transfers.date).diff(moment(b.transfers.date))
-  );
-  console.log("transferPlayers", transferPlayers);
+  const transferPlayers = [...transfer]
+    .slice(0, 15)
+    .sort((a, b) => moment(a.player.update).diff(moment(b.player.update)));
 
-  const playerId = "35845";
+  const playerId = "276";
+  const season = "2022";
 
   useEffect(() => {
-    dispatch(getTransfers(playerId));
-  }, []);
+    dispatch(getTransfers(playerId, season));
+  }, [dispatch, playerId, season]);
 
   return (
     <SafeAreaView>
-      {!transfer?.length ? (
+      <View className="p-2 flex-row justify-between items-center">
+        <Text className="font-medium text-base uppercase">
+          Transfer History
+        </Text>
+        <Text className="uppercase">View All</Text>
+      </View>
+
+      {!transferPlayers?.length ? (
         <View className=" flex-1 items-center justify-center">
           <ActivityIndicator size="large" color="#0B646B" />
         </View>
       ) : (
         <View className="relative">
-          <TouchableOpacity className="relative overflow-hidden">
-            <LinearGradient
-              colors={["#60a5fa", "#34d399"]}
-              className="m-2 max-w-md mx-auto rounded-xl overflow-hidden drop-shadow-lg"
-            >
-              <Text className="font-semibold mb-2.5">Transfer History</Text>
-              <View className="h-[600px]">
-                <ScrollView className="flex-1 p-2">
-                  <>
-                    {transfer?.length > 0 &&
-                      transfer?.map((trans, index) => (
-                        <View key={index} className="mt-1.25">
-                          <Text>Date: {trans?.transfers?.date}</Text>
-                          <Text>Type: {trans?.transfers?.type}</Text>
-                          <View>
-                            <Text>
-                              Out: {trans?.transfers?.teams?.out?.name}
-                            </Text>
-                            <Image
-                              source={{
-                                uri: trans?.transfers?.teams?.out?.logo,
-                              }}
-                              className="w-8 h-8 rounded-full"
-                            />
-                          </View>
-                          <View>
-                            <Text>In: {trans?.transfers?.teams?.in?.name}</Text>
-                            <Image
-                              source={{
-                                uri: trans?.transfers?.teams?.in?.logo,
-                              }}
-                            />
-                          </View>
-                        </View>
-                      ))}
-                  </>
-                </ScrollView>
-              </View>
-            </LinearGradient>
-          </TouchableOpacity>
+          <View className="h-[600px]">
+            <ScrollView className="flex-1 p-2">
+              <>
+                {transferPlayers?.length > 0 &&
+                  transferPlayers?.map((trans, index) => (
+                    <TransferCard
+                      key={index}
+                      Name={trans?.player?.name}
+                      DateTrans={trans?.transfers[0]?.date}
+                      TransType={trans?.transfers[0]?.type}
+                      TeamOutLogo={{
+                        uri: trans?.transfers[0]?.teams?.out?.logo,
+                      }}
+                      TeamOut={trans?.transfers[0]?.teams?.out?.name}
+                      TeamIn={trans?.transfers[0]?.teams?.in?.name}
+                      TeamInLogo={{
+                        uri: trans?.transfers[0]?.teams?.in?.logo,
+                      }}
+                    />
+                  ))}
+              </>
+            </ScrollView>
+          </View>
         </View>
       )}
     </SafeAreaView>

@@ -98,6 +98,11 @@ const StandingScreen = () => {
   return (
     <View className="h-[600px]">
       <ScrollView className="flex-1 p-2">
+        <View className="p-2 flex-row justify-between items-center">
+          <Text className="font-medium text-base uppercase">Standings</Text>
+          <Text className="uppercase">View All</Text>
+        </View>
+
         {!standings.length ? (
           <View className=" flex-1 items-center justify-center">
             <ActivityIndicator size="large" color="#00CCBB" />
