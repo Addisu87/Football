@@ -11,7 +11,7 @@ const initialState = {
 // find players transfer
 export const getTransfers = createAsyncThunk(
   "transfers/getTransfers",
-  async (playerId) => await getData(`/transfers/${playerId}`)
+  async (playerId) => await getData(`/transfers?player=${playerId}`)
 );
 
 export const transfersSlice = createSlice({

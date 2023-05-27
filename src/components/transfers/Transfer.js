@@ -23,14 +23,17 @@ const Transfer = () => {
   const transferPlayers = [...transfer].sort((a, b) =>
     moment(a.transfers.date).diff(moment(b.transfers.date))
   );
+  console.log("transferPlayers", transferPlayers);
+
+  const playerId = "35845";
 
   useEffect(() => {
-    dispatch(getTransfers());
+    dispatch(getTransfers(playerId));
   }, []);
 
   return (
     <SafeAreaView>
-      {!transferPlayers?.length ? (
+      {!transfer?.length ? (
         <View className=" flex-1 items-center justify-center">
           <ActivityIndicator size="large" color="#0B646B" />
         </View>
@@ -44,37 +47,34 @@ const Transfer = () => {
               <Text className="font-semibold mb-2.5">Transfer History</Text>
               <View className="h-[600px]">
                 <ScrollView className="flex-1 p-2">
-                  {transferPlayers?.map((player) => (
-                    <>
-                      <View key={player?.id} className="mt-2.5">
-                        <Text className="font-bold mb-1.5">{player?.name}</Text>
-                        <View className="ml-2.5">
-                          {player.transfers?.length > 0 &&
-                            player.transfers?.map((trans) => (
-                              <>
-                                <View key={trans?.date} className="mt-1.25">
-                                  <Text>Date: {trans?.date}</Text>
-                                  <Text>Type: {trans?.type}</Text>
-                                  <View>
-                                    <Text>Out: {trans?.teams?.out?.name}</Text>
-                                    <Image
-                                      source={{ uri: trans?.teams?.out?.logo }}
-                                      className="w-8 h-8 rounded-full"
-                                    />
-                                  </View>
-                                  <View>
-                                    <Text>In: {trans?.teams?.in?.name}</Text>
-                                    <Image
-                                      source={{ uri: trans?.teams?.in?.logo }}
-                                    />
-                                  </View>
-                                </View>
-                              </>
-                            ))}
+                  <>
+                    {transfer?.length > 0 &&
+                      transfer?.map((trans, index) => (
+                        <View key={index} className="mt-1.25">
+                          <Text>Date: {trans?.transfers?.date}</Text>
+                          <Text>Type: {trans?.transfers?.type}</Text>
+                          <View>
+                            <Text>
+                              Out: {trans?.transfers?.teams?.out?.name}
+                            </Text>
+                            <Image
+                              source={{
+                                uri: trans?.transfers?.teams?.out?.logo,
+                              }}
+                              className="w-8 h-8 rounded-full"
+                            />
+                          </View>
+                          <View>
+                            <Text>In: {trans?.transfers?.teams?.in?.name}</Text>
+                            <Image
+                              source={{
+                                uri: trans?.transfers?.teams?.in?.logo,
+                              }}
+                            />
+                          </View>
                         </View>
-                      </View>
-                    </>
-                  ))}
+                      ))}
+                  </>
                 </ScrollView>
               </View>
             </LinearGradient>

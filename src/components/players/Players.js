@@ -13,24 +13,15 @@ import {
 } from "../../redux/slices/playerSlice";
 import { fetchTeams, selectTeamById } from "../../redux/slices/teamSlice";
 
-const Players = () => {
+const Players = ({ teamId }) => {
   // Access the squad of players from the state
   const squad = useSelector(selectPlayerLists);
-  const selectedTeam = useSelector(selectTeamById);
   const dispatch = useDispatch();
 
   // Fetch the squad of players for the selected team from the API
-  // How to fetch players by selecting team using v3 api football?
-
   useEffect(() => {
-    selectedTeam?.map(async (team) => {
-      const teamPlayers = await dispatch(fetchTeams(team.id));
-      teamPlayers[0].Players.forEach(async (player) => {
-        const playerData = await dispatch(fetchPlayers(player.id));
-        return playerData;
-      });
-    });
-  }, []);
+    dispatch(fetchPlayers(teamId));
+  }, [dispatch, teamId]);
 
   return (
     <SafeAreaView>
