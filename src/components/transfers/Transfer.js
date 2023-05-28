@@ -14,7 +14,7 @@ import {
 import moment from "moment";
 import TransferCard from "./TransferCard";
 
-const Transfer = () => {
+const Transfer = ({ Photo }) => {
   const transfer = useSelector(selectTransferPlayers);
   const dispatch = useDispatch();
 
@@ -48,19 +48,20 @@ const Transfer = () => {
             <ScrollView className="flex-1 p-2">
               <>
                 {transferPlayers?.length > 0 &&
-                  transferPlayers?.map((trans, index) => (
+                  transferPlayers?.map((player) => (
                     <TransferCard
-                      key={index}
-                      Name={trans?.player?.name}
-                      DateTrans={trans?.transfers[0]?.date}
-                      TransType={trans?.transfers[0]?.type}
+                      key={player.id}
+                      Photo={Photo}
+                      Name={player?.player?.name}
+                      DateTrans={player?.transfers[0]?.date}
+                      TransType={player?.transfers[0]?.type}
                       TeamOutLogo={{
-                        uri: trans?.transfers[0]?.teams?.out?.logo,
+                        uri: player?.transfers[0]?.teams?.out?.logo,
                       }}
-                      TeamOut={trans?.transfers[0]?.teams?.out?.name}
-                      TeamIn={trans?.transfers[0]?.teams?.in?.name}
+                      TeamOut={player?.transfers[0]?.teams?.out?.name}
+                      TeamIn={player?.transfers[0]?.teams?.in?.name}
                       TeamInLogo={{
-                        uri: trans?.transfers[0]?.teams?.in?.logo,
+                        uri: player?.transfers[0]?.teams?.in?.logo,
                       }}
                     />
                   ))}

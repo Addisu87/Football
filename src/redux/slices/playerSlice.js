@@ -11,7 +11,7 @@ const initialState = {
 // Fetching team players from API
 export const fetchPlayers = createAsyncThunk(
   "players/fetchPlayers",
-  async (teamId) => await getData(`/players/squads/${teamId}`)
+  async (teamId) => await getData(`/players/squads`, { team: teamId })
 );
 
 export const playerSlice = createSlice({
