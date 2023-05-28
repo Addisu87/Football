@@ -40,7 +40,6 @@ const TransferCard = ({
                 source={TeamOutLogo}
                 className="rounded w-6 h-6 object-cover"
               />
-
               <Text className="uppercase block mt-1 text-base leading-tight font-normal text-black ">
                 {TeamOut.length > 3 ? `${TeamOut.slice(0, 3)}..` : TeamOut}
               </Text>
