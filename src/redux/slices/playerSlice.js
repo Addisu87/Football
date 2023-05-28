@@ -29,7 +29,7 @@ export const playerSlice = createSlice({
       .addCase(fetchPlayers.fulfilled, (state, action) => {
         state.status = "succeeded";
         state.loading = false;
-        state.items = [...state.items, ...action.payload];
+        state.items = action.payload;
       })
       .addCase(fetchPlayers.rejected, (state, action) => {
         state.status = "failed";
