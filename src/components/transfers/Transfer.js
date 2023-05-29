@@ -48,9 +48,9 @@ const Transfer = ({ Photo }) => {
             <ScrollView className="flex-1 p-2">
               <>
                 {transferPlayers?.length > 0 &&
-                  transferPlayers?.map((player) => (
+                  transferPlayers?.map((player, index) => (
                     <TransferCard
-                      key={player.id}
+                      key={index}
                       Photo={Photo}
                       Name={player?.player?.name}
                       DateTrans={player?.transfers[0]?.date}

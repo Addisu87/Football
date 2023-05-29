@@ -21,7 +21,7 @@ const TransferCard = ({
       >
         <View className="max-w-md mx-auto rounded-xl shadow-soft-xl break-words">
           <View className="p-2 flex-row justify-between items-center">
-            <Text className="font-thin text-base uppercase">
+            <Text className="font-normal text-base uppercase">
               Date: {DateTrans}
             </Text>
             <Text className="uppercase">Type:{TransType}</Text>

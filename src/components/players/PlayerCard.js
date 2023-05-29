@@ -2,7 +2,7 @@ import React from "react";
 import { useNavigation } from "@react-navigation/native";
 import { LinearGradient } from "expo-linear-gradient";
 import { View, Text, Image, TouchableOpacity } from "react-native";
-import { ArrowLeftIcon } from "react-native-heroicons/outline";
+import { ArrowLeftIcon, ArrowRightIcon } from "react-native-heroicons/outline";
 
 const PlayerCard = ({
   Photo,
@@ -43,16 +43,20 @@ const PlayerCard = ({
           colors={["#60a5fa", "#34d399"]}
           className="m-2 max-w-md mx-auto rounded-xl overflow-hidden drop-shadow-lg"
         >
+          <TouchableOpacity
+            className="absolute top-7 left-4 p-2 bg-gray-100 rounded-full"
+            onPress={() => navigation.goBack()}
+          >
+            <ArrowLeftIcon size={20} color="#00CCBB" />
+          </TouchableOpacity>
+
+          <TouchableOpacity className="absolute top-7 right-4 p-2 bg-gray-100 rounded-full">
+            <ArrowRightIcon size={20} color="#00CCBB" />
+          </TouchableOpacity>
+
           <View className="mx-auto rounded-xl drop-shadow-lg overflow-hidden">
             <View className="flex-row justify-evenly">
-              <View>
-                <TouchableOpacity
-                  className="top-5 p-2 bg-gray-100 rounded-full"
-                  onPress={() => navigation.goBack()}
-                >
-                  <ArrowLeftIcon size={20} color="#00CCBB" />
-                </TouchableOpacity>
-              </View>
+              <View></View>
 
               <View className="shrink-0 p-2">
                 <Image

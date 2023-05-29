@@ -15,6 +15,7 @@ import {
 const Players = () => {
   // Access the squad of players from the state
   const squad = useSelector(selectPlayerLists);
+  console.log("squad", squad);
   const dispatch = useDispatch();
 
   const teamId = "33";
@@ -36,26 +37,24 @@ const Players = () => {
         <>
           <View className="h-[600px]">
             <ScrollView className="flex-1 p-2">
-              <>
-                {squad?.map((play, index) => (
-                  <PlayerCard
-                    key={index}
-                    Photo={{ uri: play?.players?.photo }}
-                    Name={play?.players?.name}
-                    Age={play?.players?.age}
-                    Number={play?.players?.number}
-                    Position={play?.players?.position}
-                    // Nationality={play?.player?.nationality}
-                    // TeamLogo={play?.statistics[0]?.team?.logo}
-                    // TeamName={play?.statistics[0]?.team?.name}
-                    // Position={play?.statistics[0]?.games?.position}
-                    // Appearences={play?.statistics[0]?.games?.appearences}
-                    // Goals={play?.statistics[0]?.goals?.total}
-                    // Passes={play?.statistics[0]?.passes?.total}
-                    // Cards={play?.statistics[0]?.cards?.red}
-                  />
-                ))}
-              </>
+              {squad?.map((players, index) => (
+                <PlayerCard
+                  key={index}
+                  Photo={{ uri: players?.photo }}
+                  Name={players?.name}
+                  Age={players?.age}
+                  Number={players?.number}
+                  Position={players?.position}
+                  // Nationality={play?.player?.nationality}
+                  // TeamLogo={play?.statistics[0]?.team?.logo}
+                  // TeamName={play?.statistics[0]?.team?.name}
+                  // Position={play?.statistics[0]?.games?.position}
+                  // Appearences={play?.statistics[0]?.games?.appearences}
+                  // Goals={play?.statistics[0]?.goals?.total}
+                  // Passes={play?.statistics[0]?.passes?.total}
+                  // Cards={play?.statistics[0]?.cards?.red}
+                />
+              ))}
             </ScrollView>
           </View>
         </>

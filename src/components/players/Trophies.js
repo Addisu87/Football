@@ -6,13 +6,13 @@ import {
   selectTrophiesItems,
 } from "../../redux/slices/trophiesSlice";
 
-const Trophies = ({ playerId }) => {
+const Trophies = () => {
   const Trophies = useSelector(selectTrophiesItems);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(fetchTrophies(playerId));
-  }, [dispatch, playerId]);
+    dispatch(fetchTrophies());
+  }, [dispatch]);
 
   return (
     <SafeAreaView>

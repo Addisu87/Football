@@ -29,7 +29,7 @@ export const trophiesSlice = createSlice({
         state.status = "succeeded";
         state.loading = false;
         // Add any fetched trophies to the array
-        state.items = [...state.items, ...action.payload];
+        state.items = action.payload;
       })
       .addCase(fetchTrophies.rejected, (state, action) => {
         state.status = "failed";
@@ -41,7 +41,7 @@ export const trophiesSlice = createSlice({
 
 export const selectTrophiesItems = (state) => state.trophies.items;
 
-export const selectTrophiesById = (state, id) =>
-  state.trophies.items.filter((item) => item?.id === id);
+export const selectTrophiesById = (state, playerId) =>
+  state.trophies.items.filter((item) => item?.id === playerId);
 
 export default trophiesSlice.reducer;
