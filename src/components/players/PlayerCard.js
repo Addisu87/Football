@@ -8,6 +8,7 @@ const PlayerCard = ({
   Photo,
   Name,
   Age,
+  Number,
   Nationality,
   TeamLogo,
   TeamName,
@@ -27,6 +28,7 @@ const PlayerCard = ({
             Photo,
             Name,
             Age,
+            Number,
             Nationality,
             TeamLogo,
             TeamName,
@@ -69,7 +71,7 @@ const PlayerCard = ({
                 <Text className="uppercase block mt-1 text-lg leading-tight font-medium text-black ">
                   {Name?.length > 12 ? `${Name.slice(0, 12)}...` : Name}
                 </Text>
-                <Text className="mt-2 text-slate-700">{Age}</Text>
+                <Text className="mt-2 text-slate-700">{Number}</Text>
                 <Text className="mt-2 text-slate-700">{Position}</Text>
               </View>
             </View>

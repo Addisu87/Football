@@ -10,10 +10,10 @@ const PlayerStatistics = () => {
 
   const {
     params: {
-      teamId,
       Photo,
       Name,
       Age,
+      Number,
       Nationality,
       TeamLogo,
       TeamName,
@@ -68,6 +68,7 @@ const PlayerStatistics = () => {
                 </Text>
                 <Text className="mt-2 text-black">Age: {Age}</Text>
                 <Text className="mt-2 text-black">Position: {Position}</Text>
+                <Text className="mt-2 text-black">Position: {Number}</Text>
                 <Text className="mt-2 text-black">
                   Nationality: {Nationality}
                 </Text>
