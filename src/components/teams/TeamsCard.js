@@ -3,6 +3,7 @@ import React from "react";
 import { View } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { LinearGradient } from "expo-linear-gradient";
+import { ArrowRightIcon } from "react-native-heroicons/outline";
 
 const TeamsCard = ({
   imgUrl,
@@ -17,18 +18,22 @@ const TeamsCard = ({
   const navigation = useNavigation();
 
   return (
-    <TouchableOpacity
-      onPress={() =>
-        navigation.navigate("Players", {
-          Photo,
-          Name,
-          Age,
-          Position,
-          Number,
-        })
-      }
-      className="relative overflow-hidden cursor-pointer"
-    >
+    <View className="relative">
+      <TouchableOpacity
+        onPress={() =>
+          navigation.navigate("Players", {
+            Photo,
+            Name,
+            Age,
+            Position,
+            Number,
+          })
+        }
+        className="absolute top-7 right-2 p-1.5 bg-gray-100 rounded-full overflow-hidden z-10"
+      >
+        <ArrowRightIcon size={20} color="#00CCBB" />
+      </TouchableOpacity>
+
       <LinearGradient
         colors={["#60a5fa", "#34d399"]}
         className="m-2 max-w-md mx-auto rounded-2xl bg-clip-border min-w-0"
@@ -54,7 +59,7 @@ const TeamsCard = ({
           </View>
         </View>
       </LinearGradient>
-    </TouchableOpacity>
+    </View>
   );
 };
 
