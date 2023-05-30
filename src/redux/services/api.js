@@ -1,9 +1,11 @@
 import axios from "axios";
 
+const API_KEY = process.env.REACT_APP_API_KEY;
+
 export const instance = axios.create({
   baseURL: "https://v3.football.api-sports.io",
   headers: {
-    "x-rapidapi-key": "95f8210a47b0bc73dcba2614e4c2cb9f",
+    "x-rapidapi-key": API_KEY,
     "x-rapidapi-host": "v3.football.api-sports.io",
   },
   timeout: 5000, // increase timeout value
