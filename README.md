@@ -36,12 +36,10 @@ To get a local copy up and running follow these simple example steps.
 First, run the development server:
 
 ```bash
-npm run dev
-# or
-yarn run dev
+  npx expo start
 ```
 
-- Open [http://localhost:3000] with your browser to see the result.
+- Open [http://localhost:19006/] with your browser to see the result.
 
 ## Live Demo (if available)
 
